@@ -1,0 +1,170 @@
+body {
+    font-family: Arial, sans-serif; /*letra para toda la pagina*/
+    margin: 0; /* con esto le quito los margenes blancos que trae por defecto*/
+    min-height: 100vh; /*esto hace que el body siempre toque el borde inferior*/
+    display: flex; /* los flex son para ordenar los elementos de arriba hacia abajo en orden */
+    flex-direction: column;
+}
+ 
+/* Encabezado */
+header {
+    background-color: #121A42;
+    color: #ffffff;
+}
+ 
+/* estilo para las etiquetas <a>*/
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: .75rem;
+}
+ 
+/* Etiqueta directiva que esta al lado del nombre del colegio*/
+.etiqueta-directiva {
+    background-color: #334ABD;
+    color: #ffffff;
+}
+ 
+/* boton cerrar sesion*/
+header #btn-cerrar {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+ 
+/*con el flex en 1 0 auto es para que el contenido principal se estire para rellenar el espacio libre entre el header y el footer*/
+main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/*esto hace que las cajas del bootstrap se estiren a la misma altura*/
+main .container-fluid{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+main .row {
+    flex: 1;
+}
+ 
+/* menu lateral */
+.sidebar {
+    background-color: #1C2866;
+    padding: 0;
+}
+ 
+/*opciones del menu lateral*/
+.sidebar .list-group-item {
+    background-color: transparent;
+    color: #ffffff;
+    border: none; /*quita los bordes que vienen por defecto*/
+    border-radius: 0; /*bordes cuadrados*/
+    border-bottom: 1px solid #283A94;/*le deja una linea separadora abajo*/
+}
+/*esto es para cuando paso el cursor por el menu va alternando el color*/
+.sidebar .list-group-item:hover {
+    background-color: #283A94;
+}
+ 
+/* titulos*/
+h1, h2 {
+    color: #121A42;
+}
+ 
+/* la barra antes ocupaba el ancho completo de la pagina con esto la limito*/
+#busqueda {
+    max-width: 340px;
+}
+ 
+/*cambia el color de la barra de busqueda cuando escribes*/
+#busqueda:focus {
+    border-color: #334ABD;
+}
+
+/*padding para las cajas de texto para que no este pegado a los bordes*/
+.table th,
+.table td {
+    padding: .9rem .75rem;
+    vertical-align: middle; /*y con esto centro el texto veticalmente*/
+}
+ 
+/*esto es para que las filas no sean de un solo color lo que hace es intercalando primera fila gris, segunda blanco*/
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+ 
+/* etiquetas del rol de los usuarios para cada etiqueta hay un color diferente*/
+.rol-docente {
+    background-color: #1C2866;
+    color: #ffffff;
+}
+ 
+.rol-estudiante {
+    background-color: #3E5AE6;
+    color: #ffffff;
+}
+ 
+.rol-auxiliar {
+    background-color: #283A94;
+    color: #ffffff;
+}
+ 
+/* Botones de editar y eliminar en la tabla */
+.boton-accion {
+    color: #334ABD;
+    margin-right: .5rem;
+    font-size: 1.1rem; /*con esto hago los iconos mas grandes*/
+}
+ 
+/*con esto le quito el margen derecho al ultimo boton para que no quede desalineado */
+.boton-accion:last-child {
+    margin-right: 0;
+}
+ 
+/*es lo mismo del boton de busqueda pero para los de accion*/
+.boton-accion:hover {
+    color: #3E5AE6;
+}
+ 
+
+/*con esto digo que el footer tenga fondo oscuro y el texto blanco*/
+footer {
+    background-color: #121A42;
+    color: #ffffff;
+}
+ 
+/*todo loq que este en el footer como enlaces o textos los pongo en color blanco*/
+footer a, footer span {
+    color: #ffffff;
+}
+ 
+
+
+/*les pongo color en currentcolor porque asi tienen el mismo color que el contenedor,
+si le cambian el color al contener por ejemplo footer span van a cambiar de color todos los elementos dentro,
+los deje tambien separados por clases por si solo se necesita cambiar uno*/
+.icono-inicio,
+.icono-perfil,
+.icono-gestion-academica,
+.icono-notas,
+.icono-asistencia,
+.icono-sueldos,
+.icono-horarios {
+    color: currentColor;
+}
+ 
+/* botones para editar y eliminar*/
+.icono-editar,
+.icono-eliminar {
+    color: currentColor;
+}
+ 
+/* iconos de informacion*/
+.icono-ubicacion,
+.icono-telefono,
+.icono-correo {
+    color: currentColor;
+}
