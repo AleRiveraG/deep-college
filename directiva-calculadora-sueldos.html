@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Página Principal</title>
+        <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div>
+                <a href="#">Mi colegio</a>
+                <span>Directiva</span>
+                <button id="btn-cerrar">
+                    Cerrar sesión
+                </button>
+            </div>
+        </header>
+        <main>
+            <!-- Barra de navegación lateral -->
+            <aside class="sidebar">
+                <nav class="enlaces">
+                    <a href="#">
+                        <i class="bx bx-home-alt"></i>
+                        Inicio
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-user"></i>
+                        Ver perfil
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-community"></i>
+                        Gestión académica
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-education"></i>
+                        Registro de notas
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-clipboard-check"></i>
+                        Registro de asistencia
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-calculator"></i>
+                        Calculadora de sueldos
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-calendar-detail"></i>
+                        Organizar horarios
+                    </a>
+                </nav>
+            </aside>
+            <!-- Calculadora de sueldos -->
+            <section>
+                <h1>Calculadora de sueldos</h1>
+                <div>
+                    <h2>Valores nacionales</h2>
+                    <div>
+                        <div>
+                            <span>Sueldo Mínimo</span>
+                            <span>$553553</span>
+                        </div>
+                        <div>
+                            <span>Valor Hora Educación Media</span>
+                            <span>$21034</span>
+                        </div>
+                        <div>
+                            <span>Valor Hora Educación Básica</span>
+                            <span>$19992</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form>
+                        <div>
+                            <div>
+                                <label for="horas-semanales">Horas semanales</label>
+                                <input id="horas-semanales" type="number" min="0" max="42"> 
+                            </div>
+                            <div>
+                                <label for="anios-antiguedad">Años de antiguedad</label>
+                                <input id="anios-antiguedad" type="number" min="0" max="50">
+                            </div>
+                            <div>
+                                <label for="nivel">Nivel de enseñanza:</label>
+                                <select id="nivel">
+                                    <option>Educación Básica</option>
+                                    <option>Educación Media</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit">Calcular</button>
+                        <hr>
+                        <div>
+                            <div>
+                                <h3>Haberes</h3>
+                                <div>
+                                    <div>
+                                        <span>Pago por horas</span>
+                                        <span id="pago-horas">$</span>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <span>Bono años de antiguedad</span>
+                                        <span id="bono-antiguedad">$</span>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <span>Sueldo Bruto</span>
+                                        <span id="sueldo-bruto">$</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>Descuentos Legales</h3>
+                                <div>
+                                    <div>
+                                        <span>AFP</span>
+                                        <span id="afp">$</span>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <span>Salud</span>
+                                        <span id="salud">$</span>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <span>Sueldo Liquido</span>
+                                        <span id="sueldo-liquido">$</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div>
+                <span>Mi colegio</span>
+                <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <span>Contacto</span>
+                    </li>
+                    <li>
+                        <i class="bx bx-location"></i>
+                        Av. Ubicación 123
+                    </li>
+                    <li>
+                        <i class="bx bx-phone"></i>
+                        +56 9 9876 5432
+                    </li>
+                    <li>
+                        <i class="bx bx-envelope"></i>
+                        correo.ejemplo@colegio.cl
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>
