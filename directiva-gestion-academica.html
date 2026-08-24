@@ -17,6 +17,7 @@
             </div>
         </header>
         <main>
+            <!-- Barra de navegación lateral -->
             <aside class="sidebar">
                 <nav class="enlaces">
                     <a href="#">
@@ -49,6 +50,7 @@
                     </a>
                 </nav>
             </aside>
+            <!-- Resumen general en cuadros -->
             <section class="resumen-general">
                 <h1>Resumen General</h1>
                 <div>
@@ -83,24 +85,60 @@
                 </div>
                 <button>Nuevo registro</button>
             </section>
-            <section class="formulario">
+            <section class="formularios">
+                <!-- Opciones para registrar -->
                 <form>
                     <span>Seleccione una opción:</span>
                     <div>
-                        <input id="docente" type="radio">
+                        <input id="docente" type="radio" name="opcion">
                         <label for="docente">Docente</label>
-                        <input id="estudiante" type="radio">
+                        <input id="estudiante" type="radio" name="opcion">
                         <label for="estudiante">Estudiante</label>
-                        <input id="auxiliar" type="radio">
+                        <input id="auxiliar" type="radio" name="opcion">
                         <label for="auxiliar">Auxiliar</label>
                     </div>
                 </form>
+                <!-- Formulario "flotante" -->
                 <div>
                     <div>
                         <i class="bx bx-form"></i>
                         <h2 id="titulo">Gestión de </h2>
                     </div>
-                    <form>
+                <!-- Formulario para regisro de docentes -->
+                    <form class="form-docente">
+                        <div>
+                            <label for="nombre-docente">Nombre del docente *</label>
+                            <input id="nombre-docente" type="text">
+                            <label for="rut-docente">Rut del docente *</label>
+                            <input id="rut-docente" type="text" placeholder="12.345.678-9">
+                        </div>
+                        <div>
+                            <div>
+                                <label for="nivel">Nivel de enseñanza *</label>
+                                <select id="nivel">
+                                    <option>Educación básica</option>
+                                    <option>Educación media</option>                                
+                                </select>
+                            </div>
+                            <div>
+                                <label for="fecha-contrato">Fecha de inicio: </label>
+                                <input id="fecha-contrato" type="date">
+                            </div>
+                        <div>
+                            <label for="correo-docente">Correo del docente *</label>
+                            <input id="correo-docente" type="email">
+                            <label for="telefono-docente">Teléfono docente *</label>
+                            <input id="telefono-docente" type="text">
+                        </div>
+                        <label for="observaciones">Observaciones</label>
+                        <textarea id="observaciones"></textarea>
+                        <div>
+                            <button type="submit">Aplicar cambios</button>
+                            <button type="reset">Reiniciar</button>
+                        </div>
+                    </form>
+                    <!-- Formulario para regisro de alumnos -->
+                    <form class="form-alumno">
                         <div>
                             <label for="nombre-alumno">Nombre del alumno *</label>
                             <input id="nombre-alumno" type="text">
@@ -133,16 +171,56 @@
                                     <option>Retirado</option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="apoderado">Apoderado titular *</label>
-                                <input id="apoderado" type="text">
-                                <label for="telefono-apoderado">Teléfono Apoderado *</label>
-                                <input id="telefono-apoderado" type="text">
-                            </div>
-                            <label for="observaciones">Observaciones</label>
-                            <textarea id="observaciones">
+                        <div>
+                            <label for="apoderado">Apoderado titular *</label>
+                            <input id="apoderado" type="text">
+                            <label for="telefono-apoderado">Teléfono Apoderado *</label>
+                            <input id="telefono-apoderado" type="text">
+                        </div>
+                        <label for="observaciones">Observaciones</label>
+                        <textarea id="observaciones"></textarea>
+                        </div>
+                        <div>
+                            <button id="btn-aplicar" type="submit">Aplicar</button>
+                            <button id="btn-reset" type="reset">Reiniciar</button>
                         </div>
                     </form>
+                    <!-- Formulario para regisro de auxiliares -->
+                    <form class="form-auxiliar">
+                        <div>
+                            <label for="nombre-auxiliar">Nombre *</label>
+                            <input id="nombre-auxiliar" type="text">
+                            <label for="rut-auxiliar">Rut *</label>
+                            <input id="rut-auxiliar" type="text" placeholder="12.345.678-9">
+                        </div>
+                        <div>
+                            <div>
+                                <label for="cargo">Cargo *</label>
+                                <select id="nivel">
+                                    <option>Auxiliar de aseo</option>
+                                    <option>Inspector/a</option>                                
+                                    <option>Portero/a</option>
+                                    <option>Mantención</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="fecha-contrato">Fecha de inicio: </label>
+                                <input id="fecha-contrato" type="date">
+                        </div>
+                        <div>
+                            <label for="correo-auxiliar">Correo *</label>
+                            <input id="correo-auxiliar" type="email">
+                            <label for="telefono-auxiliara">Teléfono auxiliar *</label>
+                            <input id="telefono-auxiliar" type="text">
+                        </div>
+                        <label for="observaciones">Observaciones</label>
+                        <textarea id="observaciones"></textarea>
+                        </div>
+                        <div>
+                            <button id="btn-aplicar" type="submit">Aplicar</button>
+                            <button id="btn-reset" type="reset">Reiniciar</button>
+                        </div>
+                    </form>   
                 </div>
             </section>
         </main>
