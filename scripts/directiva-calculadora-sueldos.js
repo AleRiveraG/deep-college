@@ -15,7 +15,6 @@ calculo.addEventListener('click', (evento)=> {
     const antiguedad = document.querySelector('#anios-antiguedad').value;
     const porcentaje = 0.015;
 
-    
     if(nivel == 'media') {
         let pago = horas * 21034;
         let bono = Math.round((antiguedad * porcentaje)*pago);
