@@ -219,3 +219,12 @@ los deje tambien separados por clases por si solo se necesita cambiar uno*/
 .columna-descuentos .monto-total {
     color: #dc3545; 
 }
+
+/*html directiva-horarios*/
+.tabla-horarios td{
+    height: 80px; /*para que las tablas del horario sean más altas*/
+}
+
+.encabezado-tabla{
+    background-color: #f8f9fa;
+}

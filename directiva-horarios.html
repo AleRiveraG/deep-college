@@ -2,160 +2,182 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <title>Página Principal</title>
+        <title>Organizar Horarios</title>
         <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="estilos.css" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div>
-                <a href="directiva-pagina-principal.html">Mi colegio</a>
-                <span>Directiva</span>
-                <button id="btn-cerrar">
+            <div class="d-flex align-items-center py-2 px-3 contenedor-encabezado">
+                <a href="directiva-pagina-principal.html">Deep College</a>
+                <span class="badge etiqueta-directiva">Directiva</span>
+                <button id="btn-cerrar" class="btn btn-sm ms-auto boton-cerrar">
                     Cerrar sesión
                 </button>
             </div>
         </header>
         <main>
-            <!-- Barra de navegación lateral -->
-            <aside class="sidebar">
-                <nav class="enlaces">
-                    <a href="directiva-pagina-principal.html">
-                        <i class="bx bx-home-alt"></i>
-                        Inicio
-                    </a>
-                    <a href="directiva-ver-perfil.html">
-                        <i class="bx bx-user"></i>
-                        Ver perfil
-                    </a>
-                    <a href="directiva-gestion-academica.html">
-                        <i class="bx bx-community"></i>
-                        Gestión académica
-                    </a>
-                    <a href="directiva-registro-notas.html">
-                        <i class="bx bx-education"></i>
-                        Registro de notas
-                    </a>
-                    <a href="directiva-registro-asistencia.html">
-                        <i class="bx bx-clipboard-check"></i>
-                        Registro de asistencia
-                    </a>
-                    <a href="directiva-calculadora-sueldos.html">
-                        <i class="bx bx-calculator"></i>
-                        Calculadora de sueldos
-                    </a>
-                    <a href="directiva-horarios.html">
-                        <i class="bx bx-calendar-detail"></i>
-                        Organizar horarios
-                    </a>
-                </nav>
-            </aside>
-            <!-- Horarios -->
-            <section>
-                <div>
-                    <h1>Horarios</h1>
-                    <label for="curso">Seleccione un curso:</label>
-                    <select id="curso">
-                        <option>1° Básico</option>
-                        <option>2° Básico</option>
-                        <option>3° Básico</option>
-                        <option>4° Básico</option>
-                        <option>5° Básico</option>
-                        <option>6° Básico</option>
-                        <option>7° Básico</option>
-                        <option>8° Básico</option>
-                        <option>1° Medio</option>
-                        <option>2° Medio</option>
-                        <option>3° Medio</option>
-                        <option>4° Medio</option>  
-                    </select>
+            <div class="container-fluid contenedor-principal">
+                <div class="row fila-principal">
+                    <!-- Barra de navegación lateral -->
+                    <aside class="col-md-2 sidebar">
+                        <nav class="enlaces list-group">
+                            <a href="directiva-pagina-principal.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-home-alt icono-inicio"></i>
+                                Inicio
+                            </a>
+                            <a href="directiva-ver-perfil.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-user icono-perfil"></i>
+                                Ver perfil
+                            </a>
+                            <a href="directiva-gestion-academica.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-community icono-gestion-academica"></i>
+                                Gestión académica
+                            </a>
+                            <a href="directiva-registro-notas.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-education icono-notas"></i>
+                                Registro de notas
+                            </a>
+                            <a href="directiva-registro-asistencia.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-clipboard-check icono-asistencia"></i>
+                                Registro de asistencia
+                            </a>
+                            <a href="directiva-calculadora-sueldos.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-calculator icono-sueldos"></i>
+                                Calculadora de sueldos
+                            </a>
+                            <!-- Enlace activo destacado -->
+                            <a href="directiva-horarios.html" class="list-group-item enlace-menu active" style="background-color: #283A94; border-color: #283A94;">
+                                <i class="bx bx-calendar-detail icono-horarios"></i>
+                                Organizar horarios
+                            </a>
+                        </nav>
+                    </aside>
+                    
+                    <!-- Sección de Horarios -->
+                    <section class="col-md-10 py-4 px-4 seccion-horarios">
+                        <h1 class="titulo-principal mb-4">Horarios</h1>
+                        
+                        <!-- Filtro de curso -->
+                        <div class="mb-4 contenedor-filtro">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="curso" class="form-label etiqueta-input fw-bold">Seleccione un curso:</label>
+                                    <select id="curso" class="form-select campo-formulario">
+                                        <option>1° Básico</option>
+                                        <option>2° Básico</option>
+                                        <option>3° Básico</option>
+                                        <option>4° Básico</option>
+                                        <option>5° Básico</option>
+                                        <option>6° Básico</option>
+                                        <option>7° Básico</option>
+                                        <option>8° Básico</option>
+                                        <option>1° Medio</option>
+                                        <option>2° Medio</option>
+                                        <option>3° Medio</option>
+                                        <option>4° Medio</option>  
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Horarios -->
+                        <div class="table-responsive contenedor-tabla">
+                            <table class="table table-bordered tabla-horarios text-center align-middle bg-white">
+                                <thead class="encabezado-tabla" style="background-color: #f8f9fa;">
+                                    <tr>
+                                        <th>Módulo Horario</th>
+                                        <th>Lunes</th>
+                                        <th>Martes</th>
+                                        <th>Miércoles</th>
+                                        <th>Jueves</th>
+                                        <th>Viernes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="fila-horario">
+                                        <td class="fw-bold celda-hora">08:01-08:40</td>
+                                        <td class="celda-asignatura">Estadística</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                        <td class="celda-asignatura"></td>
+                                    </tr>
+                                    <tr class="fila-horario">
+                                        <td class="fw-bold celda-hora">08:41-09:20</td>
+                                        <td class="celda-asignatura">Estadística</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura"></td>
+                                    </tr>
+                                    <tr class="fila-horario">
+                                        <td class="fw-bold celda-hora">09:31-10:10</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura">Desarrollo Fullstack II</td>
+                                        <td class="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                        <td class="celda-asignatura">Estadística</td>
+                                        <td class="celda-asignatura"></td>
+                                    </tr>
+                                    <tr class="fila-horario">
+                                        <td class="fw-bold celda-hora">10:11-10:50</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura">Desarrollo Fullstack II</td>
+                                        <td class="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                        <td class="celda-asignatura">Estadística</td>
+                                        <td class="celda-asignatura"></td>
+                                    </tr>
+                                    <tr class="fila-horario">
+                                        <td class="fw-bold celda-hora">11:01-11:40</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura">Desarrollo Fullstack II</td>
+                                        <td class="celda-asignatura">Desarrollo Fullstack II</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura"></td>
+                                    </tr>
+                                    <tr class="fila-horario">
+                                        <td class="fw-bold celda-hora">11:41-12:20</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura">Taller de Base de Datos</td>
+                                        <td class="celda-asignatura">Desarrollo Fullstack II</td>
+                                        <td class="celda-asignatura"></td>
+                                        <td class="celda-asignatura"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
-                <div>
-                    <table>
-                        <thead>
-                            <th>Módulo Horario</th>
-                            <th>Lunes</th>
-                            <th>Martes</th>
-                            <th>Miércoles</th>
-                            <th>Jueves</th>
-                            <th>Viernes</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>08:01-08:40</td>
-                                <td>Estadistica</td>
-                                <td></td>
-                                <td></td>
-                                <td>Desarrollo de Aplicaciones Moviles</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>08:41-09:20</td>
-                                <td>Estadistica</td>
-                                <td></td>
-                                <td>Desarrollo de Aplicaciones Moviles</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>09:31-10:10</td>
-                                <td></td>
-                                <td>Desarrollo Fullstack II</td>
-                                <td>Desarrollo de Aplicaciones Moviles</td>
-                                <td>Estadistica</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>10:11-10:50</td>
-                                <td></td>
-                                <td>Desarrollo Fullstack II</td>
-                                <td>Desarrollo de Aplicaciones Moviles</td>
-                                <td>Estadistica</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>11:01-11:40</td>
-                                <td></td>
-                                <td>Desarrollo Fullstack II</td>
-                                <td>Desarrollo Fullstack II</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>11:41-12:20</td>
-                                <td></td>
-                                <td>Taller de Base de Datos</td>
-                                <td>Desarrollo Fullstack II</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+            </div>
         </main>
         <footer>
-            <div>
-                <span>Mi colegio</span>
-                <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
-            </div>
-            <div>
-                <ul>
-                    <li>
-                        <span>Contacto</span>
-                    </li>
-                    <li>
-                        <i class="bx bx-location"></i>
-                        Av. Ubicación 123
-                    </li>
-                    <li>
-                        <i class="bx bx-phone"></i>
-                        +56 9 9876 5432
-                    </li>
-                    <li>
-                        <i class="bx bx-envelope"></i>
-                        correo.ejemplo@colegio.cl
-                    </li>
-                </ul>
+            <div class="container-fluid contenedor-pie">
+                <div class="row py-4 fila-pie">
+                    <div class="col-md-6 informacion-colegio">
+                        <span class="nombre-colegio">Mi colegio</span>
+                        <p class="lema-colegio">Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+                    </div>
+                    <div class="col-md-6 informacion-contacto">
+                        <ul class="list-unstyled lista-contacto">
+                            <li class="item-contacto">
+                                <span class="titulo-contacto">Contacto</span>
+                            </li>
+                            <li class="item-contacto">
+                                <i class="bx bx-location-plus icono-ubicacion"></i>
+                                Av. Ubicación 123
+                            </li>
+                            <li class="item-contacto">
+                                <i class="bx bx-phone icono-telefono"></i>
+                                +56 9 9876 5432
+                            </li>
+                            <li class="item-contacto">
+                                <i class="bx bx-envelope icono-correo"></i>
+                                correo.ejemplo@colegio.cl
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </footer>
     </body>
