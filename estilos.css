@@ -215,8 +215,7 @@ los deje tambien separados por clases por si solo se necesita cambiar uno*/
 }
 
 /*Descuentos en rojo solo aplica los que esten en columna-descuentos*/
-.columna-descuentos .monto-resultado,
-.columna-descuentos .monto-total {
+.columna-descuentos .monto-resultado{
     color: #dc3545; 
 }
 
