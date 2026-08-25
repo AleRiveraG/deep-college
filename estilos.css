@@ -168,3 +168,54 @@ los deje tambien separados por clases por si solo se necesita cambiar uno*/
 .icono-correo {
     color: currentColor;
 }
+
+
+/*html-calculadora*/
+.caja-valor{
+    background-color: #f2f2f2;
+    border-radius: 5px; /*con esto redondea las esquinas de la caja*/
+}
+
+.monto-valor{
+    color: #121A42;
+    font-size: 1.25rem; /*le pongo en 1.25 rem para que sea un poco más grande*/
+}
+
+/*el focus es para que los estilos se apliquen solo cuando se haga click */
+.campo-formulario:focus{
+    border-color: #334ABD; /*cambia el color de gris a azul*/
+    box-shadow: 0 0 5px #334ABD; /*para las sombras de la caja para que no se vea tan plana*/
+    outline: 0; /*para quitar bordes por defecto*/
+}
+
+.boton-calcular {
+    background-color: #334ABD;
+    color: #ffffff;
+    font-weight: bold;
+    border: none; /*le quito el borde por defecto*/
+    padding: 0.5rem 1rem; /*espacio para que este ordenado*/
+    border-radius: 5px;
+}
+
+/*algo estetico para cuando pase el cursor por encima del boton sin hacer click cambie ligeramente el color*/
+.boton-calcular:hover {
+    background-color: #3E5AE6;
+    color: #ffffff;
+}
+
+/* color para haberes y descuentos*/
+.monto-resultado {
+    color: #334ABD;
+}
+
+/* fila de sueldo más grande*/
+.fila-total {
+    font-size: 1.15rem;
+    color: #121A42;
+}
+
+/*Descuentos en rojo solo aplica los que esten en columna-descuentos*/
+.columna-descuentos .monto-resultado,
+.columna-descuentos .monto-total {
+    color: #dc3545; 
+}
