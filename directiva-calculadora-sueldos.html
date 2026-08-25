@@ -58,7 +58,7 @@
                     <section class="col-md-10 py-4 px-4 seccion-calculadora">
                         <h1 class="titulo-principal">Calculadora de sueldos</h1>
                         
-                        <div class="mb-5 mt-4 seccion-valores-nacionales">
+                        <div class="mb-5 mt-4 seccion-valores-nacionales text-center">
                             <h2 class="subtitulo">Valores nacionales</h2>
                             <div class="row text-center mt-3 contenedor-valores">
                                 <div class="col-md-4">
@@ -70,7 +70,7 @@
                                 <div class="col-md-4">
                                     <div class="p-3 border caja-valor">
                                         <span class="d-block mb-1 etiqueta-valor">Valor Hora Educación Media</span>
-                                        <strong class="monto-valor">$21.034</strong>
+                                        <strong class="monto-valor hora-media">$21.034</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -96,8 +96,8 @@
                                     <div class="col-md-4">
                                         <label for="nivel" class="form-label etiqueta-input">Nivel de enseñanza:</label>
                                         <select id="nivel" class="form-select campo-formulario">
-                                            <option>Educación Básica</option>
-                                            <option>Educación Media</option>
+                                            <option value="basica">Educación Básica</option>
+                                            <option value="media">Educación Media</option>
                                         </select>
                                     </div>
                                 </div>
@@ -182,5 +182,6 @@
                 </div>
             </div>
         </footer>
+        <script src="scripts/directiva-calculadora-sueldos.js"></script>
     </body>
 </html>
