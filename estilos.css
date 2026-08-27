@@ -227,3 +227,16 @@ los deje tambien separados por clases por si solo se necesita cambiar uno*/
 .encabezado-tabla{
     background-color: #f8f9fa;
 }
+
+/*Logos enlaces*/
+
+.logos-enlaces {
+    width: 16px;
+    height: auto;
+}
+
+/* Quitar lineas de hipervinculo a etiquetas <a>*/
+
+a {
+    text-decoration: none;
+}
