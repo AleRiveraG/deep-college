@@ -5,79 +5,81 @@
         <title>Página Principal</title>
         <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="estilos.css" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div>
-                <a href="directiva-pagina-principal.html">Mi colegio</a>
-                <span>Directiva</span>
-                <button id="btn-cerrar">
+            <div class="d-flex align-items-center py-2 px-3 contenedor-encabezado">
+                <a href="directiva-pagina-principal.html">Deep College</a>
+                <span class="badge etiqueta-directiva ms-2">Directiva</span>
+                <button id="btn-cerrar" class="btn btn-sm ms-auto boton-cerrar">
                     Cerrar sesión
                 </button>
             </div>
         </header>
         <main>
-            <aside class="sidebar">
-                <nav class="enlaces">
-                    <a href="directiva-pagina-principal.html">
-                        <i class="bx bx-home-alt"></i>
-                        Inicio
-                    </a>
-                    <a href="directiva-ver-perfil.html">
-                        <i class="bx bx-user"></i>
-                        Ver perfil
-                    </a>
-                    <a href="directiva-gestion-academica.html">
-                        <i class="bx bx-community"></i>
-                        Gestión académica
-                    </a>
-                    <a href="directiva-registro-notas.html">
-                        <i class="bx bx-education"></i>
-                        Registro de notas
-                    </a>
-                    <a href="directiva-registro-asistencia.html">
-                        <i class="bx bx-clipboard-check"></i>
-                        Registro de asistencia
-                    </a>
-                    <a href="directiva-calculadora-sueldos.html">
-                        <i class="bx bx-calculator"></i>
-                        Calculadora de sueldos
-                    </a>
-                    <a href="directiva-horarios.html">
-                        <i class="bx bx-calendar-detail"></i>
-                        Organizar horarios
-                    </a>
-                </nav>
-            </aside>
-            <section>
-                <div>
-                    <h1 id="nombre">Bienvenido/a</h1>
-                    <h2 id="fecha"></h2>
-                </div>
-                <div>
-                    <p>¿Que deseas hacer el dia de hoy?</p>
-                </div>
-                <div>
-                    <div>
-                        <h3>Avisos y noticias</h3>
-                        <div>
-                            <h4>Deep College obtiene primer lugar en torneo de fútbol escolar</h4>
-                            <p>El equipo de fútbol de Deep College consiguió el primer lugar en el Campeonato Interescolar 2026 luego de imponerse en la final disputada durante el fin de semana.
-                            </p>
+            <div class="container-fluid contenedor-principal">
+                <div class="row fila-principal">
+                    <aside class="col-md-2 sidebar">
+                        <nav class="enlaces list-group">
+                            <a href="directiva-pagina-principal.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-home-alt icono-inicio"></i>
+                                Inicio
+                            </a>
+                            <a href="directiva-ver-perfil.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-user icono-perfil"></i>
+                                Ver perfil
+                            </a>
+                            <a href="directiva-gestion-academica.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-community icono-gestion-academica"></i>
+                                Gestión académica
+                            </a>
+                            <a href="directiva-registro-notas.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-education icono-notas"></i>
+                                Registro de notas
+                            </a>
+                            <a href="directiva-registro-asistencia.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-clipboard-check icono-asistencia"></i>
+                                Registro de asistencia
+                            </a>
+                            <a href="directiva-calculadora-sueldos.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-calculator icono-sueldos"></i>
+                                Calculadora de sueldos
+                            </a>
+                            <a href="directiva-horarios.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-calendar-detail icono-horarios"></i>
+                                Organizar horarios
+                            </a>
+                        </nav>
+                    </aside>
+                    <section class="col-md-10 py-4 px-4 seccion-inicio">
+                        <div class="mb-5">
+                            <h1 id="nombre" class="titulo-principal">Bienvenido/a</h1>
+                            <h2 id="fecha" class="subtitulo fs-5 text-muted"></h2>
+                        </div>
+                        <div class="mb-5">
+                            <p class="fs-5">¿Qué deseas hacer el día de hoy?</p>
                         </div>
                         <div>
-                            <h4>Reconocimiento a estudiantes destacados del primer semestre</h4>
-                            <p>Deep College realizó una ceremonia de reconocimiento para estudiantes que destacaron durante el primer semestre por su rendimiento académico, participación en actividades y compromiso con la comunidad escolar.
-                            </p>
+                            <div>
+                                <h3 class="subtitulo mb-4">Avisos y noticias</h3>
+                                <div class="p-4 border rounded mb-4 bg-light">
+                                    <h4 class="fs-5 fw-bold">Deep College obtiene primer lugar en torneo de fútbol escolar</h4>
+                                    <p class="mb-0">El equipo de fútbol de Deep College consiguió el primer lugar en el Campeonato Interescolar 2026 luego de imponerse en la final disputada durante el fin de semana.</p>
+                                </div>
+                                <div class="p-4 border rounded mb-4 bg-light">
+                                    <h4 class="fs-5 fw-bold">Reconocimiento a estudiantes destacados del primer semestre</h4>
+                                    <p class="mb-0">Deep College realizó una ceremonia de reconocimiento para estudiantes que destacaron durante el primer semestre por su rendimiento académico, participación en actividades y compromiso con la comunidad escolar.</p>
+                                </div>
+                                <div class="p-4 border rounded mb-4 bg-light">
+                                    <h4 class="fs-5 fw-bold">Semana de la Tecnología llega a Deep College</h4>
+                                    <p class="mb-0">Durante la próxima semana se realizarán distintas actividades relacionadas con programación, robótica, inteligencia artificial y tecnología. Las actividades estarán dirigidas a estudiantes de distintos niveles.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <h4>Semana de la Tecnología llega a Deep College</h4>
-                            <p>Durante la próxima semana se realizarán distintas actividades relacionadas con programación, robótica, inteligencia artificial y tecnología. Las actividades estarán dirigidas a estudiantes de distintos niveles.
-                            </p>
-                        </div>
-                    </div>
+                    </section>
                 </div>
-            </section>    
+            </div>
         </main>
         <footer>
             <div class="container-fluid contenedor-pie py-4">
@@ -107,7 +109,7 @@
                                 <span class="titulo-contacto fs-5 fw-bold">Contacto</span>
                             </li>
                             <li class="item-contacto mb-2">
-                                <i class="bx bx-location icono-ubicacion me-1"></i>
+                                <i class="bx bx-location-plus icono-ubicacion me-1"></i>
                                 Av. Ubicación 123
                             </li>
                             <li class="item-contacto mb-2">
