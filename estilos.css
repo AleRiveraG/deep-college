@@ -244,3 +244,9 @@ a {
 .logo {
     width: 120px;
 }
+
+/*color en directiva-registro-notas
+para los que tienen notas bajo 4.0*/
+.monto-negativo{
+    color: #dc3545;
+}
