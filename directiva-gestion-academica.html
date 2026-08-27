@@ -5,225 +5,286 @@
         <title>Gestión Académica</title>
         <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="estilos.css" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div>
-                <a href="directiva-pagina-principal.html">Mi colegio</a>
-                <span>Directiva</span>
-                <button id="btn-cerrar">
+            <div class="d-flex align-items-center py-2 px-3 contenedor-encabezado">
+                <a href="directiva-pagina-principal.html">Deep College</a>
+                <span class="badge etiqueta-directiva ms-2">Directiva</span>
+                <button id="btn-cerrar" class="btn btn-sm ms-auto boton-cerrar">
                     Cerrar sesión
                 </button>
             </div>
         </header>
+        
         <main>
-            <!-- Barra de navegación lateral -->
-            <aside class="sidebar">
-                <nav class="enlaces">
-                    <a href="directiva-pagina-principal.html">
-                        <i class="bx bx-home-alt"></i>
-                        Inicio
-                    </a>
-                    <a href="directiva-ver-perfil.html">
-                        <i class="bx bx-user"></i>
-                        Ver perfil
-                    </a>
-                    <a href="directiva-gestion-academica.html">
-                        <i class="bx bx-community"></i>
-                        Gestión académica
-                    </a>
-                    <a href="directiva-registro-notas.html">
-                        <i class="bx bx-education"></i>
-                        Registro de notas
-                    </a>
-                    <a href="directiva-registro-asistencia.html">
-                        <i class="bx bx-clipboard-check"></i>
-                        Registro de asistencia
-                    </a>
-                    <a href="directiva-calculadora-sueldos.html">
-                        <i class="bx bx-calculator"></i>
-                        Calculadora de sueldos
-                    </a>
-                    <a href="directiva-horarios.html">
-                        <i class="bx bx-calendar-detail"></i>
-                        Organizar horarios
-                    </a>
-                </nav>
-            </aside>
-            <!-- Resumen general en cuadros -->
-            <section class="resumen-general">
-                <h1>Resumen General</h1>
-                <div>
-                    <div>
-                        <i class="bx bx-people-diversity"></i>
-                        <div>
-                            <span>Numero de estudiantes</span>
-                            <span>300</span>
+            <div class="container-fluid contenedor-principal">
+                <div class="row fila-principal">
+                    
+                    <!-- Barra de navegación lateral -->
+                    <aside class="col-md-2 sidebar">
+                        <nav class="enlaces list-group">
+                            <a href="directiva-pagina-principal.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-home-alt icono-inicio"></i> Inicio
+                            </a>
+                            <a href="directiva-ver-perfil.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-user icono-perfil"></i> Ver perfil
+                            </a>
+                            <a href="directiva-gestion-academica.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-community icono-gestion-academica"></i> Gestión académica
+                            </a>
+                            <a href="directiva-registro-notas.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-education icono-notas"></i> Registro de notas
+                            </a>
+                            <a href="directiva-registro-asistencia.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-clipboard-check icono-asistencia"></i> Registro de asistencia
+                            </a>
+                            <a href="directiva-calculadora-sueldos.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-calculator icono-sueldos"></i> Calculadora de sueldos
+                            </a>
+                            <a href="directiva-horarios.html" class="list-group-item enlace-menu">
+                                <i class="bx bx-calendar-detail icono-horarios"></i> Organizar horarios
+                            </a>
+                        </nav>
+                    </aside>
+                    
+                    <!-- Contenido de Gestión Académica -->
+                    <section class="col-md-10 py-4 px-4 seccion-gestion">
+                        
+                        <!-- Resumen general en cuadros -->
+                        <div class="resumen-general mb-5">
+                            <h1 class="titulo-principal mb-4">Resumen General</h1>
+                            
+                            <div class="row text-center contenedor-valores">
+                                <div class="col-md-3">
+                                    <div class="p-3 border caja-valor">
+                                        <i class="bx bx-people-diversity fs-2"></i>
+                                        <span class="d-block mb-1 etiqueta-valor">Número de estudiantes</span>
+                                        <strong class="monto-valor">300</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="p-3 border caja-valor">
+                                        <i class="bx bx-group fs-2"></i>
+                                        <span class="d-block mb-1 etiqueta-valor">Número de docentes</span>
+                                        <strong class="monto-valor">30</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="p-3 border caja-valor">
+                                        <i class="bx bx-hail fs-2"></i>
+                                        <span class="d-block mb-1 etiqueta-valor">Número de auxiliares</span>
+                                        <strong class="monto-valor">20</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="p-3 border caja-valor">
+                                        <i class="bx bx-school fs-2"></i>
+                                        <span class="d-block mb-1 etiqueta-valor">Cursos</span>
+                                        <strong class="monto-valor">12</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-end mt-4">
+                                <button class="btn boton-calcular">Nuevo registro</button>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <i class="bx bx-group"></i>
-                        <div>
-                            <span>Número de docentes</span>
-                            <span>30</span>
+
+                        <hr class="linea-separadora my-5">
+
+                        <!-- Sección de Formularios -->
+                        <div class="formularios contenedor-formulario">
+                            <div class="d-flex align-items-center mb-4">
+                                <i class="bx bx-form fs-3 me-2"></i>
+                                <h2 id="titulo" class="m-0 subtitulo">Gestión de Registros</h2>
+                            </div>
+
+                            <!-- Opciones para registrar (Radio Buttons) -->
+                            <form class="mb-5 p-3 border rounded">
+                                <span class="etiqueta-input fw-bold me-3">Seleccione una opción:</span>
+                                <div class="form-check form-check-inline">
+                                    <input id="docente" type="radio" name="opcion" class="form-check-input" checked>
+                                    <label for="docente" class="form-check-label etiqueta-input">Docente</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input id="estudiante" type="radio" name="opcion" class="form-check-input">
+                                    <label for="estudiante" class="form-check-label etiqueta-input">Estudiante</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input id="auxiliar" type="radio" name="opcion" class="form-check-input">
+                                    <label for="auxiliar" class="form-check-label etiqueta-input">Auxiliar</label>
+                                </div>
+                            </form>
+
+                            <!-- ============================================== -->
+                            <!-- Formulario Docentes -->
+                            <!-- ============================================== -->
+                            <h3 class="mt-4 mb-3 fs-5">Formulario Docente</h3>
+                            <form class="form-docente border p-4 mb-5 rounded">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="nombre-docente" class="form-label etiqueta-input">Nombre del docente *</label>
+                                        <!-- Nota: form-control-sm hace que la caja sea más pequeña visualmente -->
+                                        <input id="nombre-docente" type="text" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="rut-docente" class="form-label etiqueta-input">Rut del docente *</label>
+                                        <input id="rut-docente" type="text" class="form-control form-control-sm campo-formulario" placeholder="12.345.678-9">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="nivel-docente" class="form-label etiqueta-input">Nivel de enseñanza *</label>
+                                        <select id="nivel-docente" class="form-select form-select-sm campo-formulario">
+                                            <option>Educación básica</option>
+                                            <option>Educación media</option>                                
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="fecha-contrato-docente" class="form-label etiqueta-input">Fecha de inicio: </label>
+                                        <input id="fecha-contrato-docente" type="date" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="correo-docente" class="form-label etiqueta-input">Correo del docente *</label>
+                                        <input id="correo-docente" type="email" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telefono-docente" class="form-label etiqueta-input">Teléfono docente *</label>
+                                        <input id="telefono-docente" type="text" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="observaciones-docente" class="form-label etiqueta-input">Observaciones</label>
+                                    <textarea id="observaciones-docente" class="form-control form-control-sm campo-formulario" rows="2"></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-sm boton-calcular px-3">Aplicar cambios</button>
+                                    <button type="reset" class="btn btn-sm btn-outline-secondary px-3 ms-2">Reiniciar</button>
+                                </div>
+                            </form>
+
+                            <!-- ============================================== -->
+                            <!-- Formulario Estudiantes -->
+                            <!-- ============================================== -->
+                            <h3 class="mt-4 mb-3 fs-5">Formulario Estudiante</h3>
+                            <form class="form-alumno border p-4 mb-5 rounded">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="nombre-alumno" class="form-label etiqueta-input">Nombre del alumno *</label>
+                                        <input id="nombre-alumno" type="text" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="rut-alumno" class="form-label etiqueta-input">Rut del alumno *</label>
+                                        <input id="rut-alumno" type="text" class="form-control form-control-sm campo-formulario" placeholder="12.345.678-9">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="curso" class="form-label etiqueta-input">Curso *</label>
+                                        <select id="curso" class="form-select form-select-sm campo-formulario">
+                                            <option>1° Básico</option>
+                                            <option>2° Básico</option>
+                                            <option>3° Básico</option>
+                                            <option>4° Básico</option>
+                                            <option>5° Básico</option>
+                                            <option>6° Básico</option>
+                                            <option>7° Básico</option>
+                                            <option>8° Básico</option>
+                                            <option>1° Medio</option>
+                                            <option>2° Medio</option>
+                                            <option>3° Medio</option>
+                                            <option>4° Medio</option>                                    
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="estado-alumno" class="form-label etiqueta-input">Estado</label>
+                                        <select id="estado-alumno" class="form-select form-select-sm campo-formulario">
+                                            <option>Activo</option>
+                                            <option>Condicional</option>
+                                            <option>Retirado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="apoderado" class="form-label etiqueta-input">Apoderado titular *</label>
+                                        <input id="apoderado" type="text" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telefono-apoderado" class="form-label etiqueta-input">Teléfono Apoderado *</label>
+                                        <input id="telefono-apoderado" type="text" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="observaciones-alumno" class="form-label etiqueta-input">Observaciones</label>
+                                    <textarea id="observaciones-alumno" class="form-control form-control-sm campo-formulario" rows="2"></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button id="btn-aplicar-alumno" type="submit" class="btn btn-sm boton-calcular px-3">Aplicar</button>
+                                    <button id="btn-reset-alumno" type="reset" class="btn btn-sm btn-outline-secondary px-3 ms-2">Reiniciar</button>
+                                </div>
+                            </form>
+
+                            <!-- ============================================== -->
+                            <!-- Formulario Auxiliares -->
+                            <!-- ============================================== -->
+                            <h3 class="mt-4 mb-3 fs-5">Formulario Auxiliar</h3>
+                            <form class="form-auxiliar border p-4 mb-5 rounded">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="nombre-auxiliar" class="form-label etiqueta-input">Nombre *</label>
+                                        <input id="nombre-auxiliar" type="text" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="rut-auxiliar" class="form-label etiqueta-input">Rut *</label>
+                                        <input id="rut-auxiliar" type="text" class="form-control form-control-sm campo-formulario" placeholder="12.345.678-9">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="cargo" class="form-label etiqueta-input">Cargo *</label>
+                                        <select id="cargo" class="form-select form-select-sm campo-formulario">
+                                            <option>Auxiliar de aseo</option>
+                                            <option>Inspector/a</option>                                
+                                            <option>Portero/a</option>
+                                            <option>Mantención</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="fecha-contrato-aux" class="form-label etiqueta-input">Fecha de inicio: </label>
+                                        <input id="fecha-contrato-aux" type="date" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="correo-auxiliar" class="form-label etiqueta-input">Correo *</label>
+                                        <input id="correo-auxiliar" type="email" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telefono-auxiliar" class="form-label etiqueta-input">Teléfono auxiliar *</label>
+                                        <input id="telefono-auxiliar" type="text" class="form-control form-control-sm campo-formulario">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="observaciones-auxiliar" class="form-label etiqueta-input">Observaciones</label>
+                                    <textarea id="observaciones-auxiliar" class="form-control form-control-sm campo-formulario" rows="2"></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button id="btn-aplicar-auxiliar" type="submit" class="btn btn-sm boton-calcular px-3">Aplicar</button>
+                                    <button id="btn-reset-auxiliar" type="reset" class="btn btn-sm btn-outline-secondary px-3 ms-2">Reiniciar</button>
+                                </div>
+                            </form> 
+                              
                         </div>
-                    </div>
-                    <div>
-                        <i class="bx bx-hail"></i>
-                        <div>
-                            <span>Número de auxiliares</span>
-                            <span>20</span>
-                        </div>
-                    </div>
-                    <div>
-                        <i class="bx bx-school"></i>
-                        <div>
-                            <span>Cursos</span>
-                            <span>12</span>
-                        </div>
-                    </div>
+                    </section>
                 </div>
-                <button>Nuevo registro</button>
-            </section>
-            <section class="formularios">
-                <!-- Opciones para registrar -->
-                <form>
-                    <span>Seleccione una opción:</span>
-                    <div>
-                        <input id="docente" type="radio" name="opcion">
-                        <label for="docente">Docente</label>
-                        <input id="estudiante" type="radio" name="opcion">
-                        <label for="estudiante">Estudiante</label>
-                        <input id="auxiliar" type="radio" name="opcion">
-                        <label for="auxiliar">Auxiliar</label>
-                    </div>
-                </form>
-                <!-- Formulario "flotante" -->
-                <div>
-                    <div>
-                        <i class="bx bx-form"></i>
-                        <h2 id="titulo">Gestión de </h2>
-                    </div>
-                <!-- Formulario para regisro de docentes -->
-                    <form class="form-docente">
-                        <div>
-                            <label for="nombre-docente">Nombre del docente *</label>
-                            <input id="nombre-docente" type="text">
-                            <label for="rut-docente">Rut del docente *</label>
-                            <input id="rut-docente" type="text" placeholder="12.345.678-9">
-                        </div>
-                        <div>
-                            <div>
-                                <label for="nivel">Nivel de enseñanza *</label>
-                                <select id="nivel">
-                                    <option>Educación básica</option>
-                                    <option>Educación media</option>                                
-                                </select>
-                            </div>
-                            <div>
-                                <label for="fecha-contrato">Fecha de inicio: </label>
-                                <input id="fecha-contrato" type="date">
-                            </div>
-                        <div>
-                            <label for="correo-docente">Correo del docente *</label>
-                            <input id="correo-docente" type="email">
-                            <label for="telefono-docente">Teléfono docente *</label>
-                            <input id="telefono-docente" type="text">
-                        </div>
-                        <label for="observaciones">Observaciones</label>
-                        <textarea id="observaciones"></textarea>
-                        <div>
-                            <button type="submit">Aplicar cambios</button>
-                            <button type="reset">Reiniciar</button>
-                        </div>
-                    </form>
-                    <!-- Formulario para regisro de alumnos -->
-                    <form class="form-alumno">
-                        <div>
-                            <label for="nombre-alumno">Nombre del alumno *</label>
-                            <input id="nombre-alumno" type="text">
-                            <label for="rut-alumno">Rut del alumno *</label>
-                            <input id="rut-alumno" type="text" placeholder="12.345.678-9">
-                        </div>
-                        <div>
-                            <div>
-                                <label for="curso">Curso *</label>
-                                <select id="curso">
-                                    <option>1° Básico</option>
-                                    <option>2° Básico</option>
-                                    <option>3° Básico</option>
-                                    <option>4° Básico</option>
-                                    <option>5° Básico</option>
-                                    <option>6° Básico</option>
-                                    <option>7° Básico</option>
-                                    <option>8° Básico</option>
-                                    <option>1° Medio</option>
-                                    <option>2° Medio</option>
-                                    <option>3° Medio</option>
-                                    <option>4° Medio</option>                                    
-                                </select>
-                            </div>
-                            <div>
-                                <label for="estado-alumno">Estado</label>
-                                <select id="estado-alumno">
-                                    <option>Activo</option>
-                                    <option>Condicional</option>
-                                    <option>Retirado</option>
-                                </select>
-                            </div>
-                        <div>
-                            <label for="apoderado">Apoderado titular *</label>
-                            <input id="apoderado" type="text">
-                            <label for="telefono-apoderado">Teléfono Apoderado *</label>
-                            <input id="telefono-apoderado" type="text">
-                        </div>
-                        <label for="observaciones">Observaciones</label>
-                        <textarea id="observaciones"></textarea>
-                        </div>
-                        <div>
-                            <button id="btn-aplicar" type="submit">Aplicar</button>
-                            <button id="btn-reset" type="reset">Reiniciar</button>
-                        </div>
-                    </form>
-                    <!-- Formulario para regisro de auxiliares -->
-                    <form class="form-auxiliar">
-                        <div>
-                            <label for="nombre-auxiliar">Nombre *</label>
-                            <input id="nombre-auxiliar" type="text">
-                            <label for="rut-auxiliar">Rut *</label>
-                            <input id="rut-auxiliar" type="text" placeholder="12.345.678-9">
-                        </div>
-                        <div>
-                            <div>
-                                <label for="cargo">Cargo *</label>
-                                <select id="nivel">
-                                    <option>Auxiliar de aseo</option>
-                                    <option>Inspector/a</option>                                
-                                    <option>Portero/a</option>
-                                    <option>Mantención</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="fecha-contrato">Fecha de inicio: </label>
-                                <input id="fecha-contrato" type="date">
-                        </div>
-                        <div>
-                            <label for="correo-auxiliar">Correo *</label>
-                            <input id="correo-auxiliar" type="email">
-                            <label for="telefono-auxiliara">Teléfono auxiliar *</label>
-                            <input id="telefono-auxiliar" type="text">
-                        </div>
-                        <label for="observaciones">Observaciones</label>
-                        <textarea id="observaciones"></textarea>
-                        </div>
-                        <div>
-                            <button id="btn-aplicar" type="submit">Aplicar</button>
-                            <button id="btn-reset" type="reset">Reiniciar</button>
-                        </div>
-                    </form>   
-                </div>
-            </section>
+            </div>
         </main>
+        
         <footer>
             <div class="container-fluid contenedor-pie py-4">
                 <div class="row py-4 fila-pie">
@@ -252,7 +313,7 @@
                                 <span class="titulo-contacto fs-5 fw-bold">Contacto</span>
                             </li>
                             <li class="item-contacto mb-2">
-                                <i class="bx bx-location icono-ubicacion me-1"></i>
+                                <i class="bx bx-location-plus icono-ubicacion me-1"></i>
                                 Av. Ubicación 123
                             </li>
                             <li class="item-contacto mb-2">
