@@ -240,3 +240,7 @@ los deje tambien separados por clases por si solo se necesita cambiar uno*/
 a {
     text-decoration: none;
 }
+
+.logo {
+    width: 120px;
+}
