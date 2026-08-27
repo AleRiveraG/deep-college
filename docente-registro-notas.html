@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Página Principal</title>
+        <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div>
+                <img src="images\logo deep.png">
+                <span>Docente</span>
+                <button>Cerrar Sesión</button>
+            </div>
+        </header>
+        <main>
+            <!-- Barra de navegación lateral -->
+            <aside>
+                <nav>
+                    <a href="#">
+                        <i class="bx bx-home"></i>
+                        Inicio
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-user"></i>
+                        Ver perfiles
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-clipboard-check"></i>
+                        Registro de asistencia
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-education"></i>
+                        Registro de notas
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-note-book"></i>
+                        Cursos
+                    </a>
+                    <a href="#">
+                        <i class="bx bx-clipboard-detail"></i>
+                        Documentos
+                    </a>
+                </nav>
+            </aside>
+            <section>
+                <h1>Registro de notas</h1>
+                <div>
+                    <label for="curso">Seleccione un curso:</label>
+                    <select>
+                        <option>1° Medio</option>
+                        <option>2° Medio</option>
+                        <option>3° Medio</option>
+                        <option>4° Medio</option>
+                    </select>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2"></th>
+                            <th colspan="2">Sumativa</th>
+                            <th colspan="2">Formativa</th>
+                            <th colspan="3">Desempeño</th>
+                        </tr>
+                        <tr>
+                            <th>Número</th>
+                            <th>Estudiante</th>
+                            <th>ES1</th>
+                            <th>ES2</th>
+                            <th>EF1</th>
+                            <th>EF2</th>
+                            <th>ED1</th>
+                            <th>ED2</th>
+                            <th>ED3</th>
+                            <th>Promedio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Khan Zhaito</td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td id="promedio"></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Mezako Susake</td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td id="promedio"></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Tai Won</td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td>
+                                <input placeholder="Ej: 7.0">
+                            </td>
+                            <td id="promedio"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <button>Calcular</button>
+                    <button>Registrar</button>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div>
+                <span>Mi colegio</span>
+                <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <span>Contacto</span>
+                    </li>
+                    <li>
+                        <i class="bx bx-location"></i>
+                        Av. Ubicación 123
+                    </li>
+                    <li>
+                        <i class="bx bx-phone"></i>
+                        +56 9 9876 5432
+                    </li>
+                    <li>
+                        <i class="bx bx-envelope"></i>
+                        correo.ejemplo@colegio.cl
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>
