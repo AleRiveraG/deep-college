@@ -9,47 +9,49 @@
     </head>
     <body>
         <header>
-            <div class="d-flex align-items-center py-2 px-3 contenedor-encabezado">
-                <a href="directiva-pagina-principal.html">Deep College</a>
-                <span class="badge etiqueta-directiva">Directiva</span>
-                <button id="btn-cerrar" class="btn btn-sm ms-auto boton-cerrar">
+            <div class="d-flex justify-content-between align-items-center py-3 px-4">
+                <div class="d-flex align-items-center">
+                    <img src="images\logo deep.png" height="40" class="me-3" alt="Logo Colegio">
+                    <span class="badge etiqueta-directiva fs-6 ms-2">Directiva</span>
+                </div>
+                <button id="btn-cerrar" class="btn btn-sm">
                     Cerrar sesión
                 </button>
             </div>
         </header>
         <main>
-            <div class="container-fluid contenedor-principal">
-                <div class="row fila-principal">
+            <div class="container-fluid p-0">
+                <div class="row m-0">
                     <!-- Barra de navegación lateral -->
-                    <aside class="col-md-2 sidebar">
-                        <nav class="enlaces list-group">
-                            <a href="directiva-pagina-principal.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-home-alt icono-inicio"></i>
+                    <aside class="col-md-2 sidebar min-vh-100">
+                        <nav class="list-group">
+                            <a href="directiva-pagina-principal.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-home-alt fs-4 me-2 icono-inicio"></i>
                                 Inicio
                             </a>
-                            <a href="directiva-ver-perfil.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-user icono-perfil"></i>
+                            <a href="directiva-ver-perfil.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-user fs-4 me-2 icono-perfil"></i>
                                 Ver perfil
                             </a>
-                            <a href="directiva-gestion-academica.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-community icono-gestion-academica"></i>
+                            <a href="directiva-gestion-academica.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-community fs-4 me-2 icono-gestion-academica"></i>
                                 Gestión académica
                             </a>
-                            <a href="directiva-registro-notas.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-education icono-notas"></i>
+                            <a href="directiva-registro-notas.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-education fs-4 me-2 icono-notas"></i>
                                 Registro de notas
                             </a>
-                            <a href="directiva-registro-asistencia.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-clipboard-check icono-asistencia"></i>
+                            <a href="directiva-registro-asistencia.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i>
                                 Registro de asistencia
                             </a>
-                            <a href="directiva-calculadora-sueldos.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-calculator icono-sueldos"></i>
+                            <a href="directiva-calculadora-sueldos.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-calculator fs-4 me-2 icono-sueldos"></i>
                                 Calculadora de sueldos
                             </a>
                             <!-- Enlace activo destacado -->
-                            <a href="directiva-horarios.html" class="list-group-item enlace-menu active" style="background-color: #283A94; border-color: #283A94;">
-                                <i class="bx bx-calendar-detail icono-horarios"></i>
+                            <a href="directiva-horarios.html" class="list-group-item d-flex align-items-center py-3 active" style="background-color: #283A94; border-color: #283A94;">
+                                <i class="bx bx-calendar-detail fs-4 me-2 icono-horarios"></i>
                                 Organizar horarios
                             </a>
                         </nav>
@@ -57,13 +59,13 @@
                     
                     <!-- Sección de Horarios -->
                     <section class="col-md-10 py-4 px-4 seccion-horarios">
-                        <h1 class="titulo-principal mb-4">Horarios</h1>
+                        <h1 class="mb-4">Horarios</h1>
                         
                         <!-- Filtro de curso -->
                         <div class="mb-4 contenedor-filtro">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="curso" class="form-label etiqueta-input fw-bold">Seleccione un curso:</label>
+                                    <label for="curso" class="form-label fw-bold small">Seleccione un curso:</label>
                                     <select id="curso" class="form-select campo-formulario">
                                         <option value="1ro-basico">1° Básico</option>
                                         <option value="2do-basico">2° Básico</option>
@@ -84,8 +86,8 @@
 
                         <!-- Horarios -->
                         <div class="table-responsive contenedor-tabla">
-                            <table id="horario" class="table table-bordered tabla-horarios text-center align-middle bg-white d-none">
-                                <thead class="encabezado-tabla" style="background-color: #f8f9fa;">
+                            <table id="horario" class="table table-bordered tabla-horarios text-center align-middle d-none">
+                                <thead class="encabezado-tabla">
                                     <tr>
                                         <th>Módulo Horario</th>
                                         <th>Lunes</th>
@@ -152,42 +154,42 @@
             </div>
         </main>
         <footer>
-            <div class="container-fluid contenedor-pie py-4">
-                <div class="row py-4 fila-pie">
-                    <div class="col-md-6 informacion-colegio px-5">
-                        <img src="images/logo-deep-white.png" class="logo img-fluid">
-                        <p class="lema-colegio">Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+            <div class="container-fluid py-5">
+                <div class="row">
+                    <div class="col-md-6 px-5 mb-4 mb-md-0">
+                        <img src="images/logo-deep-white.png" class="logo mb-3" alt="Logo Colegio">
+                        <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
                         <hr>
-                        <div class="">
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
+                        <div class="d-flex mt-3">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/logo-white.png" alt="Logotipo X">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/logo-white.png" alt="Logotipo X">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/InBug-White.png" alt="Logotipo LinkedIn">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/InBug-White.png" alt="Logotipo LinkedIn">
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6 informacion-contacto px-5">
-                        <ul class="list-unstyled lista-contacto">
-                            <li class="item-contacto mb-4">
-                                <span class="titulo-contacto fs-5 fw-bold">Contacto</span>
+                    <div class="col-md-6 px-5">
+                        <ul class="list-unstyled">
+                            <li class="mb-4">
+                                <span class="fs-5 fw-bold">Contacto</span>
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-location icono-ubicacion me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-location-plus fs-5 me-2 icono-ubicacion"></i>
                                 Av. Ubicación 123
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-phone icono-telefono me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-phone fs-5 me-2 icono-telefono"></i>
                                 +56 9 9876 5432
                             </li>
-                            <li class="item-contacto">
-                                <i class="bx bx-envelope icono-correo me-1"></i>
+                            <li class="d-flex align-items-center">
+                                <i class="bx bx-envelope fs-5 me-2 icono-correo"></i>
                                 correo.ejemplo@colegio.cl
                             </li>
                         </ul>

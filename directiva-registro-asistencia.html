@@ -9,52 +9,54 @@
     </head>
     <body>
         <header>
-            <div class="d-flex align-items-center py-2 px-3 contenedor-encabezado">
-                <a href="directiva-pagina-principal.html">Deep College</a>
-                <span class="badge etiqueta-directiva ms-2">Directiva</span>
-                <button id="btn-cerrar" class="btn btn-sm ms-auto boton-cerrar">
+            <div class="d-flex justify-content-between align-items-center py-3 px-4">
+                <div class="d-flex align-items-center">
+                    <img src="images\logo deep.png" height="40" class="me-3" alt="Logo Colegio">
+                    <span class="badge etiqueta-directiva fs-6 ms-2">Directiva</span>
+                </div>
+                <button id="btn-cerrar" class="btn btn-sm">
                     Cerrar sesión
                 </button>
             </div>
         </header>
         
         <main>
-            <div class="container-fluid contenedor-principal">
-                <div class="row fila-principal">
+            <div class="container-fluid p-0">
+                <div class="row m-0">
                     
                     <!-- Barra de navegación lateral -->
-                    <aside class="col-md-2 sidebar">
-                        <nav class="enlaces list-group">
-                            <a href="directiva-pagina-principal.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-home-alt icono-inicio"></i> Inicio
+                    <aside class="col-md-2 sidebar min-vh-100">
+                        <nav class="list-group">
+                            <a href="directiva-pagina-principal.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-home-alt fs-4 me-2 icono-inicio"></i> Inicio
                             </a>
-                            <a href="directiva-ver-perfil.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-user icono-perfil"></i> Ver perfil
+                            <a href="directiva-ver-perfil.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-user fs-4 me-2 icono-perfil"></i> Ver perfil
                             </a>
-                            <a href="directiva-gestion-academica.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-community icono-gestion-academica"></i> Gestión académica
+                            <a href="directiva-gestion-academica.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-community fs-4 me-2 icono-gestion-academica"></i> Gestión académica
                             </a>
-                            <a href="directiva-registro-notas.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-education icono-notas"></i> Registro de notas
+                            <a href="directiva-registro-notas.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-education fs-4 me-2 icono-notas"></i> Registro de notas
                             </a>
-                            <a href="directiva-registro-asistencia.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-clipboard-check icono-asistencia"></i> Registro de asistencia
+                            <a href="directiva-registro-asistencia.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i> Registro de asistencia
                             </a>
-                            <a href="directiva-calculadora-sueldos.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-calculator icono-sueldos"></i> Calculadora de sueldos
+                            <a href="directiva-calculadora-sueldos.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-calculator fs-4 me-2 icono-sueldos"></i> Calculadora de sueldos
                             </a>
-                            <a href="directiva-horarios.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-calendar-detail icono-horarios"></i> Organizar horarios
+                            <a href="directiva-horarios.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-calendar-detail fs-4 me-2 icono-horarios"></i> Organizar horarios
                             </a>
                         </nav>
                     </aside>
 
-                    <section class="col-md-10 py-4 px-4 seccion-asistencia">
-                        <h1 class="titulo-principal mb-4">Registro de asistencia</h1>
+                    <section class="col-md-10 py-4 px-4">
+                        <h1 class="mb-4">Registro de asistencia</h1>
                         
-                        <div class="p-4 border rounded mb-5 bg-light">
-                            <label for="curso" class="form-label etiqueta-input fw-bold">Seleccione curso</label>
-                            <select id="curso" class="form-select form-select-sm campo-formulario w-25">
+                        <div class="p-4 mb-5 caja-valor">
+                            <label for="curso" class="form-label fw-bold small">Seleccione curso</label>
+                            <select id="curso" class="form-select campo-formulario w-25">
                                 <option>1° Básico</option>
                                 <option>2° Básico</option>
                                 <option>3° Básico</option>
@@ -71,12 +73,12 @@
                         </div>
                         
                         <div>
-                            <h2 class="subtitulo mb-4">Detalle por curso</h2>
+                            <h2 class="mb-4">Detalle por curso</h2>
                             
-                            <div class="row">
+                            <div class="row m-0">
                                 <!-- 1ro Básico -->
-                                <div id="1ro-basico" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="1ro-basico" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 1° Básico</h3>
                                         <label for="asistencia-global-1"></label>
                                         <progress id="asistencia-global-1" max="100" value="90" class="w-100 mb-3"></progress>
@@ -94,8 +96,8 @@
                                 </div>
                                 
                                 <!-- 2do Básico -->
-                                <div id="2do-basico" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="2do-basico" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 2° Básico</h3>
                                         <label for="asistencia-global-2"></label>
                                         <progress id="asistencia-global-2" max="100" value="90" class="w-100 mb-3"></progress>
@@ -113,8 +115,8 @@
                                 </div>
                                 
                                 <!-- 3ro Básico -->
-                                <div id="3ro-basico" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="3ro-basico" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 3° Básico</h3>
                                         <label for="asistencia-global-3"></label>
                                         <progress id="asistencia-global-3" max="100" value="87" class="w-100 mb-3"></progress>
@@ -132,8 +134,8 @@
                                 </div>
                                 
                                 <!-- 4to Básico -->
-                                <div id="4to-basico" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="4to-basico" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 4° Básico</h3>
                                         <label for="asistencia-global-4"></label>
                                         <progress id="asistencia-global-4" max="100" value="90" class="w-100 mb-3"></progress>
@@ -151,8 +153,8 @@
                                 </div>
                                 
                                 <!-- 5to Básico -->
-                                <div id="5to-basico" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="5to-basico" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 5° Básico</h3>
                                         <label for="asistencia-global-5"></label>
                                         <progress id="asistencia-global-5" max="100" value="95" class="w-100 mb-3"></progress>
@@ -170,8 +172,8 @@
                                 </div>
                                 
                                 <!-- 6to Básico -->
-                                <div id="6to-basico" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="6to-basico" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 6° Básico</h3>
                                         <label for="asistencia-global-6"></label>
                                         <progress id="asistencia-global-6" max="100" value="85" class="w-100 mb-3"></progress>
@@ -189,8 +191,8 @@
                                 </div>
                                 
                                 <!-- 7mo Básico -->
-                                <div id="7mo-basico" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="7mo-basico" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 7° Básico</h3>
                                         <label for="asistencia-global-7"></label>
                                         <progress id="asistencia-global-7" max="100" value="90" class="w-100 mb-3"></progress>
@@ -208,8 +210,8 @@
                                 </div>
                                 
                                 <!-- 8vo Básico -->
-                                <div id="8vo-basico" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="8vo-basico" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 8° Básico</h3>
                                         <label for="asistencia-global-8"></label>
                                         <progress id="asistencia-global-8" max="100" value="92" class="w-100 mb-3"></progress>
@@ -227,8 +229,8 @@
                                 </div>
                                 
                                 <!-- 1ro Medio -->
-                                <div id="1ro-medio" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="1ro-medio" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 1° Medio</h3>
                                         <label for="asistencia-global-9"></label>
                                         <progress id="asistencia-global-9" max="100" value="92" class="w-100 mb-3"></progress>
@@ -246,8 +248,8 @@
                                 </div>
                                 
                                 <!-- 2do Medio -->
-                                <div id="2do-medio" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="2do-medio" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 2° Medio</h3>
                                         <label for="asistencia-global-10"></label>
                                         <progress id="asistencia-global-10" max="100" value="90" class="w-100 mb-3"></progress>
@@ -265,8 +267,8 @@
                                 </div>
                                 
                                 <!-- 3ro Medio -->
-                                <div id="3ro-medio" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="3ro-medio" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 3° Medio</h3>
                                         <label for="asistencia-global-11"></label>
                                         <progress id="asistencia-global-11" max="100" value="96" class="w-100 mb-3"></progress>
@@ -284,8 +286,8 @@
                                 </div>
                                 
                                 <!-- 4to Medio -->
-                                <div id="4to-medio" class="col-md-4 mb-4">
-                                    <div class="p-3 border rounded caja-valor h-100">
+                                <div id="4to-medio" class="col-md-4 mb-4 p-0">
+                                    <div class="p-4 caja-valor h-100">
                                         <h3 class="fs-5 mb-3">Curso: 4° Medio</h3>
                                         <label for="asistencia-global-12"></label>
                                         <progress id="asistencia-global-12" max="100" value="80" class="w-100 mb-3"></progress>
@@ -301,8 +303,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
-                            
                         </div>
                     </section>
                 </div>
@@ -310,42 +312,42 @@
         </main>
         
         <footer>
-            <div class="container-fluid contenedor-pie py-4">
-                <div class="row py-4 fila-pie">
-                    <div class="col-md-6 informacion-colegio px-5">
-                        <img src="images/logo-deep-white.png" class="logo img-fluid">
-                        <p class="lema-colegio">Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+            <div class="container-fluid py-5">
+                <div class="row">
+                    <div class="col-md-6 px-5 mb-4 mb-md-0">
+                        <img src="images/logo-deep-white.png" class="logo mb-3" alt="Logo Colegio">
+                        <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
                         <hr>
-                        <div class="">
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
+                        <div class="d-flex mt-3">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/logo-white.png" alt="Logotipo X">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/logo-white.png" alt="Logotipo X">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/InBug-White.png" alt="Logotipo LinkedIn">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/InBug-White.png" alt="Logotipo LinkedIn">
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6 informacion-contacto px-5">
-                        <ul class="list-unstyled lista-contacto">
-                            <li class="item-contacto mb-4">
-                                <span class="titulo-contacto fs-5 fw-bold">Contacto</span>
+                    <div class="col-md-6 px-5">
+                        <ul class="list-unstyled">
+                            <li class="mb-4">
+                                <span class="fs-5 fw-bold">Contacto</span>
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-location-plus icono-ubicacion me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-location-plus fs-5 me-2 icono-ubicacion"></i>
                                 Av. Ubicación 123
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-phone icono-telefono me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-phone fs-5 me-2 icono-telefono"></i>
                                 +56 9 9876 5432
                             </li>
-                            <li class="item-contacto">
-                                <i class="bx bx-envelope icono-correo me-1"></i>
+                            <li class="d-flex align-items-center">
+                                <i class="bx bx-envelope fs-5 me-2 icono-correo"></i>
                                 correo.ejemplo@colegio.cl
                             </li>
                         </ul>

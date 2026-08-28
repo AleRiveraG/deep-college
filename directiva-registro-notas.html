@@ -9,57 +9,59 @@
     </head>
     <body>
         <header>
-            <div class="d-flex align-items-center py-2 px-3 contenedor-encabezado">
-                <a href="directiva-pagina-principal.html">Deep College</a>
-                <span class="badge etiqueta-directiva ms-2">Directiva</span>
-                <button id="btn-cerrar" class="btn btn-sm ms-auto boton-cerrar">
+            <div class="d-flex justify-content-between align-items-center py-3 px-4">
+                <div class="d-flex align-items-center">
+                    <img src="images\logo deep.png" height="40" class="me-3" alt="Logo Colegio">
+                    <span class="badge etiqueta-directiva fs-6 ms-2">Directiva</span>
+                </div>
+                <button id="btn-cerrar" class="btn btn-sm">
                     Cerrar sesión
                 </button>
             </div>
         </header>
         <main>
-            <div class="container-fluid contenedor-principal">
-                <div class="row fila-principal">
+            <div class="container-fluid p-0">
+                <div class="row m-0">
                     <!-- Barra de navegación lateral -->
-                    <aside class="col-md-2 sidebar">
-                        <nav class="enlaces list-group">
-                            <a href="directiva-pagina-principal.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-home-alt icono-inicio"></i>
+                    <aside class="col-md-2 sidebar min-vh-100">
+                        <nav class="list-group">
+                            <a href="directiva-pagina-principal.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-home-alt fs-4 me-2 icono-inicio"></i>
                                 Inicio
                             </a>
-                            <a href="directiva-ver-perfil.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-user icono-perfil"></i>
+                            <a href="directiva-ver-perfil.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-user fs-4 me-2 icono-perfil"></i>
                                 Ver perfil
                             </a>
-                            <a href="directiva-gestion-academica.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-community icono-gestion-academica"></i>
+                            <a href="directiva-gestion-academica.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-community fs-4 me-2 icono-gestion-academica"></i>
                                 Gestión académica
                             </a>
-                            <a href="directiva-registro-notas.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-education icono-notas"></i>
+                            <a href="directiva-registro-notas.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-education fs-4 me-2 icono-notas"></i>
                                 Registro de notas
                             </a>
-                            <a href="directiva-registro-asistencia.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-clipboard-check icono-asistencia"></i>
+                            <a href="directiva-registro-asistencia.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i>
                                 Registro de asistencia
                             </a>
-                            <a href="directiva-calculadora-sueldos.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-calculator icono-sueldos"></i>
+                            <a href="directiva-calculadora-sueldos.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-calculator fs-4 me-2 icono-sueldos"></i>
                                 Calculadora de sueldos
                             </a>
-                            <a href="directiva-horarios.html" class="list-group-item enlace-menu">
-                                <i class="bx bx-calendar-detail icono-horarios"></i>
+                            <a href="directiva-horarios.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-calendar-detail fs-4 me-2 icono-horarios"></i>
                                 Organizar horarios
                             </a>
                         </nav>
                     </aside>
                     <!-- Registro de notas -->
-                    <section class="col-md-10 py-4 px-4 seccion-notas">
-                        <h1 class="titulo-principal mb-4">Registro de notas</h1>
+                    <section class="col-md-10 py-4 px-4">
+                        <h1 class="mb-4">Registro de notas</h1>
                         
-                        <div class="p-4 border rounded mb-5 bg-light">
-                            <label for="curso" class="form-label etiqueta-input fw-bold">Seleccione un curso:</label>
-                            <select id="curso" class="form-select form-select-sm campo-formulario w-25">
+                        <div class="p-4 mb-5 caja-valor">
+                            <label for="curso" class="form-label fw-bold small">Seleccione un curso:</label>
+                            <select id="curso" class="form-select campo-formulario w-25">
                                 <option>1° Básico</option>
                                 <option>2° Básico</option>
                                 <option>3° Básico</option>
@@ -75,267 +77,267 @@
                             </select>
                         </div>
 
-                        <div class="row">
+                        <div class="row m-0">
                             <!-- 1ro Basico -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 1° Básico</h2>
-                                    <label for="promedio-1" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-1" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-1" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 2do Basico -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 2° Básico</h2>
-                                    <label for="promedio-2" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-2" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-2" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 3ro Basico -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 3° Básico</h2>
-                                    <label for="promedio-3" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-3" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-3" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 4to Basico -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 4° Básico</h2>
-                                    <label for="promedio-4" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-4" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-4" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 5to Basico -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 5° Básico</h2>
-                                    <label for="promedio-5" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-5" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-5" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 6to Basico -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 6° Básico</h2>
-                                    <label for="promedio-6" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-6" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-6" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 7vo Basico -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 7° Básico</h2>
-                                    <label for="promedio-7" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-7" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-7" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 8vo Basico -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 8° Básico</h2>
-                                    <label for="promedio-8" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-8" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-8" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 1ro Medio -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 1° Medio</h2>
-                                    <label for="promedio-9" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-9" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-9" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 2do Medio -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 2° Medio</h2>
-                                    <label for="promedio-10" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-10" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-10" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 3ro Medio -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 3° Medio</h2>
-                                    <label for="promedio-11" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-11" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-11" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 4to Medio -->
-                            <div class="col-12 mb-4">
-                                <div class="p-4 border rounded caja-valor">
+                            <div class="col-12 mb-4 p-0">
+                                <div class="p-4 caja-valor">
                                     <h2 class="fs-5 mb-3">Curso: 4° Medio</h2>
-                                    <label for="promedio-12" class="form-label etiqueta-input small">Promedio de notas</label>
+                                    <label for="promedio-12" class="form-label fw-bold small">Promedio de notas</label>
                                     <progress id="promedio-12" max="7" value="5.8" class="w-100 mb-4"></progress>
                                     <div class="d-flex justify-content-around text-center">
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">30</span>
-                                            <span class="etiqueta-valor">Total alumnos</span>
+                                            <span>Total alumnos</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-valor">20</span>
-                                            <span class="etiqueta-valor">Alumnos sobre nota 4.0</span>
+                                            <span>Alumnos sobre nota 4.0</span>
                                         </div>
                                         <div>
                                             <span class="d-block fs-3 fw-bold monto-negativo">10</span>
-                                            <span class="etiqueta-valor">Alumnos bajo nota 4.0</span>
+                                            <span>Alumnos bajo nota 4.0</span>
                                         </div>
                                     </div>
                                 </div>
@@ -346,42 +348,42 @@
             </div>
         </main>
         <footer>
-            <div class="container-fluid contenedor-pie py-4">
-                <div class="row py-4 fila-pie">
-                    <div class="col-md-6 informacion-colegio px-5">
-                        <img src="images/logo-deep-white.png" class="logo img-fluid">
-                        <p class="lema-colegio">Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+            <div class="container-fluid py-5">
+                <div class="row">
+                    <div class="col-md-6 px-5 mb-4 mb-md-0">
+                        <img src="images/logo-deep-white.png" class="logo mb-3" alt="Logo Colegio">
+                        <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
                         <hr>
-                        <div class="">
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
+                        <div class="d-flex mt-3">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/logo-white.png" alt="Logotipo X">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/logo-white.png" alt="Logotipo X">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/InBug-White.png" alt="Logotipo LinkedIn">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/InBug-White.png" alt="Logotipo LinkedIn">
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6 informacion-contacto px-5">
-                        <ul class="list-unstyled lista-contacto">
-                            <li class="item-contacto mb-4">
-                                <span class="titulo-contacto fs-5 fw-bold">Contacto</span>
+                    <div class="col-md-6 px-5">
+                        <ul class="list-unstyled">
+                            <li class="mb-4">
+                                <span class="fs-5 fw-bold">Contacto</span>
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-location-plus icono-ubicacion me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-location-plus fs-5 me-2 icono-ubicacion"></i>
                                 Av. Ubicación 123
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-phone icono-telefono me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-phone fs-5 me-2 icono-telefono"></i>
                                 +56 9 9876 5432
                             </li>
-                            <li class="item-contacto">
-                                <i class="bx bx-envelope icono-correo me-1"></i>
+                            <li class="d-flex align-items-center">
+                                <i class="bx bx-envelope fs-5 me-2 icono-correo"></i>
                                 correo.ejemplo@colegio.cl
                             </li>
                         </ul>
