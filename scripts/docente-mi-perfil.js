@@ -84,7 +84,7 @@ function validarRut() {
 }
 
 function validarTelefono() {
-    if(telefono.trim() == "" || telefono,length > 10 || /\D/.test(telefono)) {
+    if(telefono.trim() == "" || telefono.length > 10 || /\D/.test(telefono)) {
         return false;
     } else {
         return true;
