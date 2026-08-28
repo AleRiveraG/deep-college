@@ -5,152 +5,164 @@
         <title>Registro Asistencia</title>
         <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="estilos.css" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div>
-                <img src="images\logo deep.png">
-                <span>Docente</span>
-                <button>Cerrar Sesión</button>
+            <div class="d-flex justify-content-between align-items-center py-3 px-4">
+                <div class="d-flex align-items-center">
+                    <img src="images\logo deep.png" height="40" class="me-3" alt="Logo Colegio">
+                    <span class="badge rol-docente fs-6">Docente</span>
+                </div>
+                <button id="btn-cerrar" class="btn btn-sm">Cerrar Sesión</button>
             </div>
         </header>
         <main>
-            <!-- Barra de navegación lateral -->
-            <aside>
-                <nav>
-                    <a href="docente-pagina-principal.html">
-                        <i class="bx bx-home"></i>
-                        Inicio
-                    </a>
-                    <a href="docente-mi-perfil.html">
-                        <i class="bx bx-user-id-card"></i>
-                        Mi perfil
-                    </a>
-                    <a href="docente-ver-perfiles.html">
-                        <i class="bx bx-user"></i>
-                        Ver perfiles
-                    </a>
-                    <a href="docente-registro-asistencia.html">
-                        <i class="bx bx-clipboard-check"></i>
-                        Registro de asistencia
-                    </a>
-                    <a href="docente-registro-notas.html">
-                        <i class="bx bx-education"></i>
-                        Registro de notas
-                    </a>
-                    <a href="docente-documentos-personales.html">
-                        <i class="bx bx-clipboard-detail"></i>
-                        Documentos
-                    </a>
-                </nav>
-            </aside>
-            <section>
-                <h1>Registro de asistencia</h1>
-                <div>
-                    <label for="curso">Seleccione curso:</label>
-                    <select id="curso">
-                        <option>1° Medio</option>
-                        <option>2° Medio</option>
-                        <option>3° Medio</option>
-                        <option>4° Medio</option>
-                    </select>
+            <div class="container-fluid p-0">
+                <div class="row m-0">
+                    <aside class="col-md-2 sidebar min-vh-100">
+                        <nav class="list-group">
+                            <a href="docente-pagina-principal.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-home fs-4 me-2 icono-inicio"></i>
+                                Inicio
+                            </a>
+                            <a href="docente-mi-perfil.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-user-id-card fs-4 me-2 icono-perfil"></i>
+                                Mi perfil
+                            </a>
+                            <a href="docente-ver-perfiles.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-user fs-4 me-2 icono-perfil"></i>
+                                Ver perfiles
+                            </a>
+                            <a href="docente-registro-asistencia.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i>
+                                Registro de asistencia
+                            </a>
+                            <a href="docente-registro-notas.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-education fs-4 me-2 icono-notas"></i>
+                                Registro de notas
+                            </a>
+                            <a href="docente-documentos-personales.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-clipboard-detail fs-4 me-2 icono-gestion-academica"></i>
+                                Documentos
+                            </a>
+                        </nav>
+                    </aside>
+                    <section class="col-md-10 py-4 px-4">
+                        <h1 class="mb-4">Registro de asistencia</h1>
+                        
+                        <div class="caja-valor p-4 mb-4">
+                            <label for="curso" class="fw-bold mb-2">Seleccione curso:</label>
+                            <select id="curso" class="form-select w-25 campo-formulario">
+                                <option>1° Medio</option>
+                                <option>2° Medio</option>
+                                <option>3° Medio</option>
+                                <option>4° Medio</option>
+                            </select>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table mb-0 align-middle">
+                                <thead class="encabezado-tabla">
+                                    <tr>
+                                        <th scope="col" style="width: 10%;">Número</th>
+                                        <th scope="col" style="width: 30%;">Nombres</th>
+                                        <th scope="col" style="width: 30%;">Apellidos</th>
+                                        <th scope="col" style="width: 30%;">Registro</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Toy Khan</td>
+                                        <td>Zhaito Perez</td>
+                                        <td>
+                                            <form class="d-flex gap-2 mb-0">
+                                                <input type="radio" class="btn-check" name="asistencia_1" id="presente_1" autocomplete="off" checked>
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_1">Presente</label>
+
+                                                <input type="radio" class="btn-check" name="asistencia_1" id="ausente_1" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_1">Ausente</label>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>AK Mezako</td>
+                                        <td>Susake Martinez</td>
+                                        <td>
+                                            <form class="d-flex gap-2 mb-0">
+                                                <input type="radio" class="btn-check" name="asistencia_2" id="presente_2" autocomplete="off" checked>
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_2">Presente</label>
+
+                                                <input type="radio" class="btn-check" name="asistencia_2" id="ausente_2" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_2">Ausente</label>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Tai Mah</td>
+                                        <td>Won Silva</td>
+                                        <td>
+                                            <form class="d-flex gap-2 mb-0">
+                                                <input type="radio" class="btn-check" name="asistencia_3" id="presente_3" autocomplete="off" checked>
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_3">Presente</label>
+
+                                                <input type="radio" class="btn-check" name="asistencia_3" id="ausente_3" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_3">Ausente</label>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="d-flex justify-content-end gap-3 mt-4">
+                            <button id="registrar" type="submit" class="boton-calcular px-4">Registrar asistencia</button>
+                            <button id="finalizar" type="reset" class="btn btn-outline-secondary px-4">Finalizar clase</button>
+                        </div>
+                    </section>
                 </div>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Número</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Registro</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Toy Khan</td>
-                                <td>Zhaito Perez</td>
-                                <td>
-                                    <form>
-                                        <label for="presente">Presente</label>
-                                        <input id="presente" type="radio" name="opcion">
-                                        <label for="ausente">Ausente</label>
-                                        <input id="ausente" type="radio" name="opcion">
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>AK Mezako</td>
-                                <td>Susake Martinez</td>
-                                <td>
-                                    <form>
-                                        <label for="presente">Presente</label>
-                                        <input id="presente" type="radio" name="opcion">
-                                        <label for="ausente">Ausente</label>
-                                        <input id="ausente" type="radio" name="opcion">
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Tai Mah</td>
-                                <td>Won Silva</td>
-                                <td>
-                                    <form>
-                                        <label for="presente">Presente</label>
-                                        <input id="presente" type="radio" name="opcion">
-                                        <label for="ausente">Ausente</label>
-                                        <input id="ausente" type="radio" name="opcion">
-                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div>
-                        <button id="registrar" type="submit">Registrar asistencia</button>
-                        <button id="finalizar" type="reset">Finalizar clase</button>
-                    </div>
-                </div>
-            </section>
+            </div>
         </main>
         <footer>
-            <div class="container-fluid contenedor-pie py-4">
-                <div class="row py-4 fila-pie">
-                    <div class="col-md-6 informacion-colegio px-5">
-                        <img src="images/logo-deep-white.png" class="logo img-fluid">
-                        <p class="lema-colegio">Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+            <div class="container-fluid py-5">
+                <div class="row">
+                    <div class="col-md-6 px-5 mb-4 mb-md-0">
+                        <img src="images/logo-deep-white.png" class="logo mb-3" alt="Logo Colegio">
+                        <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
                         <hr>
-                        <div class="">
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
+                        <div class="d-flex mt-3">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/logo-white.png" alt="Logotipo X">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/logo-white.png" alt="Logotipo X">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/InBug-White.png" alt="Logotipo LinkedIn">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/InBug-White.png" alt="Logotipo LinkedIn">
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6 informacion-contacto px-5">
-                        <ul class="list-unstyled lista-contacto">
-                            <li class="item-contacto mb-4">
-                                <span class="titulo-contacto fs-5 fw-bold">Contacto</span>
+                    <div class="col-md-6 px-5">
+                        <ul class="list-unstyled">
+                            <li class="mb-4">
+                                <span class="fs-5 fw-bold">Contacto</span>
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-location icono-ubicacion me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-location-plus fs-5 me-2 icono-ubicacion"></i>
                                 Av. Ubicación 123
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-phone icono-telefono me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-phone fs-5 me-2 icono-telefono"></i>
                                 +56 9 9876 5432
                             </li>
-                            <li class="item-contacto">
-                                <i class="bx bx-envelope icono-correo me-1"></i>
+                            <li class="d-flex align-items-center">
+                                <i class="bx bx-envelope fs-5 me-2 icono-correo"></i>
                                 correo.ejemplo@colegio.cl
                             </li>
                         </ul>

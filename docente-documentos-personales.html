@@ -5,137 +5,151 @@
         <title>Documentos</title>
         <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="estilos.css" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div>
-                <img src="images\logo deep.png">
-                <span>Docente</span>
-                <button>Cerrar Sesión</button>
+            <div class="d-flex justify-content-between align-items-center py-3 px-4">
+                <div class="d-flex align-items-center">
+                    <img src="images\logo deep.png" height="40" class="me-3" alt="Logo Colegio">
+                    <span class="badge rol-docente fs-6">Docente</span>
+                </div>
+                <button id="btn-cerrar" class="btn btn-sm">Cerrar Sesión</button>
             </div>
         </header>
         <main>
-            <!-- Barra de navegación lateral -->
-            <aside>
-                <nav>
-                    <a href="docente-pagina-principal.html">
-                        <i class="bx bx-home"></i>
-                        Inicio
-                    </a>
-                    <a href="docente-mi-perfil.html">
-                        <i class="bx bx-user-id-card"></i>
-                        Mi perfil
-                    </a>
-                    <a href="docente-ver-perfiles.html">
-                        <i class="bx bx-user"></i>
-                        Ver perfiles
-                    </a>
-                    <a href="docente-registro-asistencia.html">
-                        <i class="bx bx-clipboard-check"></i>
-                        Registro de asistencia
-                    </a>
-                    <a href="docente-registro-notas.html">
-                        <i class="bx bx-education"></i>
-                        Registro de notas
-                    </a>
-                    <a href="docente-documentos-personales.html">
-                        <i class="bx bx-clipboard-detail"></i>
-                        Documentos
-                    </a>
-                </nav>
-            </aside>
-            <section>
-                <h1>Acceso a documentos</h1>
-                <div>
-                    <div>
-                        <div>
-                            <h2>Contrato de trabajo</h2>
-                            <a href="#">
-                                <i class="bx bx-folder"></i>
-                                Consulta acá
+            <div class="container-fluid p-0">
+                <div class="row m-0">
+                    <aside class="col-md-2 sidebar min-vh-100">
+                        <nav class="list-group">
+                            <a href="docente-pagina-principal.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-home fs-4 me-2 icono-inicio"></i>
+                                Inicio
                             </a>
-                        </div>
-                        <div>
-                            <h2>Liquidaciones de sueldo</h2>
-                            <div>
-                                <label for="sueldos">Seleccione una opción:</label>
-                                <select>
-                                    <option>Enero</option>
-                                    <option>Febrero</option>
-                                    <option>Marzo</option>
-                                    <option>Abril</option>
-                                    <option>Mayo</option>
-                                    <option>Junio</option>
-                                    <option>Julio</option>
-                                    <option>Agosto</option>
-                                    <option>Septiembre</option>
-                                    <option>Octubre</option>
-                                    <option>Noviembre</option>
-                                    <option>Diciembre</option>
-                                </select>
+                            <a href="docente-mi-perfil.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-user-id-card fs-4 me-2 icono-perfil"></i>
+                                Mi perfil
+                            </a>
+                            <a href="docente-ver-perfiles.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-user fs-4 me-2 icono-perfil"></i>
+                                Ver perfiles
+                            </a>
+                            <a href="docente-registro-asistencia.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i>
+                                Registro de asistencia
+                            </a>
+                            <a href="docente-registro-notas.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-education fs-4 me-2 icono-notas"></i>
+                                Registro de notas
+                            </a>
+                            <a href="docente-documentos-personales.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-clipboard-detail fs-4 me-2 icono-gestion-academica"></i>
+                                Documentos
+                            </a>
+                        </nav>
+                    </aside>
+                    <section class="col-md-10 py-4 px-4">
+                        <h1 class="mb-4">Acceso a documentos</h1>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="caja-valor p-4 h-100 d-flex flex-column align-items-start">
+                                    <h2 class="fs-5 mb-4">Contrato de trabajo</h2>
+                                    <a href="#" class="btn btn-sm boton-calcular mt-auto">
+                                        <i class="bx bx-folder me-1"></i>
+                                        Consulta acá
+                                    </a>
+                                </div>
                             </div>
-                            <a href="#">
-                                <i class="bx bx-folder"></i>
-                                Consulta acá
-                            </a>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <h2>Certificado de antigüedad laboral</h2>
-                            <a href="#">
-                                <i class="bx bx-folder"></i>
-                                Consulta acá
-                            </a>
-                        </div>
-                        <div>
-                            <h2>Reglamento interno</h2>
-                            <a href="#">
-                                <i class="bx bx-folder"></i>
-                                Consulta acá
-                            </a>
-                        </div>
-                    </div>
-                </div>    
-            </section>
+                            
+                            <div class="col-md-6">
+                                <div class="caja-valor p-4 h-100 d-flex flex-column align-items-start">
+                                    <h2 class="fs-5 mb-3">Liquidaciones de sueldo</h2>
+                                    <div class="mb-3 w-100">
+                                        <label for="sueldos" class="form-label fw-bold small">Seleccione una opción:</label>
+                                        <select id="sueldos" class="form-select form-select-sm campo-formulario w-50">
+                                            <option>Enero</option>
+                                            <option>Febrero</option>
+                                            <option>Marzo</option>
+                                            <option>Abril</option>
+                                            <option>Mayo</option>
+                                            <option>Junio</option>
+                                            <option>Julio</option>
+                                            <option>Agosto</option>
+                                            <option>Septiembre</option>
+                                            <option>Octubre</option>
+                                            <option>Noviembre</option>
+                                            <option>Diciembre</option>
+                                        </select>
+                                    </div>
+                                    <a href="#" class="btn btn-sm boton-calcular mt-auto">
+                                        <i class="bx bx-folder me-1"></i>
+                                        Consulta acá
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="caja-valor p-4 h-100 d-flex flex-column align-items-start">
+                                    <h2 class="fs-5 mb-4">Certificado de antigüedad laboral</h2>
+                                    <a href="#" class="btn btn-sm boton-calcular mt-auto">
+                                        <i class="bx bx-folder me-1"></i>
+                                        Consulta acá
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="caja-valor p-4 h-100 d-flex flex-column align-items-start">
+                                    <h2 class="fs-5 mb-4">Reglamento interno</h2>
+                                    <a href="#" class="btn btn-sm boton-calcular mt-auto">
+                                        <i class="bx bx-folder me-1"></i>
+                                        Consulta acá
+                                    </a>
+                                </div>
+                            </div>
+                        </div>    
+                    </section>
+                </div>
+            </div>
         </main>
         <footer>
-            <div class="container-fluid contenedor-pie py-4">
-                <div class="row py-4 fila-pie">
-                    <div class="col-md-6 informacion-colegio px-5">
-                        <img src="images/logo-deep-white.png" class="logo img-fluid">
-                        <p class="lema-colegio">Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+            <div class="container-fluid py-5">
+                <div class="row">
+                    <div class="col-md-6 px-5 mb-4 mb-md-0">
+                        <img src="images/logo-deep-white.png" class="logo mb-3" alt="Logo Colegio">
+                        <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
                         <hr>
-                        <div class="">
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
+                        <div class="d-flex mt-3">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/logo-white.png" alt="Logotipo X">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/logo-white.png" alt="Logotipo X">
                             </a>
-                            <a href="#" class="mx-2">
-                                <img class="logos-enlaces img-fluid" src="images/InBug-White.png" alt="Logotipo LinkedIn">
+                            <a href="#" class="me-3">
+                                <img class="logos-enlaces" src="images/InBug-White.png" alt="Logotipo LinkedIn">
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6 informacion-contacto px-5">
-                        <ul class="list-unstyled lista-contacto">
-                            <li class="item-contacto mb-4">
-                                <span class="titulo-contacto fs-5 fw-bold">Contacto</span>
+                    <div class="col-md-6 px-5">
+                        <ul class="list-unstyled">
+                            <li class="mb-4">
+                                <span class="fs-5 fw-bold">Contacto</span>
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-location icono-ubicacion me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-location-plus fs-5 me-2 icono-ubicacion"></i>
                                 Av. Ubicación 123
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-phone icono-telefono me-1"></i>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bx bx-phone fs-5 me-2 icono-telefono"></i>
                                 +56 9 9876 5432
                             </li>
-                            <li class="item-contacto">
-                                <i class="bx bx-envelope icono-correo me-1"></i>
+                            <li class="d-flex align-items-center">
+                                <i class="bx bx-envelope fs-5 me-2 icono-correo"></i>
                                 correo.ejemplo@colegio.cl
                             </li>
                         </ul>
