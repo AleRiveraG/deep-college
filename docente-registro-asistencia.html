@@ -54,14 +54,14 @@
                         <div class="caja-valor p-4 mb-4">
                             <label for="curso" class="fw-bold mb-2">Seleccione curso:</label>
                             <select id="curso" class="form-select w-25 campo-formulario">
-                                <option>1° Medio</option>
-                                <option>2° Medio</option>
-                                <option>3° Medio</option>
-                                <option>4° Medio</option>
+                                <option value="1-medio">1° Medio</option>
+                                <option value="2-medio">2° Medio</option>
+                                <option value="3-medio">3° Medio</option>
+                                <option value="4-medio">4° Medio</option>
                             </select>
                         </div>
                         
-                        <div class="table-responsive">
+                        <div id="tabla" class="d-none table-responsive">
                             <table class="table mb-0 align-middle">
                                 <thead class="encabezado-tabla">
                                     <tr>
@@ -78,10 +78,10 @@
                                         <td>Zhaito Perez</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check" name="asistencia_1" id="presente_1" autocomplete="off" checked>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_1" id="presente_1" autocomplete="off">
                                                 <label class="btn btn-outline-success btn-sm px-3" for="presente_1">Presente</label>
 
-                                                <input type="radio" class="btn-check" name="asistencia_1" id="ausente_1" autocomplete="off">
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_1" id="ausente_1" autocomplete="off">
                                                 <label class="btn btn-outline-danger btn-sm px-3" for="ausente_1">Ausente</label>
                                             </form>
                                         </td>
@@ -92,10 +92,10 @@
                                         <td>Susake Martinez</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check" name="asistencia_2" id="presente_2" autocomplete="off" checked>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_2" id="presente_2" autocomplete="off">
                                                 <label class="btn btn-outline-success btn-sm px-3" for="presente_2">Presente</label>
 
-                                                <input type="radio" class="btn-check" name="asistencia_2" id="ausente_2" autocomplete="off">
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_2" id="ausente_2" autocomplete="off">
                                                 <label class="btn btn-outline-danger btn-sm px-3" for="ausente_2">Ausente</label>
                                             </form>
                                         </td>
@@ -106,21 +106,20 @@
                                         <td>Won Silva</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check" name="asistencia_3" id="presente_3" autocomplete="off" checked>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_3" id="presente_3" autocomplete="off">
                                                 <label class="btn btn-outline-success btn-sm px-3" for="presente_3">Presente</label>
 
-                                                <input type="radio" class="btn-check" name="asistencia_3" id="ausente_3" autocomplete="off">
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_3" id="ausente_3" autocomplete="off">
                                                 <label class="btn btn-outline-danger btn-sm px-3" for="ausente_3">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        
-                        <div class="d-flex justify-content-end gap-3 mt-4">
-                            <button id="registrar" type="submit" class="boton-calcular px-4">Registrar asistencia</button>
-                            <button id="finalizar" type="reset" class="btn btn-outline-secondary px-4">Finalizar clase</button>
+                            <div class="d-flex justify-content-end gap-3 mt-4">
+                                <button id="registrar" type="submit" class="boton-calcular px-4">Registrar asistencia</button>
+                                <button id="finalizar" type="reset" class="btn btn-outline-secondary px-4">Finalizar clase</button>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -170,5 +169,6 @@
                 </div>
             </div>
         </footer>
+        <script src="scripts/directiva-registro-asistencia.js"></script>
     </body>
 </html>
