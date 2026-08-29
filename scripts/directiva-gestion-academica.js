@@ -82,9 +82,9 @@ aplicarAuxiliar.addEventListener('click', (evento)=> {
     if(validarAuxiliar()) {
         document.querySelector('#nombre-auxiliar').value = "";
         document.querySelector('#rut-auxiliar').value = "";
-        document.querySelector('#fecha_contrato_aux').value = "";
-        document.querySelector('#correo_auxiliar').value = "";
-        document.querySelector('#telefono_auxiliar').value = "";
+        document.querySelector('#fecha-contrato-aux').value = "";
+        document.querySelector('#correo-auxiliar').value = "";
+        document.querySelector('#telefono-auxiliar').value = "";
         const nuevo = parseInt(auxiliares.textContent) + 1;
         auxiliares.textContent = nuevo;
         alert("Auxiliar agregado con exito!")
@@ -122,7 +122,7 @@ const apoderado = document.querySelector('#apoderado').value;
 const telefono_apoderado = document.querySelector('#telefono-apoderado').value;
 
 function validarEstudiante() {
-    if(nombre_alumno.length > 3 && rut_alumno.length >= 8 && apoderado > 3 && telefono_apoderado > 8) {
+    if(nombre_alumno.length > 3 && rut_alumno.length >= 8 && apoderado.length > 3 && telefono_apoderado.length > 8) {
         return true;
     } else {
         return false;
@@ -133,13 +133,12 @@ function validarEstudiante() {
 
 const nombre_auxiliar = document.querySelector('#nombre-auxiliar').value;
 const rut_auxiliar = document.querySelector('#rut-auxiliar').value;
-const fecha_contrato_auxiliar = document.querySelector('#fecha_contrato_aux').value;
-const correo_auxiliar = document.querySelector('#correo_auxiliar').value;
-const telefono_auxiliar = document.querySelector('#telefono_auxiliar').value;
+const fecha_contrato_auxiliar = document.querySelector('#fecha-contrato-aux').value;
+const correo_auxiliar = document.querySelector('#correo-auxiliar').value;
+const telefono_auxiliar = document.querySelector('#telefono-auxiliar').value;
 
 function validarAuxiliar() {
-    if(nombre_auxiliar.length > 3 && rut_auxiliar.length >= 8 && fecha_contrato_auxiliar != "" && correo_auxiliar.includes('.')
-        && correo_auxiliar.includes('@') && telefono_auxiliar.lenght > 8) {
+    if(nombre_auxiliar.length > 3 && rut_auxiliar.length >= 8 && fecha_contrato_auxiliar != "" && correo_auxiliar.includes('.') && correo_auxiliar.includes('@') && telefono_auxiliar.length > 8) {
         return true;
     } else {
         return false;   
@@ -170,7 +169,7 @@ resetAlumno.addEventListener('click', ()=> {
 resetAuxiliar.addEventListener('click', ()=> {
     document.querySelector('#nombre-auxiliar').value = "";
     document.querySelector('#rut-auxiliar').value = "";
-    document.querySelector('#fecha_contrato_aux').value = "";
-    document.querySelector('#correo_auxiliar').value = "";
-    document.querySelector('#telefono_auxiliar').value = "";
+    document.querySelector('#fecha-contrato-aux').value = "";
+    document.querySelector('#correo-auxiliar').value = "";
+    document.querySelector('#telefono-auxiliar').value = "";
 })
