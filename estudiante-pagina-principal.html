@@ -5,117 +5,136 @@
         <title>Página Principal</title>
         <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="estilos.css" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div>
-                <img src="images\logo deep.png">
-                <span>Docente</span>
-                <button>Cerrar Sesión</button>
+            <div class="d-flex justify-content-between align-items-center py-3 px-4">
+                <div class="d-flex align-items-center">
+                    <img src="images\logo deep.png" height="40" class="me-3" alt="Logo Colegio">
+                    <span class="badge rol-estudiante fs-6 ms-2">Estudiante</span>
+                </div>
+                <button id="btn-cerrar" class="btn btn-sm">Cerrar Sesión</button>
             </div>
         </header>    
         <main>
-            <!-- Barra de navegación lateral -->
-            <aside>
-                <nav>
-                    <a href="estudiante-pagina-principal.html">
-                        <i class="bx bx-home"></i>
-                        Inicio
-                    </a>
-                    <a href="estudiante-mi-perfil.html">
-                        <i class="bx bx-user-id-card"></i>
-                        Mi perfil
-                    </a>
-                    <a href="estudiante-asistencia.html">
-                        <i class="bx bx-clipboard-check"></i>
-                        Asistencia
-                    </a>
-                    <a href="estudiante-notas.html">
-                        <i class="bx bx-education"></i>
-                        Notas
-                    </a>
-                    <a href="estudiante-horario.html">
-                        <i class="bx bx-calendar-alt"></i>
-                        Horario
-                    </a>
-                </nav>
-            </aside>
-            <section>
-                <div>
-                    <h1 id="nombre">Bienvenido/a </h1>
-                    <h2 id="fecha"></h2>
-                </div>
-                <div>
-                    <div>
-                        <div class="tarjeta">
-                            <i class="bx bx-chart-line"></i>
-                            <div>
-                                <span>6.2</span>
-                                <span>Promedio General</span>
+            <div class="container-fluid p-0">
+                <div class="row m-0">
+                    <!-- Barra de navegación lateral -->
+                    <aside class="col-md-2 sidebar min-vh-100">
+                        <nav class="list-group">
+                            <a href="estudiante-pagina-principal.html" class="list-group-item d-flex align-items-center py-3 active" style="background-color: #283A94; border-color: #283A94;">
+                                <i class="bx bx-home fs-4 me-2 icono-inicio"></i>
+                                Inicio
+                            </a>
+                            <a href="estudiante-mi-perfil.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-user-id-card fs-4 me-2 icono-perfil"></i>
+                                Mi perfil
+                            </a>
+                            <a href="estudiante-asistencia.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i>
+                                Asistencia
+                            </a>
+                            <a href="estudiante-notas.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-education fs-4 me-2 icono-notas"></i>
+                                Notas
+                            </a>
+                            <a href="estudiante-horario.html" class="list-group-item d-flex align-items-center py-3">
+                                <i class="bx bx-calendar-alt fs-4 me-2 icono-horarios"></i>
+                                Horario
+                            </a>
+                        </nav>
+                    </aside>
+                    <section class="col-md-10 py-4 px-4 seccion-inicio">
+                        <div class="mb-5">
+                            <h1 id="nombre" class="titulo-principal">Bienvenido/a </h1>
+                            <h2 id="fecha" class="subtitulo fs-5 text-muted"></h2>
+                        </div>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6">
+                                <div class="tarjeta p-4 border rounded caja-valor h-100 d-flex justify-content-between align-items-center bg-light">
+                                    <i class="bx bx-chart-line fs-1 text-primary"></i>
+                                    <div class="text-end">
+                                        <span class="d-block fs-3 fw-bold monto-valor">6.2</span>
+                                        <span class="etiqueta-valor small">Promedio General</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="tarjeta p-4 border rounded caja-valor h-100 d-flex justify-content-between align-items-center bg-light">
+                                    <i class="bx bx-user-check fs-1 text-success"></i>
+                                    <div class="text-end">
+                                        <span class="d-block fs-3 fw-bold monto-resultado text-success">98%</span>
+                                        <span class="etiqueta-valor small">Asistencia General</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="tarjeta p-4 border rounded caja-valor h-100 d-flex justify-content-between align-items-center bg-light">
+                                    <i class="bx bx-clock-dashed-half fs-1 text-warning"></i>
+                                    <div class="text-end">
+                                        <span class="d-block fs-4 fw-bold text-dark">Estadistica</span>
+                                        <span class="etiqueta-valor small">Proxima Clase</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="tarjeta p-4 border rounded caja-valor h-100 d-flex justify-content-between align-items-center bg-light">
+                                    <i class="bx bx-bell fs-1 text-info"></i>
+                                    <div class="text-end">
+                                        <span class="d-block fs-3 fw-bold monto-valor">3</span>
+                                        <span class="etiqueta-valor small">Avisos sin leer</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="tarjeta">
-                            <i class="bx bx-user-check"></i>
-                            <div>
-                                <span>98%</span>
-                                <span>Asistencia General</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="tarjeta">
-                            <i class="bx bx-clock-dashed-half"></i>
-                            <div>
-                                <span>Estadistica</span>
-                                <span>Proxima Clase</span>
-                            </div>
-                        </div>
-                        <div class="tarjeta">
-                            <i class="bx bx-bell"></i>
-                            <div>
-                                <span>3</span>
-                                <span>Avisos sin leer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h2>Proximos eventos</h2>
+
                         <div>
-                            <h3>Miercoles 2 de Septiembre</h3>
-                            <p>Reunión de Apoderados, 18:30 hrs.</p>
+                            <h2 class="subtitulo mb-4 border-bottom pb-2">Proximos eventos</h2>
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="p-3 border rounded bg-light caja-valor h-100">
+                                        <h3 class="fs-6 fw-bold mb-2">Miercoles 2 de Septiembre</h3>
+                                        <p class="mb-0 small text-muted">Reunión de Apoderados, 18:30 hrs.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 border rounded bg-light caja-valor h-100 border-danger border-2">
+                                        <h3 class="fs-6 fw-bold mb-2 text-danger">Viernes 4 de Septiembre</h3>
+                                        <p class="mb-0 small text-danger fw-semibold"><i class='bx bx-error-circle me-1'></i>Prueba de Estadistica</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 border rounded bg-light caja-valor h-100">
+                                        <h3 class="fs-6 fw-bold mb-2">Jueves 17 de Septiembre</h3>
+                                        <p class="mb-0 small text-muted">Suspensión de clases</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <h3>Viernes 4 de Septiembre</h3>
-                            <p>Prueba de Estadistica</p>
-                        </div>
-                        <div>
-                            <h3>Jueves 17 de Septiembre</h3>
-                            <p>Suspensión de clases</p>
-                        </div>
-                    </div>
+                    </section>
                 </div>
-            </section>
+            </div>
         </main>
         <footer>
             <div class="container-fluid contenedor-pie py-4">
                 <div class="row py-4 fila-pie">
-                    <div class="col-md-6 informacion-colegio px-5">
-                        <img src="images/logo-deep-white.png" class="logo img-fluid">
+                    <div class="col-md-6 informacion-colegio px-5 mb-4 mb-md-0">
+                        <img src="images/logo-deep-white.png" class="logo img-fluid mb-3" alt="Logo Colegio">
                         <p class="lema-colegio">Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
                         <hr>
-                        <div class="">
-                            <a href="#" class="mx-2">
+                        <div class="d-flex mt-3">
+                            <a href="#" class="me-3">
                                 <img class="logos-enlaces img-fluid" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
                             </a>
-                            <a href="#" class="mx-2">
+                            <a href="#" class="me-3">
                                 <img class="logos-enlaces img-fluid" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
                             </a>
-                            <a href="#" class="mx-2">
+                            <a href="#" class="me-3">
                                 <img class="logos-enlaces img-fluid" src="images/logo-white.png" alt="Logotipo X">
                             </a>
-                            <a href="#" class="mx-2">
+                            <a href="#" class="me-3">
                                 <img class="logos-enlaces img-fluid" src="images/InBug-White.png" alt="Logotipo LinkedIn">
                             </a>
                         </div>
@@ -125,16 +144,16 @@
                             <li class="item-contacto mb-4">
                                 <span class="titulo-contacto fs-5 fw-bold">Contacto</span>
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-location icono-ubicacion me-1"></i>
+                            <li class="item-contacto mb-2 d-flex align-items-center">
+                                <i class="bx bx-location-plus icono-ubicacion fs-5 me-2"></i>
                                 Av. Ubicación 123
                             </li>
-                            <li class="item-contacto mb-2">
-                                <i class="bx bx-phone icono-telefono me-1"></i>
+                            <li class="item-contacto mb-2 d-flex align-items-center">
+                                <i class="bx bx-phone icono-telefono fs-5 me-2"></i>
                                 +56 9 9876 5432
                             </li>
-                            <li class="item-contacto">
-                                <i class="bx bx-envelope icono-correo me-1"></i>
+                            <li class="item-contacto d-flex align-items-center">
+                                <i class="bx bx-envelope icono-correo fs-5 me-2"></i>
                                 correo.ejemplo@colegio.cl
                             </li>
                         </ul>

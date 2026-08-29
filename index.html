@@ -6,92 +6,115 @@
     <title>Deep College - Inicio</title>
     
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
-    <link href="estilos-pagina-inicio.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="estilos.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- header -->
-    <header>
-        <nav>
-            <a href="#">
-                <i class="bx bxs-graduation"></i>
-                <span>Deep College</span>
+    <header class="py-3 px-4 px-md-5 encabezado-principal">
+        <nav class="d-flex justify-content-between align-items-center navegacion-superior">
+            <a href="#" class="d-flex align-items-center text-decoration-none fs-4 fw-bold enlace-logo">
+                <i class="bx bxs-graduation fs-2 me-2 icono-logo"></i>
             </a>
 
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Misión y Visión</a></li>
+            <ul class="d-flex gap-4 list-unstyled m-0 p-0 lista-enlaces">
+                <li><a href="#" class="text-decoration-none fw-semibold">Inicio</a></li>
+                <li><a href="#" class="text-decoration-none fw-semibold">Nosotros</a></li>
+                <li><a href="#" class="text-decoration-none fw-semibold">Misión y Visión</a></li>
             </ul>
 
-            <a href="#">
-                <i class="bx bx-log-in"></i> Ingresar
+            <a href="#" class="btn d-flex align-items-center boton-ingresar">
+                <i class="bx bx-log-in fs-5 me-2"></i> Ingresar
             </a>
         </nav>
     </header>
 
-    <!-- principal-->
-    <main>
+    <main class="contenido-principal">
 
-        <!-- seccion 1  -->
-        <section id="inicio">
-            <span>Más de 30 años formando líderes</span>
-            
-            <h1>Deep College</h1>
-            
-            <p>Una institución educativa comprometida con la excelencia académica, la formación en valores y el desarrollo integral de cada estudiante desde 1993.</p>
-            
-            <div>
-                <a href="#">
-                    <i class="bx bx-edit"></i> Postula aquí
-                </a>
-                <a href="#">
-                    <i class="bx bx-group"></i> Conócenos
-                </a>
-            </div>
+        <section id="inicio" class="container-fluid px-4 px-md-5 py-5 seccion-inicio">
+            <div class="row align-items-center fila-inicio">
+                <div class="col-md-6 pe-md-5 contenedor-texto-inicio">
+                    <span class="badge px-3 py-2 mb-3 fs-6 etiqueta-destacada">Más de 30 años formando líderes</span>
+                    
+                    <h1 class="display-4 fw-bold mb-4 titulo-principal">Deep College</h1>
+                    
+                    <p class="fs-5 mb-4 parrafo-principal">Una institución educativa comprometida con la excelencia académica, la formación en valores y el desarrollo integral de cada estudiante desde 1993.</p>
+                    
+                    <div class="d-flex gap-3 contenedor-botones">
+                        <a href="#" class="btn btn-lg d-flex align-items-center boton-postular">
+                            <i class="bx bx-edit me-2"></i> Postula aquí
+                        </a>
+                        <a href="#" class="btn btn-lg d-flex align-items-center boton-conocer">
+                            <i class="bx bx-group me-2"></i> Conócenos
+                        </a>
+                    </div>
+                </div>
 
-            <!-- imagen) -->
-            <div>
-                <img src="" alt="colegio">
+                <div class="col-md-6 mt-5 mt-md-0 text-center contenedor-imagen-inicio">
+                    <img src="" alt="colegio" class="img-fluid rounded imagen-colegio">
+                </div>
             </div>
         </section>
 
-        <!-- seccion 2 mini biografia (segunda imagen) -->
-        <section id="biografia">
-            <img src="" alt="Historia del colegio">
-            
-            <div>
-                <h2>Nuestra Historia</h2>
-                <p>Acompañando a las familias en la educación integral de sus hijos.</p>
-                <p>En Deep College creemos que la educación va mucho más allá de las aulas. Nacimos con la vocación de crear un espacio donde la excelencia académica conviva con el desarrollo humano y emocional.</p>
-                <p>Contamos con un equipo de profesionales apasionados que guían a cada alumno para que descubra su verdadero potencial y se convierta en un aporte positivo para la sociedad.</p>
-                <a href="#">Leer más sobre nosotros <i class='bx bx-right-arrow-alt'></i></a>
+        <section id="biografia" class="container-fluid px-4 px-md-5 py-5 seccion-biografia">
+            <div class="row align-items-center fila-biografia">
+                <div class="col-md-5 mb-5 mb-md-0 text-center contenedor-imagen-biografia">
+                    <img src="" alt="Historia del colegio" class="img-fluid rounded imagen-historia">
+                </div>
+                
+                <div class="col-md-7 ps-md-5 contenedor-texto-biografia">
+                    <h2 class="display-6 fw-bold mb-4 subtitulo-historia">Nuestra Historia</h2>
+                    <p class="fs-5 fw-semibold mb-3 lema-historia">Acompañando a las familias en la educación integral de sus hijos.</p>
+                    <p class="mb-3 parrafo-historia">En Deep College creemos que la educación va mucho más allá de las aulas. Nacimos con la vocación de crear un espacio donde la excelencia académica conviva con el desarrollo humano y emocional.</p>
+                    <p class="mb-4 parrafo-historia">Contamos con un equipo de profesionales apasionados que guían a cada alumno para que descubra su verdadero potencial y se convierta en un aporte positivo para la sociedad.</p>
+                    <a href="#" class="text-decoration-none fw-bold d-inline-flex align-items-center enlace-leer-mas">Leer más sobre nosotros <i class='bx bx-right-arrow-alt fs-4 ms-1'></i></a>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- footer -->
-    <footer>
-        <div>
-            <span>Deep College</span>
-            <p>Formando líderes desde 2026. Educación de calidad y excelencia académica.</p>
-        </div>
-
-        <div>
-            <span>Contacto</span>
-            <ul>
-                <li>
-                    <i class="bx bx-map"></i> Av. Ubicación 123
-                </li>
-                <li>
-                    <i class="bx bx-phone"></i> +56 9 9876 5432
-                </li>
-                <li>
-                    <i class="bx bx-envelope"></i> correo.ejemplo@colegio.cl
-                </li>
-            </ul>
+    <footer class="container-fluid py-5 contenedor-pie">
+        <div class="row">
+            <div class="col-md-6 px-5 mb-4 mb-md-0">
+                <img src="images/logo-deep-white.png" class="logo mb-3" alt="Logo Colegio">
+                <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+                <hr>
+                <div class="d-flex mt-3">
+                    <a href="#" class="me-3">
+                        <img class="logos-enlaces" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
+                    </a>
+                    <a href="#" class="me-3">
+                        <img class="logos-enlaces" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
+                    </a>
+                    <a href="#" class="me-3">
+                        <img class="logos-enlaces" src="images/logo-white.png" alt="Logotipo X">
+                    </a>
+                    <a href="#" class="me-3">
+                        <img class="logos-enlaces" src="images/InBug-White.png" alt="Logotipo LinkedIn">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 px-5">
+                <ul class="list-unstyled">
+                    <li class="mb-4">
+                        <span class="fs-5 fw-bold">Contacto</span>
+                    </li>
+                    <li class="mb-2 d-flex align-items-center">
+                        <i class="bx bx-location-plus fs-5 me-2 icono-ubicacion"></i>
+                        Av. Ubicación 123
+                    </li>
+                    <li class="mb-2 d-flex align-items-center">
+                        <i class="bx bx-phone fs-5 me-2 icono-telefono"></i>
+                        +56 9 9876 5432
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <i class="bx bx-envelope fs-5 me-2 icono-correo"></i>
+                        correo.ejemplo@colegio.cl
+                    </li>
+                </ul>
+            </div>
         </div>
     </footer>
 

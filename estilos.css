@@ -247,6 +247,151 @@ a {
 
 /*color en directiva-registro-notas
 para los que tienen notas bajo 4.0*/
+
+
+
+/*LA ETIQUETA !IMPORTANT ES PARA DAR PRIORIDAD A UNA REGLA DE ESTILPO ES DECIR PASE LO QUE PASE
+SIEMPRE VA A MANTENER ESA REGLA ENCIMA DE OTRAS*/
 .monto-negativo{
-    color: #dc3545;
+    color: #dc3545 !important; 
+}
+
+
+
+/*ENCABEZADO */
+.encabezado-principal {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.enlace-logo {
+    color: #121A42 !important;
+}
+
+.lista-enlaces a {
+    color: #121A42;
+    transition: color 0.3s ease;
+}
+
+.lista-enlaces a:hover {
+    color: #3E5AE6;
+}
+
+.boton-ingresar {
+    background-color: #121A42 !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.boton-ingresar:hover {
+    background-color: #283A94 !important;
+}
+
+/*INICIO*/
+.seccion-inicio {
+    background-color: #ffffff;
+}
+
+.etiqueta-destacada {
+    background-color: #334ABD !important;
+    border-radius: 20px;
+    font-weight: normal;
+    color: white;
+}
+
+.parrafo-principal {
+    color: #555555;
+    line-height: 1.6;
+}
+
+.boton-postular {
+    background-color: #334ABD !important;
+    color: #ffffff !important;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.boton-postular:hover {
+    background-color: #3E5AE6 !important;
+}
+
+.boton-conocer {
+    background-color: transparent !important; 
+    color: #334ABD !important;
+    border: 2px solid #334ABD !important;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.boton-conocer:hover {
+    background-color: #334ABD !important;
+    color: #ffffff !important;
+}
+
+/*PARA IMAGENES*/
+.imagen-colegio {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/*para la biografia */
+.seccion-biografia {
+    background-color: #f2f2f2;
+}
+
+.subtitulo-historia {
+    color: #121A42;
+}
+
+.lema-historia {
+    color: #334ABD;
+}
+
+.parrafo-historia {
+    color: #555555;
+    line-height: 1.6;
+}
+
+.enlace-leer-mas {
+    color: #334ABD;
+    transition: color 0.3s ease;
+}
+
+.enlace-leer-mas:hover {
+    color: #121A42;
+}
+
+.imagen-historia {
+    max-height: 350px;
+    object-fit: cover;
+}
+
+/* PARA EL FOOTER*/
+.contenedor-pie {
+    background-color: #121A42;
+    color: #ffffff;
+}
+
+.titulo-pie {
+    color: #ffffff;
+}
+
+.lema-pie {
+    color: #ffffff;
+}
+
+.subtitulo-contacto {
+    color: #ffffff;
+}
+
+.item-contacto {
+    color: #b0b5d1;
+}
+
+.icono-contacto {
+    color: #ffffff;
 }
