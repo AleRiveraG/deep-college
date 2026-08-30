@@ -35,4 +35,5 @@ finalizar.addEventListener('click', ()=> {
     botones.forEach(boton => {
         boton.disabled = true;
     })
+    alert('Clase finalizada con exito!')
 })
