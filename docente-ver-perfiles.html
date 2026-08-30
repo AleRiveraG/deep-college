@@ -54,7 +54,7 @@
                     <section class="col-md-10 py-4 px-4">
                         <h1 class="mb-4">Ver perfiles por curso</h1>
                         
-                        <div class="caja-valor p-4 mb-4 d-flex justify-content-between align-items-end flex-wrap gap-3">
+                        <div class="caja-valor p-4 mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
                             <div>
                                 <label for="cursos" class="fw-bold mb-2">Seleccione un curso:</label>
                                 <select id="cursos" class="form-select campo-formulario">
@@ -64,10 +64,11 @@
                                     <option>4° Medio</option>
                                 </select>
                             </div>
-                            <div>
-                                <form>
-                                    <input id="busqueda" type="text" class="form-control campo-formulario" placeholder="Busqueda de alumno">
-                                </form>
+                            <div class="">
+                                <div class="contenedor-busqueda">
+                                    <input id="busqueda" class="form-control busqueda-input" placeholder="Buscar por nombre">
+                                    <i class="bx bx-search icono-busqueda"></i>
+                                </div>
                             </div>
                         </div>
                         <!-- Tabla con datos 1-->

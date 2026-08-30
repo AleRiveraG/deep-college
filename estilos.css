@@ -447,3 +447,25 @@ video {
     background-color: #334ABD;
     border-color: #334ABD;
 }
+
+/* contenedor-busqueda*/
+
+.contenedor-busqueda {
+    position: relative;
+}
+
+.busqueda-input {
+    background-color:#e0e0e0;
+    height: 50px;
+    border-radius: 30px;
+    padding-left: 40px;
+    border: none;
+}
+
+.icono-busqueda {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color:#1C2866;
+}
