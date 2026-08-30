@@ -1,11 +1,25 @@
 const cursos = document.querySelector('#curso');
-const tabla = document.querySelector('.tabla');
+const tabla = document.querySelector('#tabla-1');
+const tabla_2 = document.querySelector('#tabla-2');
+const tabla_3 = document.querySelector('#tabla-3');
 const calcular = document.querySelector('#btn-calcular');
 const registrar = document.querySelector('#btn-registrar');
 const inputs = document.querySelectorAll('input');
 
-cursos.addEventListener('change', ()=>{
-    tabla.classList.remove('d-none');
+cursos.addEventListener('change', (evento)=>{
+    const opcion = evento.target.value;
+    
+    tabla.classList.add('d-none');
+    tabla_2.classList.add('d-none');
+    tabla_3.classList.add('d-none');
+
+    if(opcion === '1-medio' || opcion === '4-medio') {
+        tabla.classList.remove('d-none');
+    } else if (opcion === '2-medio') {
+        tabla_2.classList.remove('d-none');
+    } else {
+        tabla_3.classList.remove('d-none')
+    }
 
 })
 

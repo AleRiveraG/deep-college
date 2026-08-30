@@ -57,14 +57,14 @@
                         <div class="caja-valor p-4 mb-4">
                             <label for="curso" class="fw-bold mb-2">Seleccione un curso:</label>
                             <select id="curso" class="form-select w-25 campo-formulario">
-                                <option>1° Medio</option>
-                                <option>2° Medio</option>
-                                <option>3° Medio</option>
-                                <option>4° Medio</option>
+                                <option value="1-medio">1° Medio</option>
+                                <option value="2-medio">2° Medio</option>
+                                <option value="3-medio">3° Medio</option>
+                                <option value="4-medio">4° Medio</option>
                             </select>
                         </div>
-                        
-                        <div class="table-responsive tabla d-none">
+                        <!-- Tabla con datos 1-->
+                        <div id="tabla-1" class="table-responsive tabla d-none">
                             <table class="table mb-0 text-center align-middle">
                                 <thead class="encabezado-tabla">
                                     <tr>
@@ -173,7 +173,226 @@
                                 <button id="btn-registrar" class="boton-calcular px-4">Registrar</button>
                             </div>
                         </div>
-                        
+                        <!-- Tabla con datos 2-->
+                        <div id="tabla-2" class="table-responsive tabla d-none">
+                            <table class="table mb-0 text-center align-middle">
+                                <thead class="encabezado-tabla">
+                                    <tr>
+                                        <th colspan="2" class="border-end border-bottom-0"></th>
+                                        <th colspan="2" class="border-end text-white" style="background-color: #1C2866;">Sumativa (35%)</th>
+                                        <th colspan="2" class="border-end text-white" style="background-color: #283A94;">Formativa (35%)</th>
+                                        <th colspan="3" class="border-end text-white" style="background-color: #334ABD;">Desempeño (30%)</th>
+                                        <th class="border-bottom-0"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="border-end" style="width: 5%;">Número</th>
+                                        <th class="border-end text-start" style="width: 20%;">Estudiante</th>
+                                        <th style="width: 8%;">ES1</th>
+                                        <th class="border-end" style="width: 8%;">ES2</th>
+                                        <th style="width: 8%;">EF1</th>
+                                        <th class="border-end" style="width: 8%;">EF2</th>
+                                        <th style="width: 8%;">ED1</th>
+                                        <th style="width: 8%;">ED2</th>
+                                        <th class="border-end" style="width: 8%;">ED3</th>
+                                        <th>Promedio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border-end">1</td>
+                                        <td class="border-end text-start">Juan Silva</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed3" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td id="promedio-1" class="fw-bold monto-valor promedio"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-end">2</td>
+                                        <td class="border-end text-start">John Doe</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed3" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td id="promedio-2" class="fw-bold monto-valor promedio"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-end">3</td>
+                                        <td class="border-end text-start">Jane Doe</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed3" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td id="promedio-3" class="fw-bold monto-valor promedio"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-end gap-3 mt-4">
+                                <button id="btn-calcular" class="btn btn-outline-secondary px-4">Calcular</button>
+                                <button id="btn-registrar" class="boton-calcular px-4">Registrar</button>
+                            </div>
+                        </div>
+                        <!-- Tabla con datos 3-->
+                        <div id="tabla-3" class="table-responsive tabla d-none">
+                            <table class="table mb-0 text-center align-middle">
+                                <thead class="encabezado-tabla">
+                                    <tr>
+                                        <th colspan="2" class="border-end border-bottom-0"></th>
+                                        <th colspan="2" class="border-end text-white" style="background-color: #1C2866;">Sumativa (35%)</th>
+                                        <th colspan="2" class="border-end text-white" style="background-color: #283A94;">Formativa (35%)</th>
+                                        <th colspan="3" class="border-end text-white" style="background-color: #334ABD;">Desempeño (30%)</th>
+                                        <th class="border-bottom-0"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="border-end" style="width: 5%;">Número</th>
+                                        <th class="border-end text-start" style="width: 20%;">Estudiante</th>
+                                        <th style="width: 8%;">ES1</th>
+                                        <th class="border-end" style="width: 8%;">ES2</th>
+                                        <th style="width: 8%;">EF1</th>
+                                        <th class="border-end" style="width: 8%;">EF2</th>
+                                        <th style="width: 8%;">ED1</th>
+                                        <th style="width: 8%;">ED2</th>
+                                        <th class="border-end" style="width: 8%;">ED3</th>
+                                        <th>Promedio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border-end">1</td>
+                                        <td class="border-end text-start">Esteban Quito</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed3" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td id="promedio-1" class="fw-bold monto-valor promedio"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-end">2</td>
+                                        <td class="border-end text-start">Elena Nito</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed3" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td id="promedio-2" class="fw-bold monto-valor promedio"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-end">3</td>
+                                        <td class="border-end text-start">Solomeo Paredes</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario es2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ef2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed1" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed2" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td class="border-end">
+                                            <input type="text" class="form-control form-control-sm text-center px-1 campo-formulario ed3" placeholder="Ej: 7.0">
+                                        </td>
+                                        <td id="promedio-3" class="fw-bold monto-valor promedio"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-end gap-3 mt-4">
+                                <button id="btn-calcular" class="btn btn-outline-secondary px-4">Calcular</button>
+                                <button id="btn-registrar" class="boton-calcular px-4">Registrar</button>
+                            </div>
+                        </div>
                         
                     </section>
                 </div>
