@@ -408,6 +408,7 @@ SIEMPRE VA A MANTENER ESA REGLA ENCIMA DE OTRAS*/
     overflow: hidden;
 }
 
+/* Video de fondo */
 video {
     width: 100%;
     height: auto;
@@ -415,6 +416,7 @@ video {
     filter: blur(10px);
     transform: scale(1.1);
 }
+
 .fondo-formulario {
     background-color: #ffffff; /*fondo blanco para la mitad del formulario*/
 }
