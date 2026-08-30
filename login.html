@@ -8,41 +8,41 @@
         <link href="estilos.css" rel="stylesheet">
         <link href="images/logo-deep-white.png" rel="icon">
     </head>
-    <body>
+    <body class="fondo-login">
         <!-- Fondo -->
         <div>
 
         </div>
         <!-- Login flotante-->
-        <div class="row vh-100">
-            <div class="col-6">
-                <img src="images/images.png" class="img-fluid">
-            </div>
-            <div class="col-6 bg-info">
-                <div class="">
-                    <div class=""> 
-                        <img src="images/logo deep.png" class="logo">
+        <div class="container-fluid p-0">
+            <div class="row m-0 vh-100 justify-content-center align-items-center">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+                    <div class="fondo-formulario p-4 border rounded">
+                        <div class="text-center mb-4"> 
+                            <img src="images/logo deep.png" class="logo mb-3">
+                            <h1 class="fw-bold fs-3 mb-2">Iniciar Sesión</h1>
+                        </div>
+                        <form>
+                            <div class="mb-3">
+                                <label for="correo" class="form-label fw-bold">Correo Electrónico</label>
+                                <input id="correo" type="email" class="form-control campo-formulario" placeholder="Ingrese su correo electrónico">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contrasena" class="form-label fw-bold">Contraseña</label>
+                                <input id="contrasena" type="password" class="form-control campo-formulario" placeholder="Contraseña">
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                                <div class="form-check m-0">
+                                    <input id="recuerdame" type="checkbox" class="form-check-input check-institucional">
+                                    <label for="recuerdame" class="form-check-label texto-secundario">Recuérdame</label>   
+                                </div>
+                                <a href="#" class="fw-bold enlace-olvido">¿Olvidó su contraseña?</a>
+                            </div>
+                            <div class="d-grid mt-2">
+                                <button id="btn-iniciar" type="submit" class="btn boton-calcular py-2 fs-5">Iniciar Sesión</button>
+                            </div>
+                        </form>
                     </div>
-                    <h1>Iniciar Sesión</h1>
-                    <form>
-                        <div>
-                            <label for="correo">Correo Electrónico</label>
-                            <input id="correo" type="email" placeholder="Ingrese su correo electrónico">
-                        </div>
-                        <div>
-                            <label for="contrasena">Contraseña</label>
-                            <input id="contrasena" type="password" placeholder="Contraseña">
-                        </div>
-                        <div>
-                            <input id="recuerdame" type="checkbox">
-                            <label for="recuerdame">Recuérdame</label>   
-                            <a href="#">¿Olvidó su contraseña?</a>
-                        </div>
-                        <div>
-                            <button id="btn-iniciar" type="submit">Iniciar Sesión</button>
-                        </div>
-                    </form>
-
                 </div>
             </div>
         </div>

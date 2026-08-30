@@ -396,3 +396,39 @@ SIEMPRE VA A MANTENER ESA REGLA ENCIMA DE OTRAS*/
     color: #ffffff;
 }
 
+/*PARA EL LOGIN*/
+/* Fondos */
+.fondo-login {
+    background-color: #f8f9fa;
+}
+
+.fondo-formulario {
+    background-color: #ffffff; /*fondo blanco para la mitad del formulario*/
+}
+
+/* Textos*/
+.texto-secundario {
+    color: #6c757d; /*Color gris para el texto de Recuérdame*/
+}
+
+/*Ajuste de la imagen*/
+.imagen-login {
+    object-fit: cover;
+}
+
+/*Enlace de recuperar contraseña*/
+.enlace-olvido {
+    color: #334ABD;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.enlace-olvido:hover {
+    color: #121A42;
+}
+
+/*Chequeo institucional*/
+.check-institucional:checked {
+    background-color: #334ABD;
+    border-color: #334ABD;
+}
