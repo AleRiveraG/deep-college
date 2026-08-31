@@ -470,7 +470,7 @@ video {
     color:#1C2866;
 }
 
-/*Extras*/
+/*Extras docente pagina principal*/
 .fondo-panel{
     background-color: #ffffff;
 }
@@ -481,4 +481,37 @@ video {
 
 .texto-destacado{
     color: #121A42;
+}
+
+
+.icono-eventos {
+    color: #334ABD;
+}
+
+/*extras vista pagina principal estudiante*/
+
+/* Colores para los íconos de las tarjetas de métricas del estudiante */
+.icono-metrica-neutra {
+    color: #3E5AE6;
+}
+
+.icono-metrica-ok {
+    color: #198754;
+}
+
+.icono-metrica-alerta {
+    color: #ffc107;
+}
+
+.icono-metrica-info {
+    color: #0dcaf0;
+}
+
+/*estas dos para evento proximo importante*/
+.borde-peligro {
+    border: 2px solid #dc3545 !important; 
+}
+
+.texto-peligro {
+    color: #dc3545;
 }
