@@ -469,3 +469,16 @@ video {
     transform: translateY(-50%);
     color:#1C2866;
 }
+
+/*Extras*/
+.fondo-panel{
+    background-color: #ffffff;
+}
+
+.tarjeta-blanca{
+    background-color: #ffffff;
+}
+
+.texto-destacado{
+    color: #121A42;
+}
