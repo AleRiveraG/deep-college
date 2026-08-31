@@ -3,8 +3,9 @@ const tabla = document.querySelector('#tabla-1');
 const tabla_2 = document.querySelector('#tabla-2');
 const tabla_3 = document.querySelector('#tabla-3');
 const botones = document.querySelectorAll('.botones');
-const registrar = document.querySelector('#registrar');
-const finalizar = document.querySelector('#finalizar');
+const registrar = document.querySelector('.registrar');
+const finalizar = document.querySelector('.finalizar');
+const cont_botones = document.querySelector('#cont-botones');
 
 curso.addEventListener('change', (evento)=> {
     const opcion = evento.target.value;
@@ -16,6 +17,8 @@ curso.addEventListener('change', (evento)=> {
     tabla.classList.add('d-none');
     tabla_2.classList.add('d-none');
     tabla_3.classList.add('d-none');
+
+    cont_botones.classList.remove('d-none')
 
     if(opcion === '1-medio' || opcion === '4-medio') {
         tabla.classList.remove('d-none');

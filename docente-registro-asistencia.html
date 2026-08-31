@@ -21,6 +21,7 @@
             </div>
         </header>
         <main>
+            <!-- Barra de navegación lateral -->
             <div class="container-fluid p-0">
                 <div class="row m-0">
                     <aside class="col-md-2 sidebar min-vh-100">
@@ -51,6 +52,7 @@
                             </a>
                         </nav>
                     </aside>
+
                     <section class="col-md-10 py-4 px-4">
                         <h1 class="mb-4">Registro de asistencia</h1>
                         <h2 class="fs-6 mb-4">Registra la asistencia de los alumnos de cada clase.</h2>
@@ -64,6 +66,7 @@
                                 <option value="4-medio">4° Medio</option>
                             </select>
                         </div>
+
                         <!-- Tabla con datos 1 -->
                         <div id="tabla-1" class="d-none table-responsive">
                             <table class="table mb-0 align-middle">
@@ -82,11 +85,11 @@
                                         <td>Zhaito Perez</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_1" id="presente_1" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_1">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_1" id="presente_1_1" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_1_1">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_1" id="ausente_1" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_1">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_1" id="ausente_1_1" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_1_1">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
@@ -96,11 +99,11 @@
                                         <td>Susake Martinez</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_2" id="presente_2" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_2">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_2" id="presente_1_2" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_1_2">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_2" id="ausente_2" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_2">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_2" id="ausente_1_2" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_1_2">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
@@ -110,20 +113,16 @@
                                         <td>Won Silva</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_3" id="presente_3" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_3">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_3" id="presente_1_3" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_1_3">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_3" id="ausente_3" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_3">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_3" id="ausente_1_3" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_1_3">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="d-flex justify-content-end gap-3 mt-4">
-                                <button id="registrar" type="submit" class="boton-calcular px-4">Registrar asistencia</button>
-                                <button id="finalizar" type="reset" class="btn btn-outline-secondary px-4">Finalizar clase</button>
-                            </div>
                         </div>
                         <!-- Tabla con datos 2-->
                         <div id="tabla-2" class="d-none table-responsive">
@@ -143,11 +142,11 @@
                                         <td>Silva Perez</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_1" id="presente_1" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_1">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_1" id="presente_2_1" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_2_1">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_1" id="ausente_1" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_1">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_1" id="ausente_2_1" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_2_1">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
@@ -157,11 +156,11 @@
                                         <td>Doe Martinez</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_2" id="presente_2" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_2">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_2" id="presente_2_2" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_2_2">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_2" id="ausente_2" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_2">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_2" id="ausente_2_2" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_2_2">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
@@ -171,21 +170,19 @@
                                         <td>Doe Silva</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_3" id="presente_3" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_3">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_3" id="presente_2_3" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_2_3">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_3" id="ausente_3" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_3">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_3" id="ausente_2_3" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_2_3">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="d-flex justify-content-end gap-3 mt-4">
-                                <button id="registrar" type="submit" class="boton-calcular px-4">Registrar asistencia</button>
-                                <button id="finalizar" type="reset" class="btn btn-outline-secondary px-4">Finalizar clase</button>
-                            </div>
                         </div>
+
+                        <!-- Tabla con datos 3-->
                         <div id="tabla-3" class="d-none table-responsive">
                             <table class="table mb-0 align-middle">
                                 <thead class="encabezado-tabla">
@@ -203,11 +200,11 @@
                                         <td>Quito Perez</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_1" id="presente_1" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_1">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_1" id="presente_3_1" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_3_1">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_1" id="ausente_1" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_1">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_1" id="ausente_3_1" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_3_1">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
@@ -217,11 +214,11 @@
                                         <td>Del Bosque Martinez</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_2" id="presente_2" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_2">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_2" id="presente_3_2" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_3_2">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_2" id="ausente_2" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_2">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_2" id="ausente_3_2" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_3_2">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
@@ -231,21 +228,24 @@
                                         <td>Paredes Silva</td>
                                         <td>
                                             <form class="d-flex gap-2 mb-0">
-                                                <input type="radio" class="btn-check botones presente" name="asistencia_3" id="presente_3" autocomplete="off">
-                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_3">Presente</label>
+                                                <input type="radio" class="btn-check botones presente" name="asistencia_3" id="presente_3_3" autocomplete="off">
+                                                <label class="btn btn-outline-success btn-sm px-3" for="presente_3_3">Presente</label>
 
-                                                <input type="radio" class="btn-check botones ausente" name="asistencia_3" id="ausente_3" autocomplete="off">
-                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_3">Ausente</label>
+                                                <input type="radio" class="btn-check botones ausente" name="asistencia_3" id="ausente_3_3" autocomplete="off">
+                                                <label class="btn btn-outline-danger btn-sm px-3" for="ausente_3_3">Ausente</label>
                                             </form>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div id="cont-botones" class="d-none">
                             <div class="d-flex justify-content-end gap-3 mt-4">
-                                <button id="registrar" type="submit" class="boton-calcular px-4">Registrar asistencia</button>
-                                <button id="finalizar" type="reset" class="btn btn-outline-secondary px-4">Finalizar clase</button>
+                                <button type="submit" class="boton-calcular px-4 registrar">Registrar asistencia</button>
+                                <button type="reset" class="btn btn-outline-secondary px-4 finalizar">Finalizar clase</button>
                             </div>
                         </div>
+                        
                     </section>
                 </div>
             </div>
