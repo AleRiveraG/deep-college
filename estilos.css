@@ -269,17 +269,17 @@ SIEMPRE VA A MANTENER ESA REGLA ENCIMA DE OTRAS*/
 }
 
 .lista-enlaces a {
-    color: #121A42;
+    color:#ffffff;
     transition: color 0.3s ease;
 }
 
 .lista-enlaces a:hover {
-    color: #3E5AE6;
+    color:#b0b5d1;
 }
 
 .boton-ingresar {
-    background-color: #121A42 !important;
-    color: #ffffff !important;
+    background-color: white !important;
+    color:#1C2866 !important;
     font-weight: bold;
     border-radius: 5px;
     padding: 0.5rem 1.5rem;
@@ -287,7 +287,7 @@ SIEMPRE VA A MANTENER ESA REGLA ENCIMA DE OTRAS*/
 }
 
 .boton-ingresar:hover {
-    background-color: #283A94 !important;
+    background-color:#b0b5d1 !important;
 }
 
 /*INICIO*/
