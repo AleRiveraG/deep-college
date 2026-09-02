@@ -12,8 +12,9 @@
         <header>
             <div class="d-flex justify-content-between align-items-center py-3 px-4">
                 <div class="d-flex align-items-center">
+                    <!-- Se ajustó la ruta de la imagen para usar el logo blanco estándar -->
                     <img src="images/logo-deep-white.png" height="50" class="me-3" alt="Logo Colegio">
-                    <span class="badge rol-docente fs-6 ms-2">Estudiante</span>
+                    <span class="badge rol-estudiante fs-6 ms-2">Estudiante</span>
                 </div>
                 <a href="index.html">
                     <button id="btn-cerrar" class="btn btn-sm">Cerrar sesión</button>
@@ -34,7 +35,7 @@
                                 <i class="bx bx-user-id-card fs-4 me-2 icono-perfil"></i>
                                 Mi perfil
                             </a>
-                            <a href="estudiante-asistencia.html" class="list-group-item d-flex align-items-center py-3 active">
+                            <a href="estudiante-asistencia.html" class="list-group-item d-flex align-items-center py-3 active" style="background-color: #283A94; border-color: #283A94;">
                                 <i class="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i>
                                 Asistencia
                             </a>
@@ -49,60 +50,81 @@
                         </nav>
                     </aside>
                     
-                    <section class="col-md-10 py-4 px-4 seccion-asistencia">
-                        <h1 class="titulo-principal mb-4">Mi asistencia</h1>
-                        <h2 class="fs-6 mb-4">Consulta tu asistencia, inasistencias y tu porcentaje de asistencia.</h2>
-                        <div class="mb-5">
-                            <div class="caja-valor mb-3">
-                                <div>
-                                    <i class="bx bx-percentage"></i>
-                                    <span>91%</span>
-                                    <span>Asistencia Global</span>
-                                </div>
-                                <div>
-                                    <i class="bx bx-calendar-alt"></i>
-                                    <span>50</span>
-                                    <span>Total Clases</span>
+                    <section class="col-md-10 py-5 px-4 px-md-5 fondo-panel">
+                        
+                        <div class="tarjeta-blanca p-4 p-md-5 mb-5 border rounded">
+                            <h1 class="titulo-principal mb-0">Mi asistencia</h1>
+                        </div>
+                        
+                        <!-- Tarjetas de resumen general -->
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="tarjeta-blanca p-4 border rounded caja-valor h-100 d-flex flex-column align-items-center justify-content-center text-center">
+                                    <i class="bx bx-percentage fs-1 icono-metrica-neutra mb-2"></i>
+                                    <span class="d-block fs-3 fw-bold monto-valor">91%</span>
+                                    <span class="etiqueta-valor small texto-secundario">Asistencia Global</span>
                                 </div>
                             </div>
-                            <div class="caja-valor mb-3">
-                                <div>
-                                    <i class="bx bx-check-circle"></i>
-                                    <span>46</span>
-                                    <span>Asistencias</span>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="tarjeta-blanca p-4 border rounded caja-valor h-100 d-flex flex-column align-items-center justify-content-center text-center">
+                                    <i class="bx bx-calendar-alt fs-1 icono-eventos mb-2"></i>
+                                    <span class="d-block fs-3 fw-bold monto-valor">50</span>
+                                    <span class="etiqueta-valor small texto-secundario">Total Clases</span>
                                 </div>
-                                <div>
-                                    <i class="bx bx-x-circle"></i>
-                                    <span>4</span>
-                                    <span>Inasistencias</span>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="tarjeta-blanca p-4 border rounded caja-valor h-100 d-flex flex-column align-items-center justify-content-center text-center">
+                                    <i class="bx bx-check-circle fs-1 icono-metrica-ok mb-2"></i>
+                                    <span class="d-block fs-3 fw-bold monto-valor">46</span>
+                                    <span class="etiqueta-valor small texto-secundario">Asistencias</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="tarjeta-blanca p-4 border rounded caja-valor h-100 d-flex flex-column align-items-center justify-content-center text-center">
+                                    <i class="bx bx-x-circle fs-1 texto-peligro mb-2"></i>
+                                    <span class="d-block fs-3 fw-bold texto-peligro">4</span>
+                                    <span class="etiqueta-valor small texto-secundario">Inasistencias</span>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Detalle de inasistencias en tarjetas rojas -->
                         <div class="mb-5">
-                            <h2 class="subtitulo mb-4">Detalle de asistencia</h2>
-                            <div class="caja-valor mb-3">
-                                <h3>Lunes 24 de Agosto</h3>
-                                <p>Ausente</p>
-                            </div>
-                            <div class="caja-valor mb-3">
-                                <h3>Jueves 27 de Agosto</h3>
-                                <p>Ausente</p>
-                            </div>
-                            <div class="caja-valor mb-3">
-                                <h3>Martes 7 de Julio</h3>
-                                <p>Ausente</p>
-                            </div>
-                            <div class="caja-valor mb-3">
-                                <h3>Viernes 28 de Agosto</h3>
-                                <p>Ausente</p>
+                            <h2 class="subtitulo mb-4">Detalle de inasistencias</h2>
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="tarjeta-blanca p-4 border rounded caja-valor h-100 borde-peligro">
+                                        <h3 class="fs-6 fw-bold mb-2">Lunes 24 de Agosto</h3>
+                                        <p class="mb-0 small texto-peligro fw-semibold"><i class='bx bx-error-circle me-1'></i>Ausente</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="tarjeta-blanca p-4 border rounded caja-valor h-100 borde-peligro">
+                                        <h3 class="fs-6 fw-bold mb-2">Jueves 27 de Agosto</h3>
+                                        <p class="mb-0 small texto-peligro fw-semibold"><i class='bx bx-error-circle me-1'></i>Ausente</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="tarjeta-blanca p-4 border rounded caja-valor h-100 borde-peligro">
+                                        <h3 class="fs-6 fw-bold mb-2">Martes 7 de Julio</h3>
+                                        <p class="mb-0 small texto-peligro fw-semibold"><i class='bx bx-error-circle me-1'></i>Ausente</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="tarjeta-blanca p-4 border rounded caja-valor h-100 borde-peligro">
+                                        <h3 class="fs-6 fw-bold mb-2">Viernes 28 de Agosto</h3>
+                                        <p class="mb-0 small texto-peligro fw-semibold"><i class='bx bx-error-circle me-1'></i>Ausente</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div>
-                            <i class="bx bx-alert-triangle"></i>
-                            <p>Recuerda que la asistencia minima exigida es del 70%.</p>
+                        <!-- Alerta informativa -->
+                        <div class="tarjeta-blanca p-4 border rounded d-flex align-items-center">
+                            <i class="bx bx-alert-triangle fs-2 icono-metrica-alerta me-3"></i>
+                            <p class="mb-0 fs-5 fw-bold texto-destacado">Recuerda que la asistencia mínima exigida es del 70%.</p>
                         </div>
+                        
                     </section>
                 </div>
             </div>
@@ -135,7 +157,7 @@
                                 <span class="fs-5 fw-bold">Contacto</span>
                             </li>
                             <li class="mb-2 d-flex align-items-center">
-                                <i class="bx bx-location fs-5 me-2 icono-ubicacion"></i>
+                                <i class="bx bx-location-plus fs-5 me-2 icono-ubicacion"></i>
                                 Av. Ubicación 123
                             </li>
                             <li class="mb-2 d-flex align-items-center">

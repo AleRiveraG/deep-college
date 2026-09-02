@@ -42,7 +42,7 @@
                             <a href="directiva-registro-notas.html" class="list-group-item d-flex align-items-center py-3">
                                 <i class="bx bx-education fs-4 me-2 icono-notas"></i> Registro de notas
                             </a>
-                            <a href="directiva-registro-asistencia.html" class="list-group-item d-flex align-items-center py-3">
+                            <a href="directiva-registro-asistencia.html" class="list-group-item d-flex align-items-center py-3 active" style="background-color: #283A94; border-color: #283A94;">
                                 <i class="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i> Registro de asistencia
                             </a>
                             <a href="directiva-calculadora-sueldos.html" class="list-group-item d-flex align-items-center py-3">
@@ -54,255 +54,258 @@
                         </nav>
                     </aside>
 
-                    <section class="col-md-10 py-4 px-4">
-                        <h1 class="mb-4">Registro de asistencia</h1>
-                        <h2 class="fs-6 mb-4">Consulta la asistencia de forma general por cada curso.</h2>
+                    <section class="col-md-10 py-5 px-4 px-md-5 fondo-panel">
                         
-                        <div class="p-4 mb-5 caja-valor">
-                            <label for="curso" class="form-label fw-bold small">Seleccione curso</label>
-                            <select id="curso" class="form-select campo-formulario w-25">
-                                <option value="1ro-basico">1° Básico</option>
-                                <option value="2do-basico">2° Básico</option>
-                                <option value="3ro-basico">3° Básico</option>
-                                <option value="4to-basico">4° Básico</option>
-                                <option value="5to-basico">5° Básico</option>
-                                <option value="6to-basico">6° Básico</option>
-                                <option value="7mo-basico">7° Básico</option>
-                                <option value="8vo-basico">8° Básico</option>
-                                <option value="1ro-medio">1° Medio</option>
-                                <option value="2do-medio">2° Medio</option>
-                                <option value="3ro-medio">3° Medio</option>
-                                <option value="4to-medio">4° Medio</option>   
-                            </select>
+                        <div class="tarjeta-blanca p-4 p-md-5 mb-5 border rounded">
+                            <h1 class="titulo-principal mb-2">Registro de asistencia</h1>
+                            <h2 class="fs-6 texto-secundario mb-4">Consulta la asistencia de forma general por cada curso.</h2>
+                            
+                            <div class="p-4 caja-valor border rounded">
+                                <label for="curso" class="form-label fw-bold small">Seleccione curso</label>
+                                <select id="curso" class="form-select campo-formulario w-100 w-md-25">
+                                    <option value="1ro-basico">1° Básico</option>
+                                    <option value="2do-basico">2° Básico</option>
+                                    <option value="3ro-basico">3° Básico</option>
+                                    <option value="4to-basico">4° Básico</option>
+                                    <option value="5to-basico">5° Básico</option>
+                                    <option value="6to-basico">6° Básico</option>
+                                    <option value="7mo-basico">7° Básico</option>
+                                    <option value="8vo-basico">8° Básico</option>
+                                    <option value="1ro-medio">1° Medio</option>
+                                    <option value="2do-medio">2° Medio</option>
+                                    <option value="3ro-medio">3° Medio</option>
+                                    <option value="4to-medio">4° Medio</option>   
+                                </select>
+                            </div>
                         </div>
                         
                         <div>
                             <div class="resumenes row m-0 d-none">
-                                <h2 class="mb-4">Detalle por curso</h2>
+                                <h3 class="mb-4 subtitulo">Detalle por curso</h3>
+                                
                                 <!-- 1ro Básico -->
-                                <div id="curso-1ro-basico" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 1° Básico</h3>
+                                <div id="curso-1ro-basico" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 1° Básico</h4>
                                         <label for="asistencia-global-1"></label>
-                                        <progress id="asistencia-global-1" max="100" value="90" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-1" max="100" value="90" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">90%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">90%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 2do Básico -->
-                                <div id="curso-2do-basico" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 2° Básico</h3>
+                                <div id="curso-2do-basico" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 2° Básico</h4>
                                         <label for="asistencia-global-2"></label>
-                                        <progress id="asistencia-global-2" max="100" value="90" class="w-100 mb-3"></progress>
-                                        <span>90%</span>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-2" max="100" value="90" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">90%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">90%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 3ro Básico -->
-                                <div id="curso-3ro-basico" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 3° Básico</h3>
+                                <div id="curso-3ro-basico" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 3° Básico</h4>
                                         <label for="asistencia-global-3"></label>
-                                        <progress id="asistencia-global-3" max="100" value="87" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-3" max="100" value="87" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">87%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">87%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 4to Básico -->
-                                <div id="curso-4to-basico" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 4° Básico</h3>
+                                <div id="curso-4to-basico" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 4° Básico</h4>
                                         <label for="asistencia-global-4"></label>
-                                        <progress id="asistencia-global-4" max="100" value="90" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-4" max="100" value="90" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">90%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">90%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 5to Básico -->
-                                <div id="curso-5to-basico" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 5° Básico</h3>
+                                <div id="curso-5to-basico" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 5° Básico</h4>
                                         <label for="asistencia-global-5"></label>
-                                        <progress id="asistencia-global-5" max="100" value="95" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-5" max="100" value="95" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">95%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">95%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 6to Básico -->
-                                <div id="curso-6to-basico" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 6° Básico</h3>
+                                <div id="curso-6to-basico" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 6° Básico</h4>
                                         <label for="asistencia-global-6"></label>
-                                        <progress id="asistencia-global-6" max="100" value="85" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-6" max="100" value="85" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">85%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">85%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 7mo Básico -->
-                                <div id="curso-7mo-basico" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 7° Básico</h3>
+                                <div id="curso-7mo-basico" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 7° Básico</h4>
                                         <label for="asistencia-global-7"></label>
-                                        <progress id="asistencia-global-7" max="100" value="90" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-7" max="100" value="90" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">90%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">90%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 8vo Básico -->
-                                <div id="curso-8vo-basico" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 8° Básico</h3>
+                                <div id="curso-8vo-basico" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 8° Básico</h4>
                                         <label for="asistencia-global-8"></label>
-                                        <progress id="asistencia-global-8" max="100" value="92" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-8" max="100" value="92" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">92%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">92%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 1ro Medio -->
-                                <div id="curso-1ro-medio" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 1° Medio</h3>
+                                <div id="curso-1ro-medio" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 1° Medio</h4>
                                         <label for="asistencia-global-9"></label>
-                                        <progress id="asistencia-global-9" max="100" value="92" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-9" max="100" value="92" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">92%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">92%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 2do Medio -->
-                                <div id="curso-2do-medio" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 2° Medio</h3>
+                                <div id="curso-2do-medio" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 2° Medio</h4>
                                         <label for="asistencia-global-10"></label>
-                                        <progress id="asistencia-global-10" max="100" value="90" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-10" max="100" value="90" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">90%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">90%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 3ro Medio -->
-                                <div id="curso-3ro-medio" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 3° Medio</h3>
+                                <div id="curso-3ro-medio" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 3° Medio</h4>
                                         <label for="asistencia-global-11"></label>
-                                        <progress id="asistencia-global-11" max="100" value="96" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-11" max="100" value="96" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">96%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">96%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 4to Medio -->
-                                <div id="curso-4to-medio" class="col-md-4 mb-4 p-0 d-none">
-                                    <div class="p-4 caja-valor h-100">
-                                        <h3 class="fs-5 mb-3">Curso: 4° Medio</h3>
+                                <div id="curso-4to-medio" class="col-12 mb-4 d-none">
+                                    <div class="p-4 p-md-5 tarjeta-blanca border rounded caja-valor w-100">
+                                        <h4 class="fs-4 mb-4 fw-bold">Curso: 4° Medio</h4>
                                         <label for="asistencia-global-12"></label>
-                                        <progress id="asistencia-global-12" max="100" value="80" class="w-100 mb-3"></progress>
-                                        <div class="d-flex justify-content-between text-center">
+                                        <progress id="asistencia-global-12" max="100" value="80" class="w-100 mb-4" style="height: 20px;"></progress>
+                                        <div class="d-flex justify-content-around text-center">
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-valor">30</span>
-                                                <span class="etiqueta-valor small">Total clases</span>
+                                                <span class="d-block fs-3 fw-bold monto-valor">30</span>
+                                                <span class="etiqueta-valor small texto-secundario">Total clases</span>
                                             </div>
                                             <div>
-                                                <span class="d-block fs-4 fw-bold monto-resultado">80%</span>
-                                                <span class="etiqueta-valor small">Asistencia global</span>
+                                                <span class="d-block fs-3 fw-bold monto-resultado">80%</span>
+                                                <span class="etiqueta-valor small texto-secundario">Asistencia global</span>
                                             </div>
                                         </div>
                                     </div>

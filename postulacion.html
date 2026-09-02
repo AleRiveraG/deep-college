@@ -1,0 +1,174 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep College - Postulación</title>
+ 
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="estilos.css" rel="stylesheet">
+    <link rel="icon" href="images/logo-deep-white.png">
+</head>
+ 
+<body>
+ 
+    <header class="py-3 px-4 px-md-5">
+        <nav class="d-flex justify-content-between align-items-center navegacion-superior">
+            <a href="index.html" class="d-flex align-items-center text-decoration-none fs-4 fw-bold">
+                <i class="bx bxs-graduation fs-2 me-2"></i>
+            </a>
+ 
+            <ul class="d-flex gap-4 list-unstyled m-0 p-0 lista-enlaces">
+                <li><a href="index.html#inicio" class="text-decoration-none fw-semibold">Inicio</a></li>
+                <li><a href="index.html#biografia" class="text-decoration-none fw-semibold">Nosotros</a></li>
+                <li><a href="index.html#mision" class="text-decoration-none fw-semibold">Misión</a></li>
+                <li><a href="index.html#vision" class="text-decoration-none fw-semibold">Visión</a></li>
+            </ul>
+ 
+            <a href="login.html" class="btn d-flex align-items-center boton-ingresar">
+                <i class="bx bx-log-in fs-5 me-2"></i> Ingresar
+            </a>
+        </nav>
+    </header>
+ 
+    <main class="contenido-principal">
+ 
+        <section id="postulacion" class="container-fluid px-4 px-md-5 py-5 seccion-biografia">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+ 
+                    <div class="text-center mb-5">
+                        <span class="badge px-3 py-2 mb-3 fs-6 etiqueta-destacada">Admisión 2027</span>
+                        <h1 class="display-6 fw-bold mb-3 subtitulo-historia">Postula a Deep College</h1>
+                        <p class="fs-5 parrafo-historia">Completa el siguiente formulario con los datos del postulante y del apoderado. Nuestro equipo de admisión se pondrá en contacto contigo a la brevedad.</p>
+                    </div>
+ 
+                    <form class="p-4 p-md-5 border rounded caja-valor">
+ 
+                        <h2 class="fs-5 fw-bold mb-4">Datos del postulante</h2>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="nombre-postulante" class="form-label fw-bold">Nombre completo *</label>
+                                <input id="nombre-postulante" type="text" class="form-control campo-formulario" placeholder="Nombre y apellidos del postulante">
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="rut-postulante" class="form-label fw-bold">Rut del postulante *</label>
+                                <input id="rut-postulante" type="text" class="form-control campo-formulario" placeholder="12.345.678-9">
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label for="fecha-nacimiento" class="form-label fw-bold">Fecha de nacimiento *</label>
+                                <input id="fecha-nacimiento" type="date" class="form-control campo-formulario">
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="curso-postula" class="form-label fw-bold">Curso al que postula *</label>
+                                <select id="curso-postula" class="form-select campo-formulario">
+                                    <option value="" selected disabled>Seleccione un curso</option>
+                                    <option value="1-basico">1° Básico</option>
+                                    <option value="2-basico">2° Básico</option>
+                                    <option value="3-basico">3° Básico</option>
+                                    <option value="4-basico">4° Básico</option>
+                                    <option value="5-basico">5° Básico</option>
+                                    <option value="6-basico">6° Básico</option>
+                                    <option value="7-basico">7° Básico</option>
+                                    <option value="8-basico">8° Básico</option>
+                                    <option value="1-medio">1° Medio</option>
+                                    <option value="2-medio">2° Medio</option>
+                                    <option value="3-medio">3° Medio</option>
+                                    <option value="4-medio">4° Medio</option>
+                                </select>
+                            </div>
+                        </div>
+ 
+                        <hr class="my-4" style="border-color: #d0d0d0;">
+ 
+                        <h2 class="fs-5 fw-bold mb-4">Datos del apoderado</h2>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="nombre-apoderado" class="form-label fw-bold">Nombre completo *</label>
+                                <input id="nombre-apoderado" type="text" class="form-control campo-formulario" placeholder="Nombre y apellidos del apoderado">
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="rut-apoderado" class="form-label fw-bold">Rut del apoderado *</label>
+                                <input id="rut-apoderado" type="text" class="form-control campo-formulario" placeholder="12.345.678-9">
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label for="correo-apoderado" class="form-label fw-bold">Correo de contacto *</label>
+                                <input id="correo-apoderado" type="email" class="form-control campo-formulario" placeholder="ejemplo@correo.cl">
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="telefono-apoderado" class="form-label fw-bold">Teléfono de contacto *</label>
+                                <input id="telefono-apoderado" type="text" class="form-control campo-formulario" placeholder="+56 9 1234 5678">
+                            </div>
+                        </div>
+ 
+                        <div class="mb-4">
+                            <label for="observaciones" class="form-label fw-bold">Observaciones</label>
+                            <textarea id="observaciones" class="form-control campo-formulario" rows="3" placeholder="Información adicional que quieras compartir (opcional)"></textarea>
+                        </div>
+ 
+                        <div class="form-check mb-4">
+                            <input id="terminos-postulacion" type="checkbox" class="form-check-input check-institucional">
+                            <label for="terminos-postulacion" class="form-check-label">Autorizo el uso de estos datos para el proceso de admisión</label>
+                        </div>
+ 
+                        <div class="text-center">
+                            <button id="btn-postular" type="submit" class="btn boton-calcular px-5 py-2 fs-5">Enviar postulación</button>
+                        </div>
+ 
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+ 
+    <footer class="container-fluid py-5 contenedor-pie">
+        <div class="row">
+            <div class="col-md-6 px-5 mb-4 mb-md-0">
+                <img src="images/logo-deep-white.png" class="logo mb-3" alt="Logo Colegio">
+                <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
+                <hr>
+                <div class="d-flex mt-3">
+                    <a href="#" class="me-3">
+                        <img class="logos-enlaces" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram">
+                    </a>
+                    <a href="#" class="me-3">
+                        <img class="logos-enlaces" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook">
+                    </a>
+                    <a href="#" class="me-3">
+                        <img class="logos-enlaces" src="images/logo-white.png" alt="Logotipo X">
+                    </a>
+                    <a href="#" class="me-3">
+                        <img class="logos-enlaces" src="images/InBug-White.png" alt="Logotipo LinkedIn">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 px-5">
+                <ul class="list-unstyled">
+                    <li class="mb-4">
+                        <span class="fs-5 fw-bold">Contacto</span>
+                    </li>
+                    <li class="mb-2 d-flex align-items-center">
+                        <i class="bx bx-location fs-5 me-2 icono-ubicacion"></i>
+                        Av. Ubicación 123
+                    </li>
+                    <li class="mb-2 d-flex align-items-center">
+                        <i class="bx bx-phone fs-5 me-2 icono-telefono"></i>
+                        +56 9 9876 5432
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <i class="bx bx-envelope fs-5 me-2 icono-correo"></i>
+                        correo.ejemplo@colegio.cl
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+ 
+    <script src="scripts/postulacion.js"></script>
+</body>
+</html>
