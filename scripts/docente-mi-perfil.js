@@ -3,7 +3,7 @@ const nombres = document.querySelector('#nombres').value;
 const apellidos = document.querySelector('#apellidos').value;
 const rut = document.querySelector('#rut').value;
 const telefono = document.querySelector('#telefono').value;
-const correo = document.querySelector('#correo').value;
+const correo = document.querySelector('#correo_docente').value;
 const inputs = document.querySelectorAll('input');
 const nivel = document.querySelector('#nivel');
 
