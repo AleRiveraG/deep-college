@@ -5,7 +5,7 @@ iniciar.addEventListener('click', (evento)=>{
     const correo = document.querySelector('#correo').value;
     const contrasena = document.querySelector('#contrasena').value;
 
-    if(!validarCorreo(correo)) {
+    if(!validarCorreo(correo) || buscarRol(correo) == null) {
         alert("Correo ingresado no valido, compruebe los datos");
         return;
     }
@@ -55,6 +55,12 @@ function validarContrasena(contrasena) {
 
 function buscarRol(correo) {
     let dominio = correo.split('@')[1];
-    let rol = dominio.split('.')[0]
-    return rol;
+    let rol = dominio.split('.')[0];
+    let colegio = dominio.split('.')[1];
+    if(colegio === 'deepcollege') {
+        return rol;
+    } else {
+        return null;
+    }
+    
 }
