@@ -1,0 +1,516 @@
+body {
+    font-family: Arial, sans-serif; /*letra para toda la pagina*/
+    margin: 0; /* con esto le quito los margenes blancos que trae por defecto*/
+    min-height: 100vh; /*esto hace que el body siempre toque el borde inferior*/
+    display: flex; /* los flex son para ordenar los elementos de arriba hacia abajo en orden */
+    flex-direction: column;
+}
+ 
+/* Encabezado */
+header {
+    background-color: #121A42;
+    color: #ffffff;
+}
+ 
+/* estilo para las etiquetas <a>*/
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: .75rem;
+}
+ 
+/* Etiqueta directiva que esta al lado del nombre del colegio*/
+.etiqueta-directiva {
+    background-color: #334ABD;
+    color: #ffffff;
+}
+ 
+/* boton cerrar sesion*/
+header #btn-cerrar {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+ 
+/*con el flex en 1 0 auto es para que el contenido principal se estire para rellenar el espacio libre entre el header y el footer*/
+main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/*esto hace que las cajas del bootstrap se estiren a la misma altura*/
+main .container-fluid{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+main .row {
+    flex: 1;
+}
+ 
+/* menu lateral */
+.sidebar {
+    background-color: #1C2866;
+    padding: 0;
+}
+ 
+/*opciones del menu lateral*/
+.sidebar .list-group-item {
+    background-color: transparent;
+    color: #ffffff;
+    border: none; /*quita los bordes que vienen por defecto*/
+    border-radius: 0; /*bordes cuadrados*/
+    border-bottom: 1px solid #283A94;/*le deja una linea separadora abajo*/
+}
+/*esto es para cuando paso el cursor por el menu va alternando el color*/
+.sidebar .list-group-item:hover {
+    background-color: #283A94;
+}
+ 
+/* titulos*/
+h1, h2 {
+    color: #121A42;
+}
+ 
+/* la barra antes ocupaba el ancho completo de la pagina con esto la limito*/
+#busqueda {
+    max-width: 340px;
+}
+ 
+/*cambia el color de la barra de busqueda cuando escribes*/
+#busqueda:focus {
+    border-color: #334ABD;
+}
+
+/*padding para las cajas de texto para que no este pegado a los bordes*/
+.table th,
+.table td {
+    padding: .9rem .75rem;
+    vertical-align: middle; /*y con esto centro el texto veticalmente*/
+}
+ 
+/*esto es para que las filas no sean de un solo color lo que hace es intercalando primera fila gris, segunda blanco*/
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+ 
+/* etiquetas del rol de los usuarios para cada etiqueta hay un color diferente*/
+.rol-docente {
+    background-color: #1C2866;
+    color: #ffffff;
+}
+ 
+.rol-estudiante {
+    background-color: #3E5AE6;
+    color: #ffffff;
+}
+ 
+.rol-auxiliar {
+    background-color: #283A94;
+    color: #ffffff;
+}
+ 
+/* Botones de editar y eliminar en la tabla */
+.boton-accion {
+    color: #334ABD;
+    margin-right: .5rem;
+    font-size: 1.1rem; /*con esto hago los iconos mas grandes*/
+}
+ 
+/*con esto le quito el margen derecho al ultimo boton para que no quede desalineado */
+.boton-accion:last-child {
+    margin-right: 0;
+}
+ 
+/*es lo mismo del boton de busqueda pero para los de accion*/
+.boton-accion:hover {
+    color: #3E5AE6;
+}
+ 
+
+/*con esto digo que el footer tenga fondo oscuro y el texto blanco*/
+footer {
+    background-color: #121A42;
+    color: #ffffff;
+}
+ 
+/*todo loq que este en el footer como enlaces o textos los pongo en color blanco*/
+footer a, footer span {
+    color: #ffffff;
+}
+ 
+
+
+/*les pongo color en currentcolor porque asi tienen el mismo color que el contenedor,
+si le cambian el color al contener por ejemplo footer span van a cambiar de color todos los elementos dentro,
+los deje tambien separados por clases por si solo se necesita cambiar uno*/
+.icono-inicio,
+.icono-perfil,
+.icono-gestion-academica,
+.icono-notas,
+.icono-asistencia,
+.icono-sueldos,
+.icono-horarios {
+    color: currentColor;
+}
+ 
+/* botones para editar y eliminar*/
+.icono-editar,
+.icono-eliminar {
+    color: currentColor;
+}
+ 
+/* iconos de informacion*/
+.icono-ubicacion,
+.icono-telefono,
+.icono-correo {
+    color: currentColor;
+}
+
+
+/*html-calculadora*/
+.caja-valor{
+    background-color: #f2f2f2;
+    border-radius: 5px; /*con esto redondea las esquinas de la caja*/
+}
+
+.monto-valor{
+    color: #121A42;
+    font-size: 1.25rem; /*le pongo en 1.25 rem para que sea un poco más grande*/
+}
+
+/*el focus es para que los estilos se apliquen solo cuando se haga click */
+.campo-formulario:focus{
+    border-color: #334ABD; /*cambia el color de gris a azul*/
+    box-shadow: 0 0 5px #334ABD; /*para las sombras de la caja para que no se vea tan plana*/
+    outline: 0; /*para quitar bordes por defecto*/
+}
+
+.boton-calcular {
+    background-color: #334ABD;
+    color: #ffffff;
+    font-weight: bold;
+    border: none; /*le quito el borde por defecto*/
+    padding: 0.5rem 1rem; /*espacio para que este ordenado*/
+    border-radius: 5px;
+}
+
+/*algo estetico para cuando pase el cursor por encima del boton sin hacer click cambie ligeramente el color*/
+.boton-calcular:hover {
+    background-color: #3E5AE6;
+    color: #ffffff;
+}
+
+/* color para haberes y descuentos*/
+.monto-resultado {
+    color: #334ABD;
+}
+
+/* fila de sueldo más grande*/
+.fila-total {
+    font-size: 1.15rem;
+    color: #121A42;
+}
+
+/*Descuentos en rojo solo aplica los que esten en columna-descuentos*/
+.columna-descuentos .monto-resultado{
+    color: #dc3545; 
+}
+
+/*html directiva-horarios*/
+.tabla-horarios td{
+    height: 80px; /*para que las tablas del horario sean más altas*/
+}
+
+.encabezado-tabla{
+    background-color: #f8f9fa;
+}
+
+/*Logos enlaces*/
+
+.logos-enlaces {
+    width: 16px;
+    height: auto;
+}
+
+/* Quitar lineas de hipervinculo a etiquetas <a>*/
+
+a {
+    text-decoration: none;
+}
+
+.logo {
+    width: 120px;
+}
+
+/*color en directiva-registro-notas
+para los que tienen notas bajo 4.0*/
+
+
+
+/*LA ETIQUETA !IMPORTANT ES PARA DAR PRIORIDAD A UNA REGLA DE ESTILPO ES DECIR PASE LO QUE PASE
+SIEMPRE VA A MANTENER ESA REGLA ENCIMA DE OTRAS*/
+.monto-negativo{
+    color: #dc3545 !important; 
+}
+
+
+
+/*ENCABEZADO */
+.encabezado-principal {
+    background-color:#121A42;
+}
+
+.enlace-logo {
+    color: #121A42 !important;
+}
+
+.lista-enlaces a {
+    color:#ffffff;
+    transition: color 0.3s ease;
+}
+
+.lista-enlaces a:hover {
+    color:#b0b5d1;
+}
+
+.boton-ingresar {
+    background-color: white !important;
+    color:#1C2866 !important;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.boton-ingresar:hover {
+    background-color:#b0b5d1 !important;
+}
+
+/*INICIO*/
+.seccion-inicio {
+    background-color: #ffffff;
+}
+
+.etiqueta-destacada {
+    background-color: #334ABD !important;
+    border-radius: 20px;
+    font-weight: normal;
+    color: white;
+}
+
+.parrafo-principal {
+    color: #555555;
+    line-height: 1.6;
+}
+
+.boton-postular {
+    background-color: #334ABD !important;
+    color: #ffffff !important;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.boton-postular:hover {
+    background-color: #3E5AE6 !important;
+}
+
+.boton-conocer {
+    background-color: transparent !important; 
+    color: #334ABD !important;
+    border: 2px solid #334ABD !important;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.boton-conocer:hover {
+    background-color: #334ABD !important;
+    color: #ffffff !important;
+}
+
+/*PARA IMAGENES*/
+.imagen-colegio {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/*para la biografia */
+.seccion-biografia {
+    background-color: #f2f2f2;
+}
+
+.subtitulo-historia {
+    color: #121A42;
+}
+
+.lema-historia {
+    color: #334ABD;
+}
+
+.parrafo-historia {
+    color: #555555;
+    line-height: 1.6;
+}
+
+.enlace-leer-mas {
+    color: #334ABD;
+    transition: color 0.3s ease;
+}
+
+.enlace-leer-mas:hover {
+    color: #121A42;
+}
+
+.imagen-historia {
+    max-height: 350px;
+    object-fit: cover;
+}
+
+/* PARA EL FOOTER*/
+.contenedor-pie {
+    background-color: #121A42;
+    color: #ffffff;
+}
+
+.titulo-pie {
+    color: #ffffff;
+}
+
+.lema-pie {
+    color: #ffffff;
+}
+
+.subtitulo-contacto {
+    color: #ffffff;
+}
+
+.item-contacto {
+    color: #b0b5d1;
+}
+
+.icono-contacto {
+    color: #ffffff;
+}
+
+/*PARA EL LOGIN*/
+/* Fondos */
+.fondo-login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Video de fondo */
+video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: blur(10px);
+    transform: scale(1.1);
+}
+
+.fondo-formulario {
+    background-color: #ffffff; /*fondo blanco para la mitad del formulario*/
+}
+
+/* Textos*/
+.texto-secundario {
+    color: #6c757d; /*Color gris para el texto de Recuérdame*/
+}
+
+/*Ajuste de la imagen*/
+.imagen-login {
+    object-fit: cover;
+}
+
+/*Enlace de recuperar contraseña*/
+.enlace-olvido {
+    color: #334ABD;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.enlace-olvido:hover {
+    color: #121A42;
+}
+
+/*Chequeo institucional*/
+.check-institucional:checked {
+    background-color: #334ABD;
+    border-color: #334ABD;
+}
+
+/* contenedor-busqueda*/
+
+.contenedor-busqueda {
+    position: relative;
+}
+
+.busqueda-input {
+    background-color:#e0e0e0;
+    height: 50px;
+    border-radius: 30px;
+    padding-left: 40px;
+    border: none;
+}
+
+.icono-busqueda {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color:#1C2866;
+}
+
+/*Extras docente pagina principal*/
+.fondo-panel{
+    background-color: #ffffff;
+}
+
+.tarjeta-blanca{
+    background-color: #ffffff;
+}
+
+.texto-destacado{
+    color: #121A42;
+}
+
+
+.icono-eventos {
+    color: #334ABD;
+}
+
+/*extras vista pagina principal estudiante*/
+
+/* Colores para los íconos de las tarjetas de métricas del estudiante */
+.icono-metrica-neutra {
+    color: #3E5AE6;
+}
+
+.icono-metrica-ok {
+    color: #198754;
+}
+
+.icono-metrica-alerta {
+    color: #ffc107;
+}
+
+.icono-metrica-info {
+    color: #0dcaf0;
+}
+
+/*estas dos para evento proximo importante*/
+.borde-peligro {
+    border: 2px solid #dc3545 !important; 
+}
+
+.texto-peligro {
+    color: #dc3545;
+}
