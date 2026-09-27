@@ -1,8 +1,12 @@
+import { useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import SidebarDirectiva from "../../components/SidebarDirectiva";
 
 function Horarios() {
+
+    const [mostrarHorario, setMostrarHorario] = useState(false);
+
     return(
         <>
             <Header />
@@ -19,7 +23,7 @@ function Horarios() {
                             <div className="row">
                                 <div className="col-md-4">
                                     <label htmlFor="curso" className="form-label fw-bold small">Seleccione un curso:</label>
-                                    <select id="curso" className="form-select campo-formulario">
+                                    <select id="curso" className="form-select campo-formulario" onChange={() => setMostrarHorario(true)}>
                                         <option value="1ro-basico">1° Básico</option>
                                         <option value="2do-basico">2° Básico</option>
                                         <option value="3ro-basico">3° Básico</option>
@@ -38,68 +42,70 @@ function Horarios() {
                         </div>
 
                         <div className="table-responsive contenedor-tabla">
-                            <table id="horario" className="table table-bordered tabla-horarios text-center align-middle d-none">
-                                <thead className="encabezado-tabla">
-                                    <tr>
-                                        <th>Módulo Horario</th>
-                                        <th>Lunes</th>
-                                        <th>Martes</th>
-                                        <th>Miércoles</th>
-                                        <th>Jueves</th>
-                                        <th>Viernes</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr className="fila-horario">
-                                        <td className="fw-bold celda-hora">08:01-08:40</td>
-                                        <td className="celda-asignatura">Estadística</td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
-                                        <td className="celda-asignatura"></td>
-                                    </tr>
-                                    <tr className="fila-horario">
-                                        <td className="fw-bold celda-hora">08:41-09:20</td>
-                                        <td className="celda-asignatura">Estadística</td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
-                                        <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
-                                        <td className="celda-asignatura"></td>
-                                    </tr>
-                                    <tr className="fila-horario">
-                                        <td className="fw-bold celda-hora">09:31-10:10</td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura">Desarrollo Fullstack II</td>
-                                        <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
-                                        <td className="celda-asignatura">Estadística</td>
-                                        <td className="celda-asignatura"></td>
-                                    </tr>
-                                    <tr className="fila-horario">
-                                        <td className="fw-bold celda-hora">10:11-10:50</td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura">Desarrollo Fullstack II</td>
-                                        <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
-                                        <td className="celda-asignatura">Estadística</td>
-                                        <td className="celda-asignatura"></td>
-                                    </tr>
-                                    <tr className="fila-horario">
-                                        <td className="fw-bold celda-hora">11:01-11:40</td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura">Desarrollo Fullstack II</td>
-                                        <td className="celda-asignatura">Desarrollo Fullstack II</td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura"></td>
-                                    </tr>
-                                    <tr className="fila-horario">
-                                        <td className="fw-bold celda-hora">11:41-12:20</td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura">Taller de Base de Datos</td>
-                                        <td className="celda-asignatura">Desarrollo Fullstack II</td>
-                                        <td className="celda-asignatura"></td>
-                                        <td className="celda-asignatura"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            {mostrarHorario &&
+                                <table id="horario" className="table table-bordered tabla-horarios text-center align-middle ">
+                                    <thead className="encabezado-tabla">
+                                        <tr>
+                                            <th>Módulo Horario</th>
+                                            <th>Lunes</th>
+                                            <th>Martes</th>
+                                            <th>Miércoles</th>
+                                            <th>Jueves</th>
+                                            <th>Viernes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className="fila-horario">
+                                            <td className="fw-bold celda-hora">08:01-08:40</td>
+                                            <td className="celda-asignatura">Estadística</td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                            <td className="celda-asignatura"></td>
+                                        </tr>
+                                        <tr className="fila-horario">
+                                            <td className="fw-bold celda-hora">08:41-09:20</td>
+                                            <td className="celda-asignatura">Estadística</td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                            <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                            <td className="celda-asignatura"></td>
+                                        </tr>
+                                        <tr className="fila-horario">
+                                            <td className="fw-bold celda-hora">09:31-10:10</td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura">Desarrollo Fullstack II</td>
+                                            <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                            <td className="celda-asignatura">Estadística</td>
+                                            <td className="celda-asignatura"></td>
+                                        </tr>
+                                        <tr className="fila-horario">
+                                            <td className="fw-bold celda-hora">10:11-10:50</td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura">Desarrollo Fullstack II</td>
+                                            <td className="celda-asignatura">Desarrollo de Aplicaciones Móviles</td>
+                                            <td className="celda-asignatura">Estadística</td>
+                                            <td className="celda-asignatura"></td>
+                                        </tr>
+                                        <tr className="fila-horario">
+                                            <td className="fw-bold celda-hora">11:01-11:40</td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura">Desarrollo Fullstack II</td>
+                                            <td className="celda-asignatura">Desarrollo Fullstack II</td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura"></td>
+                                        </tr>
+                                        <tr className="fila-horario">
+                                            <td className="fw-bold celda-hora">11:41-12:20</td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura">Taller de Base de Datos</td>
+                                            <td className="celda-asignatura">Desarrollo Fullstack II</td>
+                                            <td className="celda-asignatura"></td>
+                                            <td className="celda-asignatura"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            }
                         </div>
                     </section>
                 </div>
