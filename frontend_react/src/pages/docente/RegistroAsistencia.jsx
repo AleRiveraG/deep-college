@@ -1,6 +1,6 @@
-import Header from "../../components/header"
-import NavBar from "../../components/navBar"
-import Footer from "../../components/footer"
+import Header from "../../components/header";
+import NavBar from "../../components/navBar";
+import Footer from "../../components/footer";
 
 function RegistroAsistencia() {
     
@@ -208,6 +208,7 @@ function RegistroAsistencia() {
                     </div>
                 </div>
             </main>
+            <Footer />
         </>
 
     );
