@@ -19,9 +19,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/docente" element={<PaginaPrincipal />}/>
-          <Route path="/docente/perfil" component={MiPerfil} />
+          <Route path="/docente/perfil" element={<MiPerfil />} />
           <Route path="/docente/perfiles" component={VerPerfiles} />
-          <Route path="/docente/asistencia" component={RegistroAsistencia} />
+          <Route path="/docente/asistencia" element={<RegistroAsistencia />}/>
           <Route path="/docente/notas" component={RegistroNotas} />
           <Route path="/docente/documentos" component={DocumentosPersonales} />
         </Routes>
