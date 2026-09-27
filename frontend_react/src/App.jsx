@@ -22,7 +22,7 @@ function App() {
           <Route path="/docente/perfil" element={<MiPerfil />} />
           <Route path="/docente/perfiles" component={VerPerfiles} />
           <Route path="/docente/asistencia" element={<RegistroAsistencia />}/>
-          <Route path="/docente/notas" component={RegistroNotas} />
+          <Route path="/docente/notas" element={<RegistroNotas />} />
           <Route path="/docente/documentos" component={DocumentosPersonales} />
         </Routes>
       </BrowserRouter>
