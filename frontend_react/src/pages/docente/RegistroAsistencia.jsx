@@ -1,9 +1,13 @@
 import Header from "../../components/header";
 import NavBar from "../../components/navBar";
 import Footer from "../../components/footer";
+import { useState } from "react";
 
 function RegistroAsistencia() {
     
+    const [mostrarFormulario, setMostrarFormulario] = useState(false);
+    const [botones, setBotones] = useState(false);
+
     return(
         <>  
             <Header />
@@ -17,7 +21,9 @@ function RegistroAsistencia() {
 
                             <div className="caja-valor p-4 mb-4">
                                 <label htmlFor="curso" className="fw-bold mb-2">Seleccione curso:</label>
-                                <select id="curso" className="form-select w-25 campo-formulario">
+                                <select id="curso" className="form-select w-25 campo-formulario" onChange={ () => {
+                                                                                                        setMostrarFormulario(true);
+                                                                                                        setBotones(false) }}>
                                     <option value="1-medio">1° Medio</option>
                                     <option value="2-medio">2° Medio</option>
                                     <option value="3-medio">3° Medio</option>
@@ -25,64 +31,64 @@ function RegistroAsistencia() {
                                 </select>
                             </div>
 
-                        
-                            <div id="tabla-1" className="d-none table-responsive">
-                                <table className="table mb-0 align-middle">
-                                    <thead className="encabezado-tabla">
-                                        <tr>
-                                            <th scope="col" style={{width: "10%"}}>Número</th>
-                                            <th scope="col" style={{width: "30%"}}>Nombres</th>
-                                            <th scope="col" style={{width: "30%"}}>Apellidos</th>
-                                            <th scope="col" style={{width: "30%"}}>Registro</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Toy Khan</td>
-                                            <td>Zhaito Perez</td>
-                                            <td>
-                                                <form className="d-flex gap-2 mb-0">
-                                                    <input type="radio" className="btn-check botones presente" name="asistencia_1" id="presente_1_1" autocomplete="off" />
-                                                    <label className="btn btn-outline-success btn-sm px-3" htmlFor="presente_1_1">Presente</label>
+                            {mostrarFormulario &&
+                                <div id="tabla-1" className="table-responsive">
+                                    <table className="table mb-0 align-middle">
+                                        <thead className="encabezado-tabla">
+                                            <tr>
+                                                <th scope="col" style={{width: "10%"}}>Número</th>
+                                                <th scope="col" style={{width: "30%"}}>Nombres</th>
+                                                <th scope="col" style={{width: "30%"}}>Apellidos</th>
+                                                <th scope="col" style={{width: "30%"}}>Registro</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Toy Khan</td>
+                                                <td>Zhaito Perez</td>
+                                                <td>
+                                                    <form className="d-flex gap-2 mb-0">
+                                                        <input type="radio" className="btn-check botones presente" name="asistencia_1" id="presente_1_1" autocomplete="off" disabled={!botones} />
+                                                        <label className="btn btn-outline-success btn-sm px-3" htmlFor="presente_1_1">Presente</label>
 
-                                                    <input type="radio" className="btn-check botones ausente" name="asistencia_1" id="ausente_1_1" autocomplete="off" />
-                                                    <label className="btn btn-outline-danger btn-sm px-3" htmlFor="ausente_1_1">Ausente</label>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>AK Mezako</td>
-                                            <td>Susake Martinez</td>
-                                            <td>
-                                                <form className="d-flex gap-2 mb-0">
-                                                    <input type="radio" className="btn-check botones presente" name="asistencia_2" id="presente_1_2" autocomplete="off" />
-                                                    <label className="btn btn-outline-success btn-sm px-3" htmlFor="presente_1_2">Presente</label>
+                                                        <input type="radio" className="btn-check botones ausente" name="asistencia_1" id="ausente_1_1" autocomplete="off" disabled={!botones} />
+                                                        <label className="btn btn-outline-danger btn-sm px-3" htmlFor="ausente_1_1">Ausente</label>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>AK Mezako</td>
+                                                <td>Susake Martinez</td>
+                                                <td>
+                                                    <form className="d-flex gap-2 mb-0">
+                                                        <input type="radio" className="btn-check botones presente" name="asistencia_2" id="presente_1_2" autocomplete="off" disabled={!botones} />
+                                                        <label className="btn btn-outline-success btn-sm px-3" htmlFor="presente_1_2">Presente</label>
 
-                                                    <input type="radio" className="btn-check botones ausente" name="asistencia_2" id="ausente_1_2" autocomplete="off" />
-                                                    <label className="btn btn-outline-danger btn-sm px-3" htmlFor="ausente_1_2">Ausente</label>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Tai Mah</td>
-                                            <td>Won Silva</td>
-                                            <td>
-                                                <form className="d-flex gap-2 mb-0">
-                                                    <input type="radio" className="btn-check botones presente" name="asistencia_3" id="presente_1_3" autocomplete="off" />
-                                                    <label className="btn btn-outline-success btn-sm px-3" htmlFor="presente_1_3">Presente</label>
+                                                        <input type="radio" className="btn-check botones ausente" name="asistencia_2" id="ausente_1_2" autocomplete="off" disabled={!botones} />
+                                                        <label className="btn btn-outline-danger btn-sm px-3" htmlFor="ausente_1_2">Ausente</label>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Tai Mah</td>
+                                                <td>Won Silva</td>
+                                                <td>
+                                                    <form className="d-flex gap-2 mb-0">
+                                                        <input type="radio" className="btn-check botones presente" name="asistencia_3" id="presente_1_3" autocomplete="off" disabled={!botones} />
+                                                        <label className="btn btn-outline-success btn-sm px-3" htmlFor="presente_1_3">Presente</label>
 
-                                                    <input type="radio" className="btn-check botones ausente" name="asistencia_3" id="ausente_1_3" autocomplete="off" />
-                                                    <label className="btn btn-outline-danger btn-sm px-3" htmlFor="ausente_1_3">Ausente</label>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
+                                                        <input type="radio" className="btn-check botones ausente" name="asistencia_3" id="ausente_1_3" autocomplete="off" disabled={!botones} />
+                                                        <label className="btn btn-outline-danger btn-sm px-3" htmlFor="ausente_1_3">Ausente</label>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
                             <div id="tabla-2" className="d-none table-responsive">
                                 <table className="table mb-0 align-middle">
                                     <thead className="encabezado-tabla">
@@ -197,13 +203,27 @@ function RegistroAsistencia() {
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="cont-botones" className="d-none">
-                                <div className="d-flex justify-content-end gap-3 mt-4">
-                                    <button type="submit" className="boton-calcular px-4 registrar">Registrar asistencia</button>
-                                    <button type="reset" className="btn btn-outline-secondary px-4 finalizar">Finalizar clase</button>
+                            {mostrarFormulario &&
+                                <div id="cont-botones">
+                                    <div className="d-flex justify-content-end gap-3 mt-4">
+                                        <button type="submit" className="boton-calcular px-4 registrar" 
+                                        onClick={ (evento) => {
+                                            evento.preventDefault();
+                                            setBotones(true);
+                                        }}
+                                        >
+                                            Registrar asistencia
+                                        </button>
+                                        <button type="reset" className="btn btn-outline-secondary px-4 finalizar"
+                                        onClick={ (evento) => {
+                                            evento.preventDefault();
+                                            alert("Clase finalizada con exito!");
+                                            setBotones(false);
+                                        }}
+                                        >Finalizar clase</button>
+                                    </div>
                                 </div>
-                            </div>
-                            
+                            }
                         </section>
                     </div>
                 </div>
