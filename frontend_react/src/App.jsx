@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route exact path="/docente" element={<PaginaPrincipal />}/>
           <Route path="/docente/perfil" element={<MiPerfil />} />
-          <Route path="/docente/perfiles" component={VerPerfiles} />
+          <Route path="/docente/perfiles" element={<VerPerfiles />} />
           <Route path="/docente/asistencia" element={<RegistroAsistencia />}/>
           <Route path="/docente/notas" element={<RegistroNotas />} />
           <Route path="/docente/documentos" component={DocumentosPersonales} />
