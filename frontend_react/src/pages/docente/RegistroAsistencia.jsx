@@ -17,7 +17,7 @@ function RegistroAsistencia() {
 
                             <div className="caja-valor p-4 mb-4">
                                 <label htmlFor="curso" className="fw-bold mb-2">Seleccione curso:</label>
-                                <select id="curso" className="htmlForm-select w-25 campo-htmlFormulario">
+                                <select id="curso" className="form-select w-25 campo-formulario">
                                     <option value="1-medio">1° Medio</option>
                                     <option value="2-medio">2° Medio</option>
                                     <option value="3-medio">3° Medio</option>
