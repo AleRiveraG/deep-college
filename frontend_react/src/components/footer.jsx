@@ -6,21 +6,21 @@ function Footer() {
             <div className="container-fluid py-5">
                 <div className="row">
                     <div className="col-md-6 px-5 mb-4 mb-md-0">
-                        <img src="images/logo-deep-white.png" className="logo mb-3" alt="Logo Colegio" />
+                        <img src="/images/logo-deep-white.png" className="logo mb-3" alt="Logo Colegio" />
                         <p>Formando líderes desde 2026. Educación de calidad y excelencia académica</p>
                         <hr />
                         <div className="d-flex mt-3">
                             <a href="#" className="me-3">
-                                <img className="logos-enlaces" src="images/Instagram_Glyph_White.png" alt="Logotipo Instagram" />
+                                <img className="logos-enlaces" src="/images/Instagram_Glyph_White.png" alt="Logotipo Instagram" />
                             </a>
                             <a href="#" className="me-3">
-                                <img className="logos-enlaces" src="images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook" />
+                                <img className="logos-enlaces" src="/images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook" />
                             </a>
                             <a href="#" className="me-3">
-                                <img className="logos-enlaces" src="images/logo-white.png" alt="Logotipo X" />
+                                <img className="logos-enlaces" src="/images/logo-white.png" alt="Logotipo X" />
                             </a>
                             <a href="#" className="me-3">
-                                <img className="logos-enlaces" src="images/InBug-White.png" alt="Logotipo LinkedIn" />
+                                <img className="logos-enlaces" src="/images/InBug-White.png" alt="Logotipo LinkedIn" />
                             </a>
                         </div>
                     </div>
