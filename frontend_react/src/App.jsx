@@ -1,8 +1,3 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PaginaPrincipal from "./pages/docente/PaginaPrincipal"
 import MiPerfil from "./pages/docente/MiPerfil"
@@ -23,7 +18,8 @@ function App() {
           <Route path="/docente/perfiles" element={<VerPerfiles />} />
           <Route path="/docente/asistencia" element={<RegistroAsistencia />}/>
           <Route path="/docente/notas" element={<RegistroNotas />} />
-          <Route path="/docente/documentos" component={DocumentosPersonales} />
+          <Route path="/docente/documentos" element={<DocumentosPersonales/>} />
+
         </Routes>
       </BrowserRouter>
 
