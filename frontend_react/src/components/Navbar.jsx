@@ -14,7 +14,7 @@ function Navbar() {
                         <i className="bx bx-user-id-card fs-4 me-2 icono-perfil"></i>
                             Mi perfil
                     </Link>
-                    <Link to="estudiante/asistencia" className="list-group-item d-flex align-items-center py-3">
+                    <Link to="/estudiante/asistencia" className="list-group-item d-flex align-items-center py-3">
                         <i className="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i>
                             Asistencia
                     </Link>
