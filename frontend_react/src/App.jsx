@@ -5,6 +5,7 @@ import GestionAcademica from './pages/directiva/GestionAcademica';
 import Horarios from './pages/directiva/Horarios';
 import VerPerfiles from './pages/directiva/VerPerfil';
 import RegistroAsistencia from './pages/directiva/RegistroAsistencia';
+import RegistroNotas from './pages/directiva/RegistroNotas';
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
           <Route path='/directiva/horarios' element={<Horarios />} />
           <Route path='/directiva/ver-perfil' element={<VerPerfiles />} />
           <Route path='/directiva/registro-asistencia' element={<RegistroAsistencia />} />
+          <Route path='/directiva/registro-notas' element={<RegistroNotas/>}/>
           
       </Routes>
     </BrowserRouter>
