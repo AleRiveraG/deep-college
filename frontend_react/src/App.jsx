@@ -6,6 +6,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import PaginaPrincipal from './pages/estudiante/PaginaPrincipal'
 import Asistencia from './pages/estudiante/Asistencia'
+import Horario from './pages/estudiante/Horario'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route exact path="/estudiante" element={<PaginaPrincipal/>} />
           <Route path="/estudiante/asistencia" element={<Asistencia/>} />
+          <Route path="/estudiante/horario" element={<Horario/>} />
         </Routes>
       </BrowserRouter>
     </>
