@@ -1,37 +1,37 @@
-import { Link } from "react-router-dom"
-
+import { Link, useLocation } from "react-router-dom"
+ 
+const enlaces = [
+  { ruta: '/docente', icono: 'bx-home', iconoClase: 'icono-inicio', texto: 'Inicio' },
+  { ruta: '/docente/perfil', icono: 'bx-user-id-card', iconoClase: 'icono-perfil', texto: 'Mi perfil' },
+  { ruta: '/docente/perfiles', icono: 'bx-user', iconoClase: 'icono-perfil', texto: 'Ver perfiles' },
+  { ruta: '/docente/asistencia', icono: 'bx-clipboard-check', iconoClase: 'icono-asistencia', texto: 'Registro de asistencia' },
+  { ruta: '/docente/notas', icono: 'bx-education', iconoClase: 'icono-notas', texto: 'Registro de notas' },
+  { ruta: '/docente/documentos', icono: 'bx-clipboard-detail', iconoClase: 'icono-gestion-academica', texto: 'Documentos' },
+];
+ 
 function NavBar() {
-    return (
-        <aside className="col-md-2 sidebar min-vh-100">
-            <nav className="list-group">
-                <Link to= "/docente" className="list-group-item d-flex align-items-center py-3">
-                    <i className="bx bx-home fs-4 me-2 icono-inicio"></i>
-                    Inicio
-                </Link>
-                <Link to="/docente/perfil" className="list-group-item d-flex align-items-center py-3">
-                    <i className="bx bx-user-id-card fs-4 me-2 icono-perfil"></i>
-                    Mi perfil
-                </Link>
-                <Link to="/docente/perfiles" className="list-group-item d-flex align-items-center py-3">
-                    <i className="bx bx-user fs-4 me-2 icono-perfil"></i>
-                    Ver perfiles
-                </Link>
-                <Link to="/docente/asistencia" className="list-group-item d-flex align-items-center py-3">
-                    <i className="bx bx-clipboard-check fs-4 me-2 icono-asistencia"></i>
-                    Registro de asistencia
-                </Link>
-                <Link to="/docente/notas" className="list-group-item d-flex align-items-center py-3">
-                    <i className="bx bx-education fs-4 me-2 icono-notas"></i>
-                    Registro de notas
-                </Link>
-                <Link to="/docente/documentos" className="list-group-item d-flex align-items-center py-3">
-                    <i className="bx bx-clipboard-detail fs-4 me-2 icono-gestion-academica"></i>
-                    Documentos
-                </Link>
-            </nav>
-        </aside>
-
-    );
+  const location = useLocation();
+ 
+  return (
+    <aside className="col-md-2 sidebar min-vh-100">
+      <nav className="list-group">
+        {enlaces.map((enlace) => {
+          const esActivo = location.pathname === enlace.ruta;
+          return (
+            <Link
+              key={enlace.ruta}
+              to={enlace.ruta}
+              className={`list-group-item d-flex align-items-center py-3${esActivo ? ' active' : ''}`}
+              style={esActivo ? { backgroundColor: '#283A94', borderColor: '#283A94' } : undefined}
+            >
+              <i className={`bx ${enlace.icono} fs-4 me-2 ${enlace.iconoClase}`}></i>
+              {enlace.texto}
+            </Link>
+          );
+        })}
+      </nav>
+    </aside>
+  );
 }
-
+ 
 export default NavBar
