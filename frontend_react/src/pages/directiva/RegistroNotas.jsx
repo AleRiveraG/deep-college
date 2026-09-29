@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from '../../components/Header';
-import SidebarDirectiva from '../../components/SidebarDirectiva';
+import SidebarDirectiva from '../../components/NavBar';
 import Footer from '../../components/Footer';
  
 const cursos = [

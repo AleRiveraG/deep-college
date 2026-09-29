@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import SidebarDirectiva from "../../components/SidebarDirectiva";
+import SidebarDirectiva from "../../components/NavBar";
 import { useState } from "react";
 
 function CalculadoraSueldos() {

@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import Header from '../../components/Header';
-import SidebarDirectiva from '../../components/SidebarDirectiva';
+import SidebarDirectiva from '../../components/NavBar';
 import Footer from '../../components/Footer';
  
 function PaginaPrincipal() {
-  // Antes (script.js): manipulaba directamente el texto de #fecha con document.querySelector
-  // Ahora: se guarda en estado y se muestra con {fecha} en el JSX
+  //la fecha se guarad en estado
   const [fecha, setFecha] = useState('');
  
   useEffect(() => {
     const fechaHoy = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     setFecha(fechaHoy.toLocaleDateString('es-ES', options));
-  }, []); // el array vacío [] significa: ejecútalo solo una vez, al cargar la página
+  }, []); //array vacio para que se ejecute una vez al abrir pagina
  
   return (
     <>

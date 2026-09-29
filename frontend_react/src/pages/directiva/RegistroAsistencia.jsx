@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Header from '../../components/Header';
-import SidebarDirectiva from '../../components/SidebarDirectiva';
+import SidebarDirectiva from '../../components/NavBar';
 import Footer from '../../components/Footer';
  
+
+//datos de prueba
 const cursos = [
   { id: 'curso-1ro-basico', nombre: '1° Básico', totalClases: 30, porcentaje: 90 },
   { id: 'curso-2do-basico', nombre: '2° Básico', totalClases: 30, porcentaje: 90 },
