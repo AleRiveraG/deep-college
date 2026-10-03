@@ -11,7 +11,7 @@ const enlaces = [
 ];
  
 function SidebarDirectiva() {
-    //el useLocation es el encargado de saber donde estamos parados y va comprando 
+    //el useLocation es el encargado de saber donde estamos parados y va comparando 
   const location = useLocation();
  
   return (
