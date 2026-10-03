@@ -26,10 +26,10 @@ export const enlacesEstudiante = [
   { ruta: '/estudiante/notas', icono: 'bx-education', iconoClase: 'icono-notas', texto: 'Notas' },
   { ruta: '/estudiante/horario', icono: 'bx-calendar-alt', iconoClase: 'icono-horarios', texto: 'Horario' },
 ];
-
+ 
 function NavBar({ rol, items }) {
   const location = useLocation();
-
+ 
   let enlaces = items;
   if (!enlaces) {
     if (rol === 'docente') {
@@ -49,7 +49,7 @@ function NavBar({ rol, items }) {
       }
     }
   }
-
+ 
   return (
     <aside className="col-md-2 sidebar min-vh-100" data-testid="sidebar-nav">
       <nav className="list-group" role="navigation">
@@ -71,6 +71,6 @@ function NavBar({ rol, items }) {
     </aside>
   );
 }
-
+ 
 export { NavBar as SidebarDirectiva };
 export default NavBar;
