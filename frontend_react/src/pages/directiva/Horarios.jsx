@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import SidebarDirectiva from "../../components/NavBar";
+import NavBar from "../../components/NavBar";
 
 function Horarios() {
 
@@ -13,7 +13,7 @@ function Horarios() {
             <main>
             <div className="container-fluid p-0">
                 <div className="row m-0">
-                    <SidebarDirectiva />
+                    <NavBar />
                     
                     <section className="col-md-10 py-4 px-4 seccion-horarios">
                         <h1 className="mb-4">Horarios</h1>

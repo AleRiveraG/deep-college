@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import SidebarDirectiva from "../../components/NavBar";
+import NavBar from "../../components/NavBar";
 import { useState } from "react";
 
 function CalculadoraSueldos() {
@@ -29,7 +29,7 @@ function CalculadoraSueldos() {
                 <div className="container-fluid p-0">
                     <div className="row m-0">
 
-                        <SidebarDirectiva />
+                        <NavBar />
 
                         <section className="col-md-10 py-4 px-4 seccion-calculadora">
                             <h1 className="mb-4">Calculadora de sueldos</h1>

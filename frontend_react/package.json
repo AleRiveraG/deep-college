@@ -7,10 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --import ./spec/helpers/jsdom-bootstrap.js --import tsx ./node_modules/jasmine/bin/jasmine.js"
   },
   "dependencies": {
-    "boostrap": "^2.0.0",
     "bootstrap": "^5.3.8",
     "react": "^19.2.8",
     "react-bootstrap": "^2.10.10",
@@ -18,10 +18,16 @@
     "react-router-dom": "^7.18.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "jasmine": "^7.0.0",
+    "jsdom": "^30.1.1",
     "oxlint": "^1.81.0",
-    "vite": "^8.3.0"
+    "tsx": "^4.23.15",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.3"
   }
 }

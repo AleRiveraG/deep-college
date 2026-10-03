@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
-import SidebarDirectiva from "../../components/NavBar";
 import Footer from "../../components/Footer";
+import NavBar from "../../components/NavBar";
 import { useState } from "react";
 
 function GestionAcademica() {
@@ -68,7 +68,7 @@ function GestionAcademica() {
                 <div className="container-fluid p-0">
                     <div className="row m-0">
                         
-                        <SidebarDirectiva />
+                        <NavBar />
                         <section className="col-md-10 py-4 px-4 seccion-gestion">
                             
                             <div className="resumen-general mb-5">

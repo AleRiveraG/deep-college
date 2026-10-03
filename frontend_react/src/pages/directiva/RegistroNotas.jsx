@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from '../../components/Header';
-import SidebarDirectiva from '../../components/NavBar';
+import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
  
 const cursos = [
@@ -29,7 +29,7 @@ function RegistroNotas() {
       <main>
         <div className="container-fluid p-0">
           <div className="row m-0">
-            <SidebarDirectiva />
+            <NavBar />
             <section className="col-md-10 py-4 px-4">
               <h1 className="mb-4">Registro de notas</h1>
               <h2 className="fs-6 mb-4">Consulta las calificaciones generales de cada curso.</h2>

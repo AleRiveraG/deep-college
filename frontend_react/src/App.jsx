@@ -33,12 +33,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="/" element={<Inicio />} />
         <Route path="/login" element={<Login />} />
         <Route path="/postulacion" element={<Postulacion />} />
 
-        
         <Route path="/directiva" element={<PaginaPrincipalDirectiva />} />
         <Route path="/directiva/calculadora-sueldos" element={<CalculadoraSueldos />} />
         <Route path="/directiva/gestion-academica" element={<GestionAcademica />} />
@@ -47,7 +45,6 @@ function App() {
         <Route path="/directiva/registro-asistencia" element={<RegistroAsistenciaDirectiva />} />
         <Route path="/directiva/registro-notas" element={<RegistroNotasDirectiva />} />
 
-      
         <Route path="/docente" element={<PaginaPrincipalDocente />} />
         <Route path="/docente/perfil" element={<MiPerfilDocente />} />
         <Route path="/docente/perfiles" element={<VerPerfilesDocente />} />
@@ -55,7 +52,6 @@ function App() {
         <Route path="/docente/notas" element={<RegistroNotasDocente />} />
         <Route path="/docente/documentos" element={<DocumentosPersonalesDocente />} />
 
-      
         <Route path="/estudiante" element={<PaginaPrincipalEstudiante />} />
         <Route path="/estudiante/asistencia" element={<AsistenciaEstudiante />} />
         <Route path="/estudiante/horario" element={<HorarioEstudiante />} />
