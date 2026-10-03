@@ -1,5 +1,6 @@
-
 function Footer() {
+
+    //posible footer que se unifacara
 
     return(
         <footer>
