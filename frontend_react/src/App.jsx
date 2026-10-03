@@ -6,7 +6,6 @@ import Horarios from './pages/directiva/Horarios';
 import VerPerfiles from './pages/directiva/VerPerfil';
 import RegistroAsistencia from './pages/directiva/RegistroAsistencia';
 import RegistroNotas from './pages/directiva/RegistroNotas';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Inicio from './pages/Inicio';
 import Login from './pages/Login';
 import Postulacion from './pages/Postulacion';
