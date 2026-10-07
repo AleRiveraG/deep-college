@@ -1,5 +1,5 @@
 import Header from '../../components/Header';
-import Navbar from '../../components/Navbar';
+import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
  
 function Notas() {
@@ -9,7 +9,7 @@ function Notas() {
       <main>
         <div className="container-fluid p-0">
           <div className="row m-0">
-            <Navbar />
+            <NavBar />
             <section className="col-md-10 py-4 px-4 seccion-notas">
               <h1 className="titulo-principal mb-4">Mis Notas</h1>
               <h2 className="fs-6 mb-4">Revisa tus calificaciones y conoce tu rendimiento académico.</h2>

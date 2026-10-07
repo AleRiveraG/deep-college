@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from '../../components/Header';
-import Navbar from '../../components/NavBar';
+import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
  
 function MiPerfil() {
@@ -80,7 +80,7 @@ function MiPerfil() {
       <main>
         <div className="container-fluid p-0">
           <div className="row m-0">
-            <Navbar />
+            <NavBar />
             <section className="col-md-10 py-4 px-4 seccion-perfil">
               <h1 className="titulo-principal mb-4">Mi perfil</h1>
               <h2 className="fs-6 mb-4">Consulta y actualiza tu informacion personal.</h2>

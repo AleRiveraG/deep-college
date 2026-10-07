@@ -1,6 +1,6 @@
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
-import Navbar from "../../components/Navbar"
+import NavBar from "../../components/NavBar"
 
 function Asistencia() {
 
@@ -11,7 +11,7 @@ function Asistencia() {
                 <div className="container-fluid p-0">
                     <div className="row m-0">
                         
-                        <Navbar />
+                        <NavBar />
                         
                         <section className="col-md-10 py-5 px-4 px-md-5 fondo-panel">
                             

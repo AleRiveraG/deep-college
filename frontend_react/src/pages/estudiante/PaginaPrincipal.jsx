@@ -1,6 +1,6 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import Navbar from "../../components/Navbar";
+import NavBar from "../../components/NavBar";
 
 function PaginaPrincipal() {
 
@@ -10,7 +10,7 @@ function PaginaPrincipal() {
             <main>
                 <div className="container-fluid p-0">
                     <div className="row m-0">
-                        <Navbar />
+                        <NavBar />
                         <section className="col-md-10 py-5 px-4 px-md-5 fondo-panel">
                             <div className="row align-items-center mb-4">
                                 <h1 id="nombre" className="titulo-principal mb-2 col-md-6">Bienvenido/a </h1>

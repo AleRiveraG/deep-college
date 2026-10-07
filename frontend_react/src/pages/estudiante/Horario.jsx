@@ -1,6 +1,6 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import Navbar from "../../components/Navbar";
+import NavBar from "../../components/NavBar";
 
 function Horario() {
     
@@ -11,7 +11,7 @@ function Horario() {
                 <div className="container-fluid p-0">
                     <div className="row m-0">
                         
-                        <Navbar />
+                        <NavBar />
                         <section className="col-md-10 py-4 px-4 seccion-horarios">
                             <h1 className="titulo-principal mb-4">Mi horario</h1>
                             <h2 className="fs-6 mb-4">Revisa tu horario y organiza mejor tu jornada académica.</h2>
