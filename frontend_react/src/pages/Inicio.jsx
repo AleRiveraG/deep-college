@@ -14,8 +14,8 @@ function Inicio() {
             <li><a href="#vision" className="text-decoration-none fw-semibold">Visión</a></li>
           </ul>
  
-          <a href="/login" className="btn d-flex align-items-center boton-ingresar">
-            <i className="bx bx-log-in fs-5 me-2"></i> Ingresar
+          <a href="/login" className="btn d-flex align-items-center justify-content-center boton-ingresar">
+            Ingresar
           </a>
         </nav>
       </header>

@@ -22,15 +22,24 @@ header a {
  
 /* Etiqueta directiva que esta al lado del nombre del colegio*/
 .etiqueta-directiva {
-    background-color: #334ABD;
+    background-color: #3E5AE6;
     color: #ffffff;
 }
  
 /* boton cerrar sesion*/
 header #btn-cerrar {
-    background-color: transparent;
-    border: 1px solid #ffffff;
-    color: #ffffff;
+    background-color: white;
+    color: #1C2866;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+header #btn-cerrar:hover {
+    background-color: #b0b5d1;
 }
  
 /*con el flex en 1 0 auto es para que el contenido principal se estire para rellenar el espacio libre entre el header y el footer*/
@@ -98,7 +107,7 @@ tr:nth-child(odd) {
  
 /* etiquetas del rol de los usuarios para cada etiqueta hay un color diferente*/
 .rol-docente {
-    background-color: #1C2866;
+    background-color: #3E5AE6;
     color: #ffffff;
 }
  
@@ -108,7 +117,7 @@ tr:nth-child(odd) {
 }
  
 .rol-auxiliar {
-    background-color: #283A94;
+    background-color: #3E5AE6;
     color: #ffffff;
 }
  

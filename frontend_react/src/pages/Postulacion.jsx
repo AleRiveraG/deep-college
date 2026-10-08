@@ -87,23 +87,23 @@ function Postulacion() {
   return (
     <>
       <header className="py-3 px-4 px-md-5">
-        <nav className="d-flex justify-content-between align-items-center navegacion-superior">
-          <a href="/" className="d-flex align-items-center text-decoration-none fs-4 fw-bold">
-            <i className="bx bxs-graduation fs-2 me-2"></i>
-          </a>
- 
-          <ul className="d-flex gap-4 list-unstyled m-0 p-0 lista-enlaces">
-            <li><a href="/#inicio" className="text-decoration-none fw-semibold">Inicio</a></li>
-            <li><a href="/#biografia" className="text-decoration-none fw-semibold">Nosotros</a></li>
-            <li><a href="/#mision" className="text-decoration-none fw-semibold">Misión</a></li>
-            <li><a href="/#vision" className="text-decoration-none fw-semibold">Visión</a></li>
-          </ul>
- 
-          <a href="/login" className="btn d-flex align-items-center boton-ingresar">
-            <i className="bx bx-log-in fs-5 me-2"></i> Ingresar
-          </a>
-        </nav>
-      </header>
+  <nav className="d-flex justify-content-between align-items-center encabezado-principal">
+    <a href="/" className="d-flex align-items-center text-decoration-none fs-4 fw-bold">
+      <img src="/images/logo-deep-white.png" height="50" className="me-3" alt="Logo colegio" />
+    </a>
+
+    <ul className="d-flex gap-5 list-unstyled m-0 p-0 lista-enlaces">
+      <li><a href="/#inicio" className="text-decoration-none fw-semibold">Inicio</a></li>
+      <li><a href="/#biografia" className="text-decoration-none fw-semibold">Nosotros</a></li>
+      <li><a href="/#mision" className="text-decoration-none fw-semibold">Misión</a></li>
+      <li><a href="/#vision" className="text-decoration-none fw-semibold">Visión</a></li>
+    </ul>
+
+    <a href="/login" className="btn d-flex align-items-center justify-content-center boton-ingresar">
+      Ingresar
+    </a>
+  </nav>
+</header>
  
       <main className="contenido-principal">
         <section id="postulacion" className="container-fluid px-4 px-md-5 py-5 seccion-biografia">
