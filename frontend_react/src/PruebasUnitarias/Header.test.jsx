@@ -27,4 +27,18 @@ describe('Header', () => {
 
     expect(onLogout).toHaveBeenCalledTimes(1)
   })
+  it('deduce el rol desde la ruta cuando no se entrega por props', () => {
+    const casos = [
+      ['/docente/notas', 'Docente'],
+      ['/estudiante/notas', 'Estudiante'],
+      ['/directiva', 'Directiva'],
+      ['/login', 'Colegio'],
+    ]
+
+    casos.forEach(([ruta, esperado]) => {
+      const { unmount } = renderHeader({}, ruta)
+      expect(screen.getByTestId('rol-badge')).toHaveTextContent(esperado)
+      unmount()
+    })
+  })
 })

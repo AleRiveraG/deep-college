@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import NavBar, { enlacesDocente } from '../components/NavBar'
+import NavBar, { enlacesDocente, enlacesEstudiante, enlacesDirectiva } from '../components/NavBar'
 
 const renderNavBar = (ui, ruta = '/') =>
   render(<MemoryRouter initialEntries={[ruta]}>{ui}</MemoryRouter>)
@@ -19,5 +19,18 @@ describe('NavBar', () => {
 
     expect(screen.getByRole('link', { name: 'Notas' })).toHaveClass('active')
     expect(screen.getByRole('link', { name: 'Horario' })).not.toHaveClass('active')
+  })
+  it('elige los enlaces según la ruta cuando no recibe rol', () => {
+    const casos = [
+      ['/docente', enlacesDocente.length],
+      ['/estudiante', enlacesEstudiante.length],
+      ['/', enlacesDirectiva.length],
+    ]
+
+    casos.forEach(([ruta, cantidad]) => {
+      const { unmount } = renderNavBar(<NavBar />, ruta)
+      expect(screen.getAllByRole('link')).toHaveLength(cantidad)
+      unmount()
+    })
   })
 })
