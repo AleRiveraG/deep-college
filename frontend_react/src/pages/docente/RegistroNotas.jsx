@@ -1,7 +1,6 @@
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
+import PanelLayout from "../../components/PanelLayout";
 import { useState } from "react";
+import Boton from "../../components/Boton";
  
 //array con cursos a eleccion cuando se vaya a registrar notas
 const datosIniciales = {
@@ -69,100 +68,86 @@ function RegistroNotas() {
   }
  
   return (
-    <>
-      <Header />
-      <main>
-        <div className="container-fluid p-0">
-          <div className="row m-0">
-            <NavBar />
-            <section className="col-md-10 py-4 px-4">
-              <h1 className="mb-4">Registro de notas</h1>
-              <h2 className="fs-6 mb-4">Registra las calificaciones y calcula los promedios de tus alumnos.</h2>
- 
-              <div className="caja-valor p-4 mb-4">
-                <label htmlFor="curso" className="fw-bold mb-2">Seleccione un curso:</label>
-                <select id="curso" className="form-select w-25 campo-formulario" value={cursoSeleccionado} onChange={manejarCambioCurso}>
-                  <option value="" disabled>Seleccione</option>
-                  <option value="1-medio">1° Medio</option>
-                  <option value="2-medio">2° Medio</option>
-                  <option value="3-medio">3° Medio</option>
-                  <option value="4-medio">4° Medio</option>
-                </select>
-              </div>
- 
-              {grupoActivo && (
-                <div id={`tabla-${grupoActivo.slice(-1)}`} className="table-responsive tabla">
-                  <table className="table mb-0 text-center align-middle">
-                    <thead className="encabezado-tabla">
-                      <tr>
-                        <th colSpan="2" className="border-end border-bottom-0"></th>
-                        <th colSpan="2" className="border-end text-white" style={{ backgroundColor: '#1C2866' }}>Sumativa (35%)</th>
-                        <th colSpan="2" className="border-end text-white" style={{ backgroundColor: '#283A94' }}>Formativa (35%)</th>
-                        <th colSpan="3" className="border-end text-white" style={{ backgroundColor: '#334ABD' }}>Desempeño (30%)</th>
-                        <th className="border-bottom-0"></th>
-                      </tr>
-                      <tr>
-                        <th className="border-end" style={{ width: '5%' }}>Número</th>
-                        <th className="border-end text-start" style={{ width: '20%' }}>Estudiante</th>
-                        <th style={{ width: '8%' }}>ES1</th>
-                        <th className="border-end" style={{ width: '8%' }}>ES2</th>
-                        <th style={{ width: '8%' }}>EF1</th>
-                        <th className="border-end" style={{ width: '8%' }}>EF2</th>
-                        <th style={{ width: '8%' }}>ED1</th>
-                        <th style={{ width: '8%' }}>ED2</th>
-                        <th className="border-end" style={{ width: '8%' }}>ED3</th>
-                        <th>Promedio</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {estudiantes.map((est) => (
-                        <tr key={est.numero}>
-                          <td className="border-end">{est.numero}</td>
-                          <td className="border-end text-start">{est.nombre}</td>
-                          {['es1', 'es2', 'ef1', 'ef2', 'ed1', 'ed2', 'ed3'].map((campo) => (
-                            <td key={campo} className={['es2', 'ef2', 'ed3'].includes(campo) ? 'border-end' : undefined}>
-                              <input
-                                type="text"
-                                className={`form-control form-control-sm text-center px-1 campo-formulario ${campo}`}
-                                placeholder="Ej: 7.0"
-                                value={est[campo]}
-                                onChange={(e) => actualizarCampo(est.numero, campo, e.target.value)}
-                                disabled={!habilitado}
-                              />
-                            </td>
-                          ))}
-                          <td className="fw-bold monto-valor promedio">{est.promedio ?? ''}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
- 
-              {grupoActivo && (
-                <div id="cont-botones">
-                  <div className="d-flex justify-content-end gap-3 mt-4">
-                    <button
-                      id="btn-calcular"
-                      className="btn btn-outline-secondary px-4"
-                      onClick={calcularPromedios}
-                      disabled={!habilitado}
-                    >
-                      Calcular
-                    </button>
-                    <button id="btn-registrar" className="boton-calcular px-4" onClick={manejarRegistrar}>
-                      Registrar
-                    </button>
-                  </div>
-                </div>
-              )}
- 
-            </section>
+    <PanelLayout>
+      <h1 className="mb-4">Registro de notas</h1>
+      <h2 className="fs-6 mb-4">Registra las calificaciones y calcula los promedios de tus alumnos.</h2>
+
+      <div className="caja-valor p-4 mb-4">
+        <label htmlFor="curso" className="fw-bold mb-2">Seleccione un curso:</label>
+        <select id="curso" className="form-select w-25 campo-formulario" value={cursoSeleccionado} onChange={manejarCambioCurso}>
+          <option value="" disabled>Seleccione</option>
+          <option value="1-medio">1° Medio</option>
+          <option value="2-medio">2° Medio</option>
+          <option value="3-medio">3° Medio</option>
+          <option value="4-medio">4° Medio</option>
+        </select>
+      </div>
+
+      {grupoActivo && (
+        <div id={`tabla-${grupoActivo.slice(-1)}`} className="table-responsive tabla">
+          <table className="table mb-0 text-center align-middle">
+            <thead className="encabezado-tabla">
+              <tr>
+                <th colSpan="2" className="border-end border-bottom-0"></th>
+                <th colSpan="2" className="border-end text-white" style={{ backgroundColor: '#1C2866' }}>Sumativa (35%)</th>
+                <th colSpan="2" className="border-end text-white" style={{ backgroundColor: '#283A94' }}>Formativa (35%)</th>
+                <th colSpan="3" className="border-end text-white" style={{ backgroundColor: '#334ABD' }}>Desempeño (30%)</th>
+                <th className="border-bottom-0"></th>
+              </tr>
+              <tr>
+                <th className="border-end" style={{ width: '5%' }}>Número</th>
+                <th className="border-end text-start" style={{ width: '20%' }}>Estudiante</th>
+                <th style={{ width: '8%' }}>ES1</th>
+                <th className="border-end" style={{ width: '8%' }}>ES2</th>
+                <th style={{ width: '8%' }}>EF1</th>
+                <th className="border-end" style={{ width: '8%' }}>EF2</th>
+                <th style={{ width: '8%' }}>ED1</th>
+                <th style={{ width: '8%' }}>ED2</th>
+                <th className="border-end" style={{ width: '8%' }}>ED3</th>
+                <th>Promedio</th>
+              </tr>
+            </thead>
+            <tbody>
+              {estudiantes.map((est) => (
+                <tr key={est.numero}>
+                  <td className="border-end">{est.numero}</td>
+                  <td className="border-end text-start">{est.nombre}</td>
+                  {['es1', 'es2', 'ef1', 'ef2', 'ed1', 'ed2', 'ed3'].map((campo) => (
+                    <td key={campo} className={['es2', 'ef2', 'ed3'].includes(campo) ? 'border-end' : undefined}>
+                      <input
+                        type="text"
+                        className={`form-control form-control-sm text-center px-1 campo-formulario ${campo}`}
+                        placeholder="Ej: 7.0"
+                        value={est[campo]}
+                        onChange={(e) => actualizarCampo(est.numero, campo, e.target.value)}
+                        disabled={!habilitado}
+                      />
+                    </td>
+                  ))}
+                  <td className="fw-bold monto-valor promedio">{est.promedio ?? ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {grupoActivo && (
+        <div id="cont-botones">
+          <div className="d-flex justify-content-end gap-3 mt-4">
+            <Boton
+              id="btn-calcular"
+              clase="btn btn-outline-secondary px-4"
+              onClick={calcularPromedios}
+              deshabilitado={!habilitado}
+              texto="Calcular"
+            />
+            <Boton id="btn-registrar" clase="boton-calcular px-4" onClick={manejarRegistrar} texto="Registrar" />
           </div>
         </div>
-      </main>
-      <Footer />
-    </>
+      )}
+
+    </PanelLayout>
   );
 }
  

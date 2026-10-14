@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import Header from '../../components/Header';
-import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
+import PanelLayout from '../../components/PanelLayout';
+import Boton from '../../components/Boton';
  
 function MiPerfil() {
   const [nombres, setNombres] = useState('Khan Zhaito');
@@ -69,106 +68,99 @@ function MiPerfil() {
   }
  
   return (
-    <>
-      <Header rol="Docente" claseEtiqueta="rol-docente" />
-      <main>
-        <div className="container-fluid p-0">
-          <div className="row m-0">
-            <NavBar />
-            <section className="col-md-10 py-4 px-4">
-              <h1 className="mb-4">Mi perfil</h1>
-              <h2 className="fs-6 mb-4">Consulta y actualiza tu información personal.</h2>
- 
-              <div className="caja-valor p-4">
-                <form>
-                  <div className="row mb-3">
-                    <div className="col-md-6">
-                      <label htmlFor="nombres" className="form-label fw-bold small">Nombres *</label>
-                      <input
-                        id="nombres"
-                        type="text"
-                        className="form-control form-control-sm campo-formulario"
-                        value={nombres}
-                        onChange={(e) => setNombres(e.target.value)}
-                        disabled={!editando}
-                      />
-                    </div>
-                    <div className="col-md-6 mt-3 mt-md-0">
-                      <label htmlFor="apellidos" className="form-label fw-bold small">Apellidos *</label>
-                      <input
-                        id="apellidos"
-                        type="text"
-                        className="form-control form-control-sm campo-formulario"
-                        value={apellidos}
-                        onChange={(e) => setApellidos(e.target.value)}
-                        disabled={!editando}
-                      />
-                    </div>
-                  </div>
-                  <div className="row mb-3">
-                    <div className="col-md-6">
-                      <label htmlFor="rut" className="form-label fw-bold small">Rut *</label>
-                      <input
-                        id="rut"
-                        type="text"
-                        className="form-control form-control-sm campo-formulario"
-                        placeholder="12.345.678-9"
-                        value={rut}
-                        onChange={(e) => setRut(e.target.value)}
-                        disabled={!editando}
-                      />
-                    </div>
-                    <div className="col-md-6 mt-3 mt-md-0">
-                      <label htmlFor="nivel" className="form-label fw-bold small">Nivel de enseñanza *</label>
-                      <select
-                        id="nivel"
-                        className="form-select form-select-sm campo-formulario"
-                        value={nivel}
-                        onChange={(e) => setNivel(e.target.value)}
-                        disabled={!editando}
-                      >
-                        <option>Educación Básica</option>
-                        <option>Educación Media</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="row mb-4">
-                    <div className="col-md-6">
-                      <label htmlFor="telefono" className="form-label fw-bold small">Teléfono *</label>
-                      <input
-                        id="telefono"
-                        type="text"
-                        className="form-control form-control-sm campo-formulario"
-                        value={telefono}
-                        onChange={(e) => setTelefono(e.target.value)}
-                        disabled={!editando}
-                      />
-                    </div>
-                    <div className="col-md-6 mt-3 mt-md-0">
-                      <label htmlFor="correo_docente" className="form-label fw-bold small">Correo Electrónico *</label>
-                      <input
-                        id="correo_docente"
-                        type="email"
-                        className="form-control form-control-sm campo-formulario"
-                        value={correo}
-                        onChange={(e) => setCorreo(e.target.value)}
-                        disabled={!editando}
-                      />
-                    </div>
-                  </div>
-                  <div className="text-end">
-                    <button id="btn-modificar" type="submit" className="btn btn-sm boton-calcular px-4" onClick={manejarBoton}>
-                      {editando ? 'Aplicar' : 'Modificar'}
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </section>
+    <PanelLayout rol="Docente" claseEtiqueta="rol-docente">
+      <h1 className="mb-4">Mi perfil</h1>
+      <h2 className="fs-6 mb-4">Consulta y actualiza tu información personal.</h2>
+
+      <div className="caja-valor p-4">
+        <form>
+          <div className="row mb-3">
+            <div className="col-md-6">
+              <label htmlFor="nombres" className="form-label fw-bold small">Nombres *</label>
+              <input
+                id="nombres"
+                type="text"
+                className="form-control form-control-sm campo-formulario"
+                value={nombres}
+                onChange={(e) => setNombres(e.target.value)}
+                disabled={!editando}
+              />
+            </div>
+            <div className="col-md-6 mt-3 mt-md-0">
+              <label htmlFor="apellidos" className="form-label fw-bold small">Apellidos *</label>
+              <input
+                id="apellidos"
+                type="text"
+                className="form-control form-control-sm campo-formulario"
+                value={apellidos}
+                onChange={(e) => setApellidos(e.target.value)}
+                disabled={!editando}
+              />
+            </div>
           </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+          <div className="row mb-3">
+            <div className="col-md-6">
+              <label htmlFor="rut" className="form-label fw-bold small">Rut *</label>
+              <input
+                id="rut"
+                type="text"
+                className="form-control form-control-sm campo-formulario"
+                placeholder="12.345.678-9"
+                value={rut}
+                onChange={(e) => setRut(e.target.value)}
+                disabled={!editando}
+              />
+            </div>
+            <div className="col-md-6 mt-3 mt-md-0">
+              <label htmlFor="nivel" className="form-label fw-bold small">Nivel de enseñanza *</label>
+              <select
+                id="nivel"
+                className="form-select form-select-sm campo-formulario"
+                value={nivel}
+                onChange={(e) => setNivel(e.target.value)}
+                disabled={!editando}
+              >
+                <option>Educación Básica</option>
+                <option>Educación Media</option>
+              </select>
+            </div>
+          </div>
+          <div className="row mb-4">
+            <div className="col-md-6">
+              <label htmlFor="telefono" className="form-label fw-bold small">Teléfono *</label>
+              <input
+                id="telefono"
+                type="text"
+                className="form-control form-control-sm campo-formulario"
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+                disabled={!editando}
+              />
+            </div>
+            <div className="col-md-6 mt-3 mt-md-0">
+              <label htmlFor="correo_docente" className="form-label fw-bold small">Correo Electrónico *</label>
+              <input
+                id="correo_docente"
+                type="email"
+                className="form-control form-control-sm campo-formulario"
+                value={correo}
+                onChange={(e) => setCorreo(e.target.value)}
+                disabled={!editando}
+              />
+            </div>
+          </div>
+          <div className="text-end">
+            <Boton
+              id="btn-modificar"
+              tipo="submit"
+              clase="btn btn-sm boton-calcular px-4"
+              onClick={manejarBoton}
+              texto={editando ? 'Aplicar' : 'Modificar'}
+            />
+          </div>
+        </form>
+      </div>
+    </PanelLayout>
   );
 }
  

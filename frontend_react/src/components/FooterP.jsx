@@ -4,7 +4,7 @@ function FooterPublico() {
   return (
     <footer className="container-fluid py-5 contenedor-pie">
       <div className="row">
-        <div className="col-md-6 px-5 mb-4 mb-md-0">
+        <div className="col-md-6 px-4 px-md-5 mb-4 mb-md-0">
           <img src="/images/logo-deep-white.png" className="logo mb-3" alt="Logo Colegio" />
           <p>Formando líderes desde 1993. Educación de calidad y excelencia académica</p>
           <hr />
@@ -23,7 +23,7 @@ function FooterPublico() {
             </a>
           </div>
         </div>
-        <div className="col-md-6 px-5">
+        <div className="col-md-6 px-4 px-md-5">
           <ul className="list-unstyled">
             <li className="mb-4">
               <span className="fs-5 fw-bold">Contacto</span>

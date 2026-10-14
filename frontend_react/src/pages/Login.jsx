@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Boton from '../components/Boton';
+import MensajeError from '../components/MensajeError';
  
 function Login() {
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
  
   function validarCorreo(correo) {
@@ -27,14 +30,15 @@ function Login() {
  
   function manejarInicioSesion(evento) {
     evento.preventDefault();
+    setError('');
  
     if (!validarCorreo(correo) || buscarRol(correo) == null) {
-      alert('Correo ingresado no valido, compruebe los datos');
+      setError('Correo ingresado no valido, compruebe los datos');
       return;
     }
  
     if (!validarContrasena(contrasena)) {
-      alert('Contraseña no valida, ingrese nuevamente');
+      setError('Contraseña no valida, ingrese nuevamente');
       return;
     }
  
@@ -50,7 +54,7 @@ function Login() {
       alert('Inicio de sesión exitoso!');
       navigate('/estudiante');
     } else {
-      alert('Correo no valido');
+      setError('Correo no valido');
     }
   }
  
@@ -63,7 +67,7 @@ function Login() {
       </div>
  
       <div className="container-fluid p-0">
-        <div className="row m-0 vh-100 justify-content-center align-items-center">
+        <div className="row m-0 min-vh-100 py-4 justify-content-center align-items-center">
           <div className="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
             <div className="fondo-formulario p-4 border rounded">
               <div className="text-center mb-4">
@@ -79,7 +83,7 @@ function Login() {
                     className="form-control campo-formulario"
                     placeholder="Ingrese su correo electrónico"
                     value={correo}
-                    onChange={(e) => setCorreo(e.target.value)}
+                    onChange={(e) => { setCorreo(e.target.value); setError(''); }}
                   />
                 </div>
                 <div className="mb-3">
@@ -90,7 +94,7 @@ function Login() {
                     className="form-control campo-formulario"
                     placeholder="Contraseña"
                     value={contrasena}
-                    onChange={(e) => setContrasena(e.target.value)}
+                    onChange={(e) => { setContrasena(e.target.value); setError(''); }}
                   />
                 </div>
                 <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
@@ -100,8 +104,9 @@ function Login() {
                   </div>
                   <a href="#" className="fw-bold enlace-olvido">¿Olvidó su contraseña?</a>
                 </div>
+                <MensajeError error={error} />
                 <div className="d-grid mt-2">
-                  <button id="btn-iniciar" type="submit" className="btn boton-calcular py-2 fs-5">Iniciar Sesión</button>
+                  <Boton id="btn-iniciar" tipo="submit" clase="btn boton-calcular py-2 fs-5" texto="Iniciar Sesión" />
                 </div>
               </form>
             </div>

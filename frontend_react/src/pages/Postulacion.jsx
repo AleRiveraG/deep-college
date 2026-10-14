@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Boton from '../components/Boton';
+import FooterPublico from '../components/FooterP';
  
 function Postulacion() {
   const [nombrePostulante, setNombrePostulante] = useState('');
@@ -80,27 +82,26 @@ function Postulacion() {
     }
  
     alert('Postulación enviada con éxito! Nos pondremos en contacto contigo pronto');
-    // Antes: window.location.href = 'index.html'; ahora: navigate a la landing
     navigate('/');
   }
  
   return (
     <>
-      <header className="py-3 px-4 px-md-5">
-  <nav className="d-flex justify-content-between align-items-center encabezado-principal">
+      <header className="py-3 px-4 px-md-5 encabezado-fijo">
+  <nav className="d-flex flex-wrap justify-content-between align-items-center encabezado-principal">
     <a href="/" className="d-flex align-items-center text-decoration-none fs-4 fw-bold">
       <img src="/images/logo-deep-white.png" height="50" className="me-3" alt="Logo colegio" />
     </a>
 
-    <ul className="d-flex gap-5 list-unstyled m-0 p-0 lista-enlaces">
+    <ul className="d-flex flex-wrap justify-content-center gap-3 gap-md-5 list-unstyled m-0 p-0 lista-enlaces order-3 order-md-2 col-12 col-md-auto">
       <li><a href="/#inicio" className="text-decoration-none fw-semibold">Inicio</a></li>
       <li><a href="/#biografia" className="text-decoration-none fw-semibold">Nosotros</a></li>
       <li><a href="/#mision" className="text-decoration-none fw-semibold">Misión</a></li>
       <li><a href="/#vision" className="text-decoration-none fw-semibold">Visión</a></li>
     </ul>
 
-    <a href="/login" className="btn d-flex align-items-center justify-content-center boton-ingresar">
-      Ingresar
+    <a href="/login" className="btn d-flex align-items-center justify-content-center boton-ingresar order-2 order-md-3">
+      <i className="bx bx-log-in me-2"></i>Ingresar
     </a>
   </nav>
 </header>
@@ -255,7 +256,7 @@ function Postulacion() {
                 </div>
  
                 <div className="text-center">
-                  <button id="btn-postular" type="submit" className="btn boton-calcular px-5 py-2 fs-5">Enviar postulación</button>
+                  <Boton id="btn-postular" tipo="submit" clase="btn boton-calcular px-5 py-2 fs-5" texto="Enviar postulación" />
                 </div>
  
               </form>
@@ -264,48 +265,7 @@ function Postulacion() {
         </section>
       </main>
  
-      <footer className="container-fluid py-5 contenedor-pie">
-        <div className="row">
-          <div className="col-md-6 px-5 mb-4 mb-md-0">
-            <img src="/images/logo-deep-white.png" className="logo mb-3" alt="Logo Colegio" />
-            <p>Formando líderes desde 1993. Educación de calidad y excelencia académica</p>
-            <hr />
-            <div className="d-flex mt-3">
-              <a href="#" className="me-3">
-                <img className="logos-enlaces" src="/images/Instagram_Glyph_White.png" alt="Logotipo Instagram" />
-              </a>
-              <a href="#" className="me-3">
-                <img className="logos-enlaces" src="/images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook" />
-              </a>
-              <a href="#" className="me-3">
-                <img className="logos-enlaces" src="/images/logo-white.png" alt="Logotipo X" />
-              </a>
-              <a href="#" className="me-3">
-                <img className="logos-enlaces" src="/images/InBug-White.png" alt="Logotipo LinkedIn" />
-              </a>
-            </div>
-          </div>
-          <div className="col-md-6 px-5">
-            <ul className="list-unstyled">
-              <li className="mb-4">
-                <span className="fs-5 fw-bold">Contacto</span>
-              </li>
-              <li className="mb-2 d-flex align-items-center">
-                <i className="bx bx-location fs-5 me-2 icono-ubicacion"></i>
-                Av. Ubicación 123
-              </li>
-              <li className="mb-2 d-flex align-items-center">
-                <i className="bx bx-phone fs-5 me-2 icono-telefono"></i>
-                +56 9 9876 5432
-              </li>
-              <li className="d-flex align-items-center">
-                <i className="bx bx-envelope fs-5 me-2 icono-correo"></i>
-                correo.ejemplo@colegio.cl
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <FooterPublico />
     </>
   );
 }

@@ -25,9 +25,9 @@ function Header({ rol, claseEtiqueta, onLogout, logoutPath = '/' }) {
 
   return (
     <header>
-      <div className="d-flex justify-content-between align-items-center py-3 px-4">
+      <div className="d-flex justify-content-between align-items-center py-3 px-3 px-md-4">
         <div className="d-flex align-items-center">
-          <img src="/images/logo-deep-white.png" height="50" className="me-3" alt="Logo Colegio" />
+          <img src="/images/logo-deep-white.png" height="50" className="me-2 me-md-3" alt="Logo Colegio" />
           <span className={`badge ${claseFinal || ''} fs-6 ms-2`} data-testid="rol-badge">
             {rolFinal}
           </span>

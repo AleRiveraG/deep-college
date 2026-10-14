@@ -1,7 +1,6 @@
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
+import PanelLayout from "../../components/PanelLayout";
 import { useState } from "react";
+import Boton from "../../components/Boton";
  
 const grupos = {
   grupo1: [
@@ -52,93 +51,83 @@ function RegistroAsistencia() {
   }
  
   return (
-    <>
-      <Header />
-      <main>
-        <div className="container-fluid p-0">
-          <div className="row m-0">
-            <NavBar />
-            <section className="col-md-10 py-4 px-4">
-              <h1 className="mb-4">Registro de asistencia</h1>
-              <h2 className="fs-6 mb-4">Registra la asistencia de los alumnos de cada clase.</h2>
- 
-              <div className="caja-valor p-4 mb-4">
-                <label htmlFor="curso" className="fw-bold mb-2">Seleccione curso:</label>
-                <select id="curso" className="form-select w-25 campo-formulario" value={cursoSeleccionado} onChange={manejarCambioCurso}>
-                  <option value="" disabled>Seleccione</option>
-                  <option value="1-medio">1° Medio</option>
-                  <option value="2-medio">2° Medio</option>
-                  <option value="3-medio">3° Medio</option>
-                  <option value="4-medio">4° Medio</option>
-                </select>
-              </div>
- 
-              {grupoActivo && (
-                <div id={`tabla-${grupoActivo.slice(-1)}`} className="table-responsive">
-                  <table className="table mb-0 align-middle">
-                    <thead className="encabezado-tabla">
-                      <tr>
-                        <th scope="col" style={{ width: '10%' }}>Número</th>
-                        <th scope="col" style={{ width: '30%' }}>Nombres</th>
-                        <th scope="col" style={{ width: '30%' }}>Apellidos</th>
-                        <th scope="col" style={{ width: '30%' }}>Registro</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {alumnos.map((alumno) => (
-                        <tr key={alumno.numero}>
-                          <td>{alumno.numero}</td>
-                          <td>{alumno.nombres}</td>
-                          <td>{alumno.apellidos}</td>
-                          <td>
-                            <form className="d-flex gap-2 mb-0">
-                              <input
-                                type="radio"
-                                className="btn-check botones presente"
-                                name={`asistencia_${alumno.numero}`}
-                                id={`presente_${grupoActivo}_${alumno.numero}`}
-                                autoComplete="off"
-                                disabled={!botones}
-                              />
-                              <label className="btn btn-outline-success btn-sm px-3" htmlFor={`presente_${grupoActivo}_${alumno.numero}`}>Presente</label>
- 
-                              <input
-                                type="radio"
-                                className="btn-check botones ausente"
-                                name={`asistencia_${alumno.numero}`}
-                                id={`ausente_${grupoActivo}_${alumno.numero}`}
-                                autoComplete="off"
-                                disabled={!botones}
-                              />
-                              <label className="btn btn-outline-danger btn-sm px-3" htmlFor={`ausente_${grupoActivo}_${alumno.numero}`}>Ausente</label>
-                            </form>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
- 
-              {grupoActivo && (
-                <div id="cont-botones">
-                  <div className="d-flex justify-content-end gap-3 mt-4">
-                    <button type="submit" className="boton-calcular px-4 registrar" onClick={manejarRegistrar}>
-                      Registrar asistencia
-                    </button>
-                    <button type="reset" className="btn btn-outline-secondary px-4 finalizar" onClick={manejarFinalizar}>
-                      Finalizar clase
-                    </button>
-                  </div>
-                </div>
-              )}
- 
-            </section>
+    <PanelLayout>
+      <h1 className="mb-4">Registro de asistencia</h1>
+      <h2 className="fs-6 mb-4">Registra la asistencia de los alumnos de cada clase.</h2>
+
+      <div className="caja-valor p-4 mb-4">
+        <label htmlFor="curso" className="fw-bold mb-2">Seleccione curso:</label>
+        <select id="curso" className="form-select w-25 campo-formulario" value={cursoSeleccionado} onChange={manejarCambioCurso}>
+          <option value="" disabled>Seleccione</option>
+          <option value="1-medio">1° Medio</option>
+          <option value="2-medio">2° Medio</option>
+          <option value="3-medio">3° Medio</option>
+          <option value="4-medio">4° Medio</option>
+        </select>
+      </div>
+
+      {grupoActivo && (
+        <div id={`tabla-${grupoActivo.slice(-1)}`} className="table-responsive">
+          <table className="table mb-0 align-middle">
+            <thead className="encabezado-tabla">
+              <tr>
+                <th scope="col" style={{ width: '10%' }}>Número</th>
+                <th scope="col" style={{ width: '30%' }}>Nombres</th>
+                <th scope="col" style={{ width: '30%' }}>Apellidos</th>
+                <th scope="col" style={{ width: '30%' }}>Registro</th>
+              </tr>
+            </thead>
+            <tbody>
+              {alumnos.map((alumno) => (
+                <tr key={alumno.numero}>
+                  <td>{alumno.numero}</td>
+                  <td>{alumno.nombres}</td>
+                  <td>{alumno.apellidos}</td>
+                  <td>
+                    <form className="d-flex gap-2 mb-0">
+                      <input
+                        type="radio"
+                        className="btn-check botones presente"
+                        name={`asistencia_${alumno.numero}`}
+                        id={`presente_${grupoActivo}_${alumno.numero}`}
+                        autoComplete="off"
+                        disabled={!botones}
+                      />
+                      <label className="btn btn-outline-success btn-sm px-3" htmlFor={`presente_${grupoActivo}_${alumno.numero}`}>Presente</label>
+
+                      <input
+                        type="radio"
+                        className="btn-check botones ausente"
+                        name={`asistencia_${alumno.numero}`}
+                        id={`ausente_${grupoActivo}_${alumno.numero}`}
+                        autoComplete="off"
+                        disabled={!botones}
+                      />
+                      <label className="btn btn-outline-danger btn-sm px-3" htmlFor={`ausente_${grupoActivo}_${alumno.numero}`}>Ausente</label>
+                    </form>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {grupoActivo && (
+        <div id="cont-botones">
+          <div className="d-flex justify-content-end gap-3 mt-4">
+            <Boton tipo="submit" clase="boton-calcular px-4 registrar" onClick={manejarRegistrar} texto="Registrar asistencia" />
+            <Boton
+              tipo="reset"
+              clase="btn btn-outline-secondary px-4 finalizar"
+              onClick={manejarFinalizar}
+              texto="Finalizar clase"
+            />
           </div>
         </div>
-      </main>
-      <Footer />
-    </>
+      )}
+
+    </PanelLayout>
   );
 }
  

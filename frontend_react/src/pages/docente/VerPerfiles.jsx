@@ -1,6 +1,4 @@
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
+import PanelLayout from "../../components/PanelLayout";
 import { useState } from "react";
  
 const grupos = {
@@ -41,68 +39,57 @@ function VerPerfiles() {
   });
  
   return (
-    <>
-      <Header />
-      <main>
-        <div className="container-fluid p-0">
-          <div className="row m-0">
-            <NavBar />
-            <section className="col-md-10 py-4 px-4">
-              <h1 className="mb-4">Ver perfiles por curso</h1>
-              <h2 className="fs-6 mb-4">Consulta los datos de los alumnos por curso.</h2>
-              <div className="caja-valor p-4 mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
-                <div>
-                  <label htmlFor="cursos" className="fw-bold mb-2">Seleccione un curso:</label>
-                  <select id="cursos" className="form-select campo-formulario" value={cursoSeleccionado} onChange={(e) => setCursoSeleccionado(e.target.value)}>
-                    <option value="" disabled>Seleccione</option>
-                    <option value="1-medio">1° Medio</option>
-                    <option value="2-medio">2° Medio</option>
-                    <option value="3-medio">3° Medio</option>
-                    <option value="4-medio">4° Medio</option>
-                  </select>
-                </div>
-                <div>
-                  <div className="contenedor-busqueda">
-                    <input id="busqueda" className="form-control busqueda-input" placeholder="Buscar por nombre" value={texto} onChange={(e) => setTexto(e.target.value)} />
-                    <i className="bx bx-search icono-busqueda"></i>
-                  </div>
-                </div>
-              </div>
- 
-              {grupoActivo && (
-                <div id={`tabla-${grupoActivo.slice(-1)}`} className="table-responsive tabla">
-                  <table className="table mb-0">
-                    <thead className="encabezado-tabla">
-                      <tr>
-                        <th>Número</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Rut</th>
-                        <th>Telefono</th>
-                        <th>Correo</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {resultados.map((alumno) => (
-                        <tr key={alumno.rut}>
-                          <td>{alumno.numero}</td>
-                          <td>{alumno.nombre}</td>
-                          <td>{alumno.apellidos}</td>
-                          <td>{alumno.rut}</td>
-                          <td>{alumno.telefono}</td>
-                          <td>{alumno.correo}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </section>
+    <PanelLayout>
+      <h1 className="mb-4">Ver perfiles por curso</h1>
+      <h2 className="fs-6 mb-4">Consulta los datos de los alumnos por curso.</h2>
+      <div className="caja-valor p-4 mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div>
+          <label htmlFor="cursos" className="fw-bold mb-2">Seleccione un curso:</label>
+          <select id="cursos" className="form-select campo-formulario" value={cursoSeleccionado} onChange={(e) => setCursoSeleccionado(e.target.value)}>
+            <option value="" disabled>Seleccione</option>
+            <option value="1-medio">1° Medio</option>
+            <option value="2-medio">2° Medio</option>
+            <option value="3-medio">3° Medio</option>
+            <option value="4-medio">4° Medio</option>
+          </select>
+        </div>
+        <div>
+          <div className="contenedor-busqueda">
+            <input id="busqueda" className="form-control busqueda-input" placeholder="Buscar por nombre" value={texto} onChange={(e) => setTexto(e.target.value)} />
+            <i className="bx bx-search icono-busqueda"></i>
           </div>
         </div>
-      </main>
-      <Footer />
-    </>
+      </div>
+
+      {grupoActivo && (
+        <div id={`tabla-${grupoActivo.slice(-1)}`} className="table-responsive tabla">
+          <table className="table mb-0">
+            <thead className="encabezado-tabla">
+              <tr>
+                <th>Número</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Rut</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {resultados.map((alumno) => (
+                <tr key={alumno.rut}>
+                  <td>{alumno.numero}</td>
+                  <td>{alumno.nombre}</td>
+                  <td>{alumno.apellidos}</td>
+                  <td>{alumno.rut}</td>
+                  <td>{alumno.telefono}</td>
+                  <td>{alumno.correo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </PanelLayout>
   );
 }
  

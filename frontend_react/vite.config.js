@@ -10,7 +10,7 @@ export default defineConfig({
     setupFiles: './src/setupTests.js',
     coverage: {
       provider: 'v8',
-      include: ['src/components/**/*.jsx'],
+      include: ['src/components/**/*.jsx', 'src/pages/Login.jsx'],
       reporter: ['text', 'html'],
     },
   },

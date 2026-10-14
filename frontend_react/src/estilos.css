@@ -523,3 +523,303 @@ video {
 .texto-peligro {
     color: #dc3545;
 }
+
+/* Menú lateral la altura completa solo se usa cuando está al costado >= md */
+@media (min-width: 768px) {
+    .sidebar {
+        min-height: 100vh;
+    }
+}
+
+/* Celulares y tablets verticales < 768px*/
+@media (max-width: 767.98px) {
+
+    /* Menú lateral barra horizontal con scroll ya no ocupa toda la pantalla */
+    .sidebar .list-group {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        border-radius: 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .sidebar .list-group-item {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        border-bottom: 0;
+        border-right: 1px solid #283A94;
+    }
+
+    /* Navbar pública logo + botón "Ingresar" arriba, enlaces abajo */
+    .encabezado-principal {
+        row-gap: .75rem;
+    }
+
+    .encabezado-principal > a {
+        margin-right: 0;
+    }
+
+    .lista-enlaces {
+        order: 3;
+        width: 100%;
+        row-gap: .5rem !important;
+    }
+
+    .lista-enlaces a {
+        margin-right: 0;
+    }
+
+    .boton-ingresar {
+        padding: .4rem 1.1rem;
+    }
+
+    /* Imágenes de la landing sin recortes exagerados */
+    .imagen-colegio {
+        max-height: 280px;
+        object-fit: contain;
+    }
+
+    .imagen-historia {
+        max-height: 260px;
+    }
+
+    /* Botones del inicio ocupan el ancho disponible */
+    .contenedor-botones .btn {
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+
+    /* Selects con ancho fijo w-25 / w-50 pasan a ancho completo */
+    .form-select.w-25,
+    .form-select.w-50 {
+        width: 100% !important;
+    }
+
+    /* Buscador y filtros en las cajas con flex-wrap */
+    #busqueda {
+        max-width: 100%;
+    }
+
+    .caja-valor.flex-wrap > div {
+        width: 100%;
+    }
+
+    /* Tablas ancho mínimo para que hagan scroll horizontal en vez de aplastarse */
+    .table-responsive > .table {
+        min-width: 680px;
+    }
+
+    /* Calculadora de sueldos */
+    .fila-inputs > [class*="col-"] {
+        margin-bottom: 1rem;
+    }
+
+    .columna-haberes {
+        border-right: 0 !important;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/*Celulares< 576px*/
+@media (max-width: 575.98px) {
+
+    /* Header: que logo, etiqueta de rol y "Cerrar sesión" quepan en una línea */
+    header img {
+        height: 40px;
+        width: auto;
+    }
+
+    header .badge {
+        font-size: .8rem !important;
+        margin-left: 0 !important;
+    }
+
+    header #btn-cerrar {
+        padding: .4rem .9rem;
+        font-size: .875rem;
+    }
+
+    .contenedor-botones .btn {
+        font-size: 1rem;
+    }
+
+    /* Menos espacio lateral en las secciones del panel */
+    .fondo-panel {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+
+html {
+    scroll-behavior: smooth; /* los enlaces #inicio, #mision se deslizan suave */
+}
+
+section[id] {
+    scroll-margin-top: 130px; /* para que el encabezado fijo no tape los títulos */
+}
+
+/* ---------- Animaciones base ---------- */
+@keyframes subir {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes bajar-encabezado {
+    from { opacity: 0; transform: translateY(-100%); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes zoom-entrada {
+    from { opacity: 0; transform: scale(.88); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+}
+
+@keyframes pulso {
+    0%   { box-shadow: 0 0 0 0 rgba(51, 74, 189, .55); }
+    70%  { box-shadow: 0 0 0 14px rgba(51, 74, 189, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(51, 74, 189, 0); }
+}
+
+/* Entrada escalonada para el texto en inicio*/
+.anim-subir { animation: subir .7s ease both; }
+.retraso-1  { animation-delay: .15s; }
+.retraso-2  { animation-delay: .3s; }
+.retraso-3  { animation-delay: .45s; }
+.retraso-4  { animation-delay: .6s; }
+
+.encabezado-fijo {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .3);
+    animation: bajar-encabezado .6s ease both;
+}
+
+.encabezado-fijo img {
+    height: 50px;
+    width: auto;
+    transition: transform .3s ease;
+}
+
+.encabezado-fijo img:hover {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+/* Enlaces con subrayado animado desde el centro */
+.lista-enlaces a {
+    position: relative;
+    display: inline-block;
+    padding: .25rem 0;
+}
+
+.lista-enlaces a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #7f93ff;
+    border-radius: 2px;
+    transition: width .3s ease, left .3s ease;
+}
+
+.lista-enlaces a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Botón Ingresar */
+.boton-ingresar {
+    transition: transform .25s ease, box-shadow .25s ease, background-color .3s ease;
+}
+
+.boton-ingresar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .35);
+}
+
+.boton-ingresar i {
+    font-size: 1.15rem;
+    transition: transform .25s ease;
+}
+
+.boton-ingresar:hover i {
+    transform: translateX(4px);
+}
+
+/*Botones del inicio*/
+.boton-postular,
+.boton-conocer {
+    transition: transform .25s ease, box-shadow .25s ease, background-color .3s ease, color .3s ease;
+}
+
+.boton-postular:hover,
+.boton-conocer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(51, 74, 189, .35);
+}
+
+.boton-postular i,
+.boton-conocer i {
+    transition: transform .25s ease;
+}
+
+.boton-postular:hover i,
+.boton-conocer:hover i {
+    transform: scale(1.25) rotate(-8deg);
+}
+
+/* "Postula aquí" tipo latido  */
+.boton-postular {
+    animation: pulso 2.5s ease-out 1.5s infinite;
+}
+
+.boton-postular:hover {
+    animation: none;
+}
+
+/*Imagen principal */
+.imagen-colegio {
+    animation: zoom-entrada .9s ease .3s both, flotar 6s ease-in-out 1.4s infinite;
+}
+
+/*Secciones que aparecen al hacer scroll
+(solo en navegadores que soportan animaciones por scroll; en el resto se ven normales) */
+@supports (animation-timeline: view()) {
+    .contenido-principal section[id]:not(#inicio) .row {
+        animation: subir linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 35%;
+    }
+}
+
+/*Celulares: separar los enlaces del logo */
+@media (max-width: 767.98px) {
+    .lista-enlaces {
+        border-top: 1px solid rgba(255, 255, 255, .15);
+        padding-top: .75rem !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

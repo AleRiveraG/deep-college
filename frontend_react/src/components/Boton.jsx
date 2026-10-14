@@ -1,6 +1,7 @@
 /**boton para las pruebas de propiedades
  */
 function Boton({
+  id,
   texto = 'Aceptar',
   onClick,
   tipo = 'button',
@@ -10,6 +11,7 @@ function Boton({
 }) {
   return (
     <button
+      id={id}
       type={tipo}
       className={clase}
       onClick={onClick}

@@ -51,7 +51,7 @@ function NavBar({ rol, items }) {
   }
 
   return (
-    <aside className="col-md-2 sidebar min-vh-100" data-testid="sidebar-nav">
+    <aside className="col-12 col-md-3 col-lg-2 sidebar" data-testid="sidebar-nav">
       <nav className="list-group" role="navigation">
         {enlaces.map((enlace) => {
           const esActivo = location?.pathname === enlace.ruta;

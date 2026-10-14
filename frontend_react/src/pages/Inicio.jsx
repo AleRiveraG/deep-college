@@ -1,21 +1,23 @@
+import FooterPublico from '../components/FooterP';
+
 function Inicio() {
   return (
     <>
-      <header className="py-3 px-4 px-md-5">
-        <nav className="d-flex justify-content-between align-items-center encabezado-principal">
+      <header className="py-3 px-4 px-md-5 encabezado-fijo">
+        <nav className="d-flex flex-wrap justify-content-between align-items-center encabezado-principal">
           <a href="#inicio" className="d-flex align-items-center text-decoration-none fs-4 fw-bold">
             <img src="/images/logo-deep-white.png" height="50" className="me-3" alt="Logo colegio" />
           </a>
  
-          <ul className="d-flex gap-5 list-unstyled m-0 p-0 lista-enlaces">
+          <ul className="d-flex flex-wrap justify-content-center gap-3 gap-md-5 list-unstyled m-0 p-0 lista-enlaces order-3 order-md-2 col-12 col-md-auto">
             <li><a href="#inicio" className="text-decoration-none fw-semibold">Inicio</a></li>
             <li><a href="#biografia" className="text-decoration-none fw-semibold">Nosotros</a></li>
             <li><a href="#mision" className="text-decoration-none fw-semibold">Misión</a></li>
             <li><a href="#vision" className="text-decoration-none fw-semibold">Visión</a></li>
           </ul>
  
-          <a href="/login" className="btn d-flex align-items-center justify-content-center boton-ingresar">
-            Ingresar
+          <a href="/login" className="btn d-flex align-items-center justify-content-center boton-ingresar order-2 order-md-3">
+            <i className="bx bx-log-in me-2"></i>Ingresar
           </a>
         </nav>
       </header>
@@ -25,13 +27,13 @@ function Inicio() {
         <section id="inicio" className="container-fluid px-4 px-md-5 py-5 seccion-inicio">
           <div className="row align-items-center fila-inicio">
             <div className="col-md-6 pe-md-5 contenedor-texto-inicio">
-              <span className="badge px-3 py-2 mb-3 fs-6 etiqueta-destacada">Más de 30 años formando líderes</span>
+              <span className="badge px-3 py-2 mb-3 fs-6 etiqueta-destacada anim-subir retraso-1">Más de 30 años formando líderes</span>
  
-              <h1 className="display-4 fw-bold mb-4 titulo-principal">Deep College</h1>
+              <h1 className="display-4 fw-bold mb-4 titulo-principal anim-subir retraso-2">Deep College</h1>
  
-              <p className="fs-5 mb-4 parrafo-principal">Una institución educativa comprometida con la excelencia académica, la formación en valores y el desarrollo integral de cada estudiante desde 1993.</p>
+              <p className="fs-5 mb-4 parrafo-principal anim-subir retraso-3">Una institución educativa comprometida con la excelencia académica, la formación en valores y el desarrollo integral de cada estudiante desde 1993.</p>
  
-              <div className="d-flex gap-3 contenedor-botones">
+              <div className="d-flex flex-wrap gap-3 contenedor-botones anim-subir retraso-4">
                 <a href="/postulacion" className="btn btn-lg d-flex align-items-center boton-postular">
                   <i className="bx bx-edit me-2"></i>Postula aquí
                 </a>
@@ -92,48 +94,7 @@ function Inicio() {
         </section>
       </main>
  
-      <footer className="container-fluid py-5 contenedor-pie">
-        <div className="row">
-          <div className="col-md-6 px-5 mb-4 mb-md-0">
-            <img src="/images/logo-deep-white.png" className="logo mb-3" alt="Logo Colegio" />
-            <p>Formando líderes desde 1993. Educación de calidad y excelencia académica</p>
-            <hr />
-            <div className="d-flex mt-3">
-              <a href="#" className="me-3">
-                <img className="logos-enlaces" src="/images/Instagram_Glyph_White.png" alt="Logotipo Instagram" />
-              </a>
-              <a href="#" className="me-3">
-                <img className="logos-enlaces" src="/images/Facebook_Logo_Secondary.png" alt="Logotipo Facebook" />
-              </a>
-              <a href="#" className="me-3">
-                <img className="logos-enlaces" src="/images/logo-white.png" alt="Logotipo X" />
-              </a>
-              <a href="#" className="me-3">
-                <img className="logos-enlaces" src="/images/InBug-White.png" alt="Logotipo LinkedIn" />
-              </a>
-            </div>
-          </div>
-          <div className="col-md-6 px-5">
-            <ul className="list-unstyled">
-              <li className="mb-4">
-                <span className="fs-5 fw-bold">Contacto</span>
-              </li>
-              <li className="mb-2 d-flex align-items-center">
-                <i className="bx bx-location fs-5 me-2 icono-ubicacion"></i>
-                Av. Ubicación 123
-              </li>
-              <li className="mb-2 d-flex align-items-center">
-                <i className="bx bx-phone fs-5 me-2 icono-telefono"></i>
-                +56 9 9876 5432
-              </li>
-              <li className="d-flex align-items-center">
-                <i className="bx bx-envelope fs-5 me-2 icono-correo"></i>
-                correo.ejemplo@colegio.cl
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <FooterPublico />
     </>
   );
 }

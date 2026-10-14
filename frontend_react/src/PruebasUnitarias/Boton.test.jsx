@@ -20,4 +20,12 @@ describe('Boton', () => {
     fireEvent.click(screen.getByRole('button'))
     expect(onClick).toHaveBeenCalledTimes(1)
   })
+
+  it('asigna el id recibido y el tipo submit', () => {
+    render(<Boton id="btn-guardar" texto="Guardar" tipo="submit" />)
+
+    const boton = screen.getByRole('button')
+    expect(boton).toHaveAttribute('id', 'btn-guardar')
+    expect(boton).toHaveAttribute('type', 'submit')
+  })
 })

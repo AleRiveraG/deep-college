@@ -3,7 +3,7 @@ function Footer() {
     <footer>
       <div className="container-fluid py-5 contenedor-pie">
         <div className="row fila-pie">
-          <div className="col-md-6 px-5 mb-4 mb-md-0 informacion-colegio">
+          <div className="col-md-6 px-4 px-md-5 mb-4 mb-md-0 informacion-colegio">
             <img src="/images/logo-deep-white.png" className="logo img-fluid mb-3" alt="Logo Colegio" />
             <p className="lema-colegio">Formando líderes desde 1993. Educación de calidad y excelencia académica</p>
             <hr />
@@ -22,7 +22,7 @@ function Footer() {
               </a>
             </div>
           </div>
-          <div className="col-md-6 px-5 informacion-contacto">
+          <div className="col-md-6 px-4 px-md-5 informacion-contacto">
             <ul className="list-unstyled lista-contacto">
               <li className="item-contacto mb-4">
                 <span className="titulo-contacto fs-5 fw-bold">Contacto</span>
