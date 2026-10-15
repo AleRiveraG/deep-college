@@ -29,6 +29,11 @@ import HorarioEstudiante from './pages/estudiante/Horario';
 import MiPerfilEstudiante from './pages/estudiante/MiPerfil';
 import NotasEstudiante from './pages/estudiante/Notas';
 
+// Vistas Apoderado
+import AsistenciaApoderado from './pages/apoderado/Asistencia';
+import NotasApoderado from './pages/apoderado/Notas';
+import HorarioApoderado from './pages/apoderado/Horario';
+
 function App() {
   return (
     <BrowserRouter>
@@ -57,6 +62,11 @@ function App() {
         <Route path="/estudiante/horario" element={<HorarioEstudiante />} />
         <Route path="/estudiante/perfil" element={<MiPerfilEstudiante />} />
         <Route path="/estudiante/notas" element={<NotasEstudiante />} />
+        
+        <Route path="/apoderado" element={<AsistenciaApoderado />} />
+        <Route path="/apoderado/asistencia" element={<AsistenciaApoderado />} />
+        <Route path="/apoderado/notas" element={<NotasApoderado />} />
+        <Route path="/apoderado/horario" element={<HorarioApoderado />} />
       </Routes>
     </BrowserRouter>
   );

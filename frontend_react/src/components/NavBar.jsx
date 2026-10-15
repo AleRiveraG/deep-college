@@ -25,7 +25,14 @@ export const enlacesEstudiante = [
   { ruta: '/estudiante/asistencia', icono: 'bx-clipboard-check', iconoClase: 'icono-asistencia', texto: 'Asistencia' },
   { ruta: '/estudiante/notas', icono: 'bx-education', iconoClase: 'icono-notas', texto: 'Notas' },
   { ruta: '/estudiante/horario', icono: 'bx-calendar-alt', iconoClase: 'icono-horarios', texto: 'Horario' },
+
 ];
+
+export const enlacesApoderado = [
+  { ruta: '/apoderado/asistencia', icono: 'bx-clipboard-check', iconoClase: 'icono-asistencia', texto: 'Asistencia' },
+  { ruta: '/apoderado/notas', icono: 'bx-education', iconoClase: 'icono-notas', texto: 'Notas' },
+  { ruta: '/apoderado/horario', icono: 'bx-calendar-alt', iconoClase: 'icono-horarios', texto: 'Horario' },
+];  
 
 function NavBar({ rol, items }) {
   const location = useLocation();
@@ -44,8 +51,10 @@ function NavBar({ rol, items }) {
         enlaces = enlacesDocente;
       } else if (pathname.startsWith('/estudiante')) {
         enlaces = enlacesEstudiante;
+      } else if (pathname.startsWith('/apoderado')){
+        enlaces = enlacesApoderado;
       } else {
-        enlaces = enlacesDirectiva;
+        enlaces = enlacesDirectiva
       }
     }
   }

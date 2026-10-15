@@ -53,7 +53,10 @@ function Login() {
     } else if (rol === 'estudiante') {
       alert('Inicio de sesión exitoso!');
       navigate('/estudiante');
-    } else {
+    } else if (rol === 'apoderado'){
+      alert('Inicio de sesión exitoso!')
+      navigate('/apoderado')
+    }else{
       setError('Correo no valido');
     }
   }
