@@ -3,11 +3,19 @@ import { Link, useLocation } from 'react-router-dom';
 function Header({ rol, claseEtiqueta, onLogout, logoutPath = '/' }) {
   const location = useLocation();
 
+  function cerrarSesion() {
+    localStorage.removeItem('deepcollege.token');
+    localStorage.removeItem('deepcollege.rol');
+    localStorage.removeItem('deepcollege.usuario');
+    onLogout?.();
+  }
+
   let rolFinal = rol;
   let claseFinal = claseEtiqueta;
 
   if (!rolFinal) {
     const ruta = location?.pathname || '';
+
     if (ruta.startsWith('/docente')) {
       rolFinal = 'Docente';
       claseFinal = 'rol-docente';
@@ -27,13 +35,24 @@ function Header({ rol, claseEtiqueta, onLogout, logoutPath = '/' }) {
     <header>
       <div className="d-flex justify-content-between align-items-center py-3 px-3 px-md-4">
         <div className="d-flex align-items-center">
-          <img src="/images/logo-deep-white.png" height="50" className="me-2 me-md-3" alt="Logo Colegio" />
+          <img
+            src="/images/logo-deep-white.png"
+            height="50"
+            className="me-2 me-md-3"
+            alt="Logo Colegio"
+          />
           <span className={`badge ${claseFinal || ''} fs-6 ms-2`} data-testid="rol-badge">
             {rolFinal}
           </span>
         </div>
+
         <Link to={logoutPath}>
-          <button id="btn-cerrar" className="btn btn-sm" onClick={onLogout} data-testid="btn-cerrar-sesion">
+          <button
+            id="btn-cerrar"
+            className="btn btn-sm"
+            onClick={cerrarSesion}
+            data-testid="btn-cerrar-sesion"
+          >
             Cerrar sesión
           </button>
         </Link>

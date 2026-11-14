@@ -1,159 +1,256 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PanelLayout from '../../components/PanelLayout';
 import Boton from '../../components/Boton';
- 
+import { api } from '../../services/api';
+
+function separarNombreCompleto(valor = '') {
+  const partes = valor.trim().split(/\s+/).filter(Boolean);
+  return {
+    primero: partes.shift() || '',
+    segundo: partes.join(' '),
+  };
+}
+
+function convertirPerfilAFormulario(perfil) {
+  const nombres = separarNombreCompleto(perfil.nombres);
+  const apellidos = separarNombreCompleto(perfil.apellidos);
+
+  return {
+    primerNombre: nombres.primero,
+    segundoNombre: nombres.segundo,
+    primerApellido: apellidos.primero,
+    segundoApellido: apellidos.segundo,
+    rut: perfil.rut || '',
+    fechaNacimiento: perfil.fechaNacimiento || '',
+  };
+}
+
 function MiPerfil() {
-  const [primerNombre, setPrimerNombre] = useState('Alberto');
-  const [segundoNombre, setSegundoNombre] = useState('Khan');
-  const [primerApellido, setPrimerApellido] = useState('Zhaito');
-  const [segundoApellido, setSegundoApellido] = useState('Gonzalez');
-  const [rut, setRut] = useState('12345678-9');
-  const [fechaNacimiento, setFechaNacimiento] = useState('2026-09-02');
- 
+  const [form, setForm] = useState(null);
+  const [perfil, setPerfil] = useState(null);
   const [editando, setEditando] = useState(false);
- 
-  function validarPrimerNombre() {
-    return !(primerNombre.trim() === '' || primerNombre.trim().length < 3 || /\d/.test(primerNombre));
+  const [cargando, setCargando] = useState(true);
+  const [guardando, setGuardando] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    api('/api/usuarios/me')
+      .then((datos) => {
+        setPerfil(datos);
+        setForm(convertirPerfilAFormulario(datos));
+      })
+      .catch((e) => setError(e.message))
+      .finally(() => setCargando(false));
+  }, []);
+
+  function cambiarCampo(evento) {
+    setForm({ ...form, [evento.target.name]: evento.target.value });
   }
- 
-  function validarSegundoNombre() {
-    return !(segundoNombre.trim().length < 3 || /\d/.test(segundoNombre));
-  }
- 
-  function validarPrimerApellido() {
-    return !(primerApellido.trim() === '' || primerApellido.trim().length < 3 || /\d/.test(primerApellido));
-  }
- 
-  function validarSegundoApellido() {
-    return !(segundoApellido.trim() === '' || segundoApellido.trim().length < 3 || /\d/.test(segundoApellido));
-  }
- 
-  function validarFechaNacimiento() {
-    return fechaNacimiento !== '';
-  }
- 
-  function validarRut() {
-    return !(rut.trim() === '' || rut.trim().length < 8 || !rut.includes('-') || rut.trim().length > 13);
-  }
- 
-  function manejarBoton(evento) {
+
+  async function manejarSubmit(evento) {
     evento.preventDefault();
- 
+
     if (!editando) {
       setEditando(true);
       return;
     }
- 
-    if (!validarPrimerNombre()) {
-      alert('Primer nombre no valido, compruebe los datos ingresados');
+
+    const nombres = [form.primerNombre, form.segundoNombre]
+      .map((parte) => parte.trim())
+      .filter(Boolean)
+      .join(' ');
+
+    const apellidos = [form.primerApellido, form.segundoApellido]
+      .map((parte) => parte.trim())
+      .filter(Boolean)
+      .join(' ');
+
+    if (!nombres || !apellidos || !form.rut.trim()) {
+      setError('Completa nombres, apellidos y RUT.');
       return;
     }
-    if (!validarSegundoNombre()) {
-      alert('Segundo nombre no valido, compruebe los datos ingresados');
-      return;
+
+    setGuardando(true);
+    setError('');
+
+    try {
+      const actualizado = await api('/api/usuarios/me', {
+        method: 'PUT',
+        body: JSON.stringify({
+          nombres,
+          apellidos,
+          rut: form.rut.trim(),
+          telefono: perfil.telefono || null,
+          fechaNacimiento: form.fechaNacimiento || null,
+          curso: perfil.curso || null,
+          nivel: perfil.nivel || null,
+        }),
+      });
+
+      setPerfil(actualizado);
+      setForm(convertirPerfilAFormulario(actualizado));
+      setEditando(false);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setGuardando(false);
     }
-    if (!validarPrimerApellido()) {
-      alert('Primer apellido no valido, compruebe los datos ingresados');
-      return;
-    }
-    if (!validarSegundoApellido()) {
-      alert('Segundo apellido no valido, compruebe los datos ingresados');
-      return;
-    }
-    if (!validarRut()) {
-      alert('Rut no valido, compruebe los datos ingresados');
-      return;
-    }
-    if (!validarFechaNacimiento()) {
-      alert('Fecha ingresada no valida, compruebe los datos ingresados');
-      return;
-    }
- 
-    alert('Datos modificados con exito!');
-    setEditando(false);
   }
- 
+
+  function cancelarEdicion() {
+    setForm(convertirPerfilAFormulario(perfil));
+    setEditando(false);
+    setError('');
+  }
+
+  if (cargando) {
+    return (
+      <PanelLayout rol="Estudiante" claseEtiqueta="rol-estudiante">
+        <p>Cargando perfil…</p>
+      </PanelLayout>
+    );
+  }
+
+  if (!form) {
+    return (
+      <PanelLayout rol="Estudiante" claseEtiqueta="rol-estudiante">
+        <div className="alert alert-danger">
+          {error || 'No se pudo cargar el perfil.'}
+        </div>
+      </PanelLayout>
+    );
+  }
+
   return (
-    <PanelLayout rol="Estudiante" claseEtiqueta="rol-estudiante" claseSeccion="py-4 px-4 seccion-perfil">
+    <PanelLayout
+      rol="Estudiante"
+      claseEtiqueta="rol-estudiante"
+      claseSeccion="py-4 px-4 seccion-perfil"
+    >
       <h1 className="titulo-principal mb-4">Mi perfil</h1>
-      <h2 className="fs-6 mb-4">Consulta y actualiza tu informacion personal.</h2>
+      <h2 className="fs-6 mb-4">
+        Consulta y actualiza tu información personal.
+      </h2>
+
+      {error && <div className="alert alert-danger">{error}</div>}
 
       <div className="border rounded p-4 caja-valor bg-light">
-        <form>
+        <form onSubmit={manejarSubmit}>
           <div className="row mb-3">
             <div className="col-md-6">
-              <label htmlFor="primer-nombre" className="form-label etiqueta-input fw-bold small">Primer Nombre *</label>
+              <label htmlFor="primer-nombre" className="form-label fw-bold small">
+                Primer nombre
+              </label>
               <input
                 id="primer-nombre"
+                name="primerNombre"
                 className="form-control form-control-sm campo-formulario"
-                value={primerNombre}
-                onChange={(e) => setPrimerNombre(e.target.value)}
-                disabled={!editando}
+                value={form.primerNombre}
+                onChange={cambiarCampo}
+                disabled={!editando || guardando}
               />
             </div>
+
             <div className="col-md-6 mt-3 mt-md-0">
-              <label htmlFor="segundo-nombre" className="form-label etiqueta-input fw-bold small">Segundo Nombre *</label>
+              <label htmlFor="segundo-nombre" className="form-label fw-bold small">
+                Segundo nombre
+              </label>
               <input
                 id="segundo-nombre"
+                name="segundoNombre"
                 className="form-control form-control-sm campo-formulario"
-                value={segundoNombre}
-                onChange={(e) => setSegundoNombre(e.target.value)}
-                disabled={!editando}
+                value={form.segundoNombre}
+                onChange={cambiarCampo}
+                disabled={!editando || guardando}
               />
             </div>
           </div>
+
           <div className="row mb-3">
             <div className="col-md-6">
-              <label htmlFor="primer-apellido" className="form-label etiqueta-input fw-bold small">Primer Apellido *</label>
+              <label htmlFor="primer-apellido" className="form-label fw-bold small">
+                Primer apellido
+              </label>
               <input
                 id="primer-apellido"
+                name="primerApellido"
                 className="form-control form-control-sm campo-formulario"
-                value={primerApellido}
-                onChange={(e) => setPrimerApellido(e.target.value)}
-                disabled={!editando}
+                value={form.primerApellido}
+                onChange={cambiarCampo}
+                disabled={!editando || guardando}
               />
             </div>
+
             <div className="col-md-6 mt-3 mt-md-0">
-              <label htmlFor="segundo-apellido" className="form-label etiqueta-input fw-bold small">Segundo Apellido *</label>
+              <label htmlFor="segundo-apellido" className="form-label fw-bold small">
+                Segundo apellido
+              </label>
               <input
                 id="segundo-apellido"
+                name="segundoApellido"
                 className="form-control form-control-sm campo-formulario"
-                value={segundoApellido}
-                onChange={(e) => setSegundoApellido(e.target.value)}
-                disabled={!editando}
+                value={form.segundoApellido}
+                onChange={cambiarCampo}
+                disabled={!editando || guardando}
               />
             </div>
           </div>
+
           <div className="row mb-4">
             <div className="col-md-6">
-              <label htmlFor="rut" className="form-label etiqueta-input fw-bold small">Rut *</label>
+              <label htmlFor="rut" className="form-label fw-bold small">
+                RUT
+              </label>
               <input
                 id="rut"
+                name="rut"
                 className="form-control form-control-sm campo-formulario"
-                value={rut}
-                onChange={(e) => setRut(e.target.value)}
-                disabled={!editando}
+                value={form.rut}
+                onChange={cambiarCampo}
+                disabled={!editando || guardando}
               />
             </div>
+
             <div className="col-md-6 mt-3 mt-md-0">
-              <label htmlFor="fecha-nacimiento" className="form-label etiqueta-input fw-bold small">Fecha de Nacimiento *</label>
+              <label htmlFor="fecha-nacimiento" className="form-label fw-bold small">
+                Fecha de nacimiento
+              </label>
               <input
                 id="fecha-nacimiento"
+                name="fechaNacimiento"
                 type="date"
                 className="form-control form-control-sm campo-formulario"
-                value={fechaNacimiento}
-                onChange={(e) => setFechaNacimiento(e.target.value)}
-                disabled={!editando}
+                value={form.fechaNacimiento}
+                onChange={cambiarCampo}
+                disabled={!editando || guardando}
               />
             </div>
           </div>
+
           <div className="text-end">
+            {editando && (
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary px-4 me-2"
+                onClick={cancelarEdicion}
+                disabled={guardando}
+              >
+                Cancelar
+              </button>
+            )}
+
             <Boton
               id="btn-modificar"
               tipo="submit"
               clase="btn btn-sm boton-calcular px-4"
-              onClick={manejarBoton}
-              texto={editando ? 'Aplicar' : 'Modificar'}
+              texto={
+                guardando
+                  ? 'Guardando…'
+                  : editando
+                    ? 'Guardar cambios'
+                    : 'Modificar'
+              }
+              deshabilitado={guardando}
             />
           </div>
         </form>
@@ -161,5 +258,5 @@ function MiPerfil() {
     </PanelLayout>
   );
 }
- 
+
 export default MiPerfil;

@@ -1,154 +1,449 @@
-import PanelLayout from "../../components/PanelLayout";
-import { useState } from "react";
-import Boton from "../../components/Boton";
- 
-//array con cursos a eleccion cuando se vaya a registrar notas
-const datosIniciales = {
-  grupo1: [
-    { numero: 1, nombre: 'Khan Zhaito', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-    { numero: 2, nombre: 'Mezako Susake', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-    { numero: 3, nombre: 'Tai Won', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-  ],
-  grupo2: [
-    { numero: 1, nombre: 'Juan Silva', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-    { numero: 2, nombre: 'John Doe', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-    { numero: 3, nombre: 'Jane Doe', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-  ],
-  grupo3: [
-    { numero: 1, nombre: 'Esteban Quito', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-    { numero: 2, nombre: 'Elena Nito', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-    { numero: 3, nombre: 'Solomeo Paredes', es1: '', es2: '', ef1: '', ef2: '', ed1: '', ed2: '', ed3: '', promedio: null },
-  ],
-};
+import { useEffect, useState } from 'react';
+import PanelLayout from '../../components/PanelLayout';
+import useAlumnosDocente from '../../hooks/useAlumnosDocente';
+import datosDemoAcademicos from '../../data/datosDemoAcademicos';
 
-function obtenerGrupo(curso) {
-  if (curso === '1-medio' || curso === '4-medio') return 'grupo1';
-  if (curso === '2-medio') return 'grupo2';
-  return 'grupo3';
+const camposNotas = ['es1', 'es2', 'ef1', 'ef2', 'ed1', 'ed2', 'ed3'];
+
+function obtenerValores(nota) {
+  return {
+    es1: nota?.ES?.[0] ?? '',
+    es2: nota?.ES?.[1] ?? '',
+    ef1: nota?.EF?.[0] ?? '',
+    ef2: nota?.EF?.[1] ?? '',
+    ed1: nota?.ED?.[0] ?? '',
+    ed2: nota?.ED?.[1] ?? '',
+    ed3: nota?.ED?.[2] ?? '',
+  };
 }
- 
-function RegistroNotas() {
-  const [cursoSeleccionado, setCursoSeleccionado] = useState('');
-  const [datos, setDatos] = useState(datosIniciales);
-  const [habilitado, setHabilitado] = useState(false);
- 
-  const grupoActivo = cursoSeleccionado ? obtenerGrupo(cursoSeleccionado) : null;
-  const estudiantes = grupoActivo ? datos[grupoActivo] : [];
- 
-  function actualizarCampo(numero, campo, valor) {
-    setDatos((actual) => ({
-      ...actual,
-      [grupoActivo]: actual[grupoActivo].map((est) =>
-        est.numero === numero ? { ...est, [campo]: valor } : est
-      ),
-    }));
-  }
- 
-  function calcularPromedios() {
-    setDatos((actual) => ({
-      ...actual,
-      [grupoActivo]: actual[grupoActivo].map((est) => {
-        const sumativa = (Number(est.es1) + Number(est.es2)) / 2;
-        const formativa = (Number(est.ef1) + Number(est.ef2)) / 2;
-        const desempeno = (Number(est.ed1) + Number(est.ed2) + Number(est.ed3)) / 3;
-        const final = sumativa * 0.35 + formativa * 0.35 + desempeno * 0.3;
-        return { ...est, promedio: final.toFixed(1) };
-      }),
-    }));
-  }
- 
-  function manejarCambioCurso(evento) {
-    setCursoSeleccionado(evento.target.value);
-    setHabilitado(false);
-  }
- 
-  function manejarRegistrar(evento) {
-    evento.preventDefault();
-    setHabilitado(true);
-  }
- 
-  return (
-    <PanelLayout>
-      <h1 className="mb-4">Registro de notas</h1>
-      <h2 className="fs-6 mb-4">Registra las calificaciones y calcula los promedios de tus alumnos.</h2>
 
-      <div className="caja-valor p-4 mb-4">
-        <label htmlFor="curso" className="fw-bold mb-2">Seleccione un curso:</label>
-        <select id="curso" className="form-select w-25 campo-formulario" value={cursoSeleccionado} onChange={manejarCambioCurso}>
-          <option value="" disabled>Seleccione</option>
-          <option value="1-medio">1° Medio</option>
-          <option value="2-medio">2° Medio</option>
-          <option value="3-medio">3° Medio</option>
-          <option value="4-medio">4° Medio</option>
-        </select>
+function calcularPromedio(valores) {
+  const completos = camposNotas.every(
+    (campo) => valores[campo] !== '' && valores[campo] !== undefined
+  );
+
+  if (!completos) return null;
+
+  const total = camposNotas.reduce(
+    (suma, campo) => suma + Number(valores[campo]),
+    0
+  );
+
+  return (total / camposNotas.length).toFixed(1);
+}
+
+function claseNota(valor) {
+  if (valor === '' || valor === null || valor === undefined) {
+    return 'nota-vacia';
+  }
+
+  const nota = Number(valor);
+
+  if (!Number.isFinite(nota)) return 'nota-vacia';
+  if (nota < 4) return 'nota-baja';
+  if (nota >= 6) return 'nota-alta';
+
+  return 'nota-media';
+}
+
+function RegistroNotas() {
+  const {
+    nivel,
+    cursos,
+    curso,
+    alumnos,
+    error,
+    cargando,
+    seleccionarCurso,
+  } = useAlumnosDocente();
+
+  const [asignatura, setAsignatura] = useState('');
+  const [ediciones, setEdiciones] = useState({});
+  const [editando, setEditando] = useState(false);
+
+  useEffect(() => {
+    setAsignatura('');
+    setEditando(false);
+  }, [curso]);
+
+  const asignaturas = [
+    ...new Set(
+      alumnos.flatMap((alumno) => {
+        const datosAlumno = datosDemoAcademicos[String(alumno.id)];
+        return datosAlumno?.notas?.map((nota) => nota.asignatura) || [];
+      })
+    ),
+  ];
+
+  const asignaturaActiva = asignaturas.includes(asignatura)
+    ? asignatura
+    : asignaturas[0] || '';
+
+  const filas = alumnos.map((alumno, indice) => {
+    const datosAlumno = datosDemoAcademicos[String(alumno.id)];
+    const notaBase = datosAlumno?.notas?.find(
+      (nota) => nota.asignatura === asignaturaActiva
+    );
+
+    const llave = `${alumno.id}-${asignaturaActiva}`;
+    const valores = ediciones[llave] || obtenerValores(notaBase);
+
+    return {
+      llave,
+      alumno,
+      numero: indice + 1,
+      valores,
+      promedio: calcularPromedio(valores),
+    };
+  });
+
+  const filasConPromedio = filas.filter((fila) => fila.promedio !== null);
+
+  const promedioCurso = filasConPromedio.length
+    ? (
+        filasConPromedio.reduce(
+          (suma, fila) => suma + Number(fila.promedio),
+          0
+        ) / filasConPromedio.length
+      ).toFixed(1)
+    : '—';
+
+  function actualizarNota(llave, campo, valor) {
+    setEdiciones((actuales) => {
+      const filaActual =
+        actuales[llave] ||
+        filas.find((fila) => fila.llave === llave)?.valores ||
+        {};
+
+      return {
+        ...actuales,
+        [llave]: {
+          ...filaActual,
+          [campo]: valor,
+        },
+      };
+    });
+  }
+
+  return (
+    <PanelLayout rol="Docente" claseEtiqueta="rol-docente">
+      <div className="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+        <div>
+          <h1 className="titulo-principal mb-2">Registro de notas</h1>
+          <p className="mb-0">
+            Consulta las calificaciones por curso y asignatura.
+          </p>
+        </div>
+
+        {nivel && (
+          <span className="badge rounded-pill px-3 py-2 rol-docente">
+            Nivel: {nivel}
+          </span>
+        )}
       </div>
 
-      {grupoActivo && (
-        <div id={`tabla-${grupoActivo.slice(-1)}`} className="table-responsive tabla">
-          <table className="table mb-0 text-center align-middle">
-            <thead className="encabezado-tabla">
-              <tr>
-                <th colSpan="2" className="border-end border-bottom-0"></th>
-                <th colSpan="2" className="border-end text-white" style={{ backgroundColor: '#1C2866' }}>Sumativa (35%)</th>
-                <th colSpan="2" className="border-end text-white" style={{ backgroundColor: '#283A94' }}>Formativa (35%)</th>
-                <th colSpan="3" className="border-end text-white" style={{ backgroundColor: '#334ABD' }}>Desempeño (30%)</th>
-                <th className="border-bottom-0"></th>
-              </tr>
-              <tr>
-                <th className="border-end" style={{ width: '5%' }}>Número</th>
-                <th className="border-end text-start" style={{ width: '20%' }}>Estudiante</th>
-                <th style={{ width: '8%' }}>ES1</th>
-                <th className="border-end" style={{ width: '8%' }}>ES2</th>
-                <th style={{ width: '8%' }}>EF1</th>
-                <th className="border-end" style={{ width: '8%' }}>EF2</th>
-                <th style={{ width: '8%' }}>ED1</th>
-                <th style={{ width: '8%' }}>ED2</th>
-                <th className="border-end" style={{ width: '8%' }}>ED3</th>
-                <th>Promedio</th>
-              </tr>
-            </thead>
-            <tbody>
-              {estudiantes.map((est) => (
-                <tr key={est.numero}>
-                  <td className="border-end">{est.numero}</td>
-                  <td className="border-end text-start">{est.nombre}</td>
-                  {['es1', 'es2', 'ef1', 'ef2', 'ed1', 'ed2', 'ed3'].map((campo) => (
-                    <td key={campo} className={['es2', 'ef2', 'ed3'].includes(campo) ? 'border-end' : undefined}>
-                      <input
-                        type="text"
-                        className={`form-control form-control-sm text-center px-1 campo-formulario ${campo}`}
-                        placeholder="Ej: 7.0"
-                        value={est[campo]}
-                        onChange={(e) => actualizarCampo(est.numero, campo, e.target.value)}
-                        disabled={!habilitado}
-                      />
-                    </td>
-                  ))}
-                  <td className="fw-bold monto-valor promedio">{est.promedio ?? ''}</td>
-                </tr>
+      <section className="tarjeta-blanca border rounded-3 p-3 p-md-4 mb-4">
+        <div className="row g-3 align-items-end">
+          <div className="col-md-6">
+            <label htmlFor="curso-notas" className="form-label fw-bold">
+              Curso
+            </label>
+            <select
+              id="curso-notas"
+              className="form-select campo-formulario"
+              value={curso}
+              onChange={(e) => seleccionarCurso(e.target.value)}
+              disabled={cargando}
+            >
+              <option value="">Selecciona un curso</option>
+              {cursos.map((opcion) => (
+                <option key={opcion.valor} value={opcion.valor}>
+                  {opcion.nombre}
+                </option>
               ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+            </select>
+          </div>
 
-      {grupoActivo && (
-        <div id="cont-botones">
-          <div className="d-flex justify-content-end gap-3 mt-4">
-            <Boton
-              id="btn-calcular"
-              clase="btn btn-outline-secondary px-4"
-              onClick={calcularPromedios}
-              deshabilitado={!habilitado}
-              texto="Calcular"
-            />
-            <Boton id="btn-registrar" clase="boton-calcular px-4" onClick={manejarRegistrar} texto="Registrar" />
+          <div className="col-md-6">
+            <label htmlFor="asignatura-notas" className="form-label fw-bold">
+              Asignatura
+            </label>
+            <select
+              id="asignatura-notas"
+              className="form-select campo-formulario"
+              value={asignaturaActiva}
+              onChange={(e) => setAsignatura(e.target.value)}
+              disabled={!curso || asignaturas.length === 0}
+            >
+              {asignaturas.length === 0 ? (
+                <option value="">Selecciona primero un curso</option>
+              ) : (
+                asignaturas.map((nombre) => (
+                  <option key={nombre} value={nombre}>
+                    {nombre}
+                  </option>
+                ))
+              )}
+            </select>
           </div>
         </div>
+      </section>
+
+      {error && <div className="alert alert-danger">{error}</div>}
+      {cargando && <p>Cargando alumnos…</p>}
+
+      {!cargando && !error && cursos.length === 0 && (
+        <div className="alert alert-warning">
+          Tu cuenta no tiene un nivel de enseñanza asignado. Pide a Directiva
+          que revise tu cuenta.
+        </div>
       )}
 
+      {!cargando && curso && alumnos.length === 0 && !error && (
+        <div className="alert alert-info">
+          No hay estudiantes registrados en este curso.
+        </div>
+      )}
+
+      {!cargando && alumnos.length > 0 && asignaturas.length === 0 && (
+        <div className="alert alert-info">
+          No hay notas de demostración configuradas para los alumnos de este
+          curso. Agrega sus datos en `src/data/datosDemoAcademicos.js`.
+        </div>
+      )}
+
+      {!cargando && alumnos.length > 0 && asignaturaActiva && (
+        <>
+          <section className="row g-3 mb-4">
+            <div className="col-md-6">
+              <div className="tarjeta-blanca border rounded-3 p-4 h-100 d-flex align-items-center gap-3">
+                <div
+                  className="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0"
+                  style={{
+                    width: '48px',
+                    height: '48px',
+                    backgroundColor: '#e8edff',
+                    color: '#334ABD',
+                  }}
+                  aria-hidden="true"
+                >
+                  <i className="bx bx-user fs-3"></i>
+                </div>
+
+                <div>
+                  <span className="d-block fs-3 fw-bold monto-valor">
+                    {alumnos.length}
+                  </span>
+                  <span className="small texto-secundario">
+                    {alumnos.length === 1
+                      ? 'Alumno del curso'
+                      : 'Alumnos del curso'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="tarjeta-blanca border rounded-3 p-4 h-100 d-flex align-items-center gap-3">
+                <div
+                  className="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0"
+                  style={{
+                    width: '48px',
+                    height: '48px',
+                    backgroundColor: '#fff4d6',
+                    color: '#d99b00',
+                  }}
+                  aria-hidden="true"
+                >
+                  <i className="bx bx-medal fs-3"></i>
+                </div>
+
+                <div>
+                  <span className="d-block fs-3 fw-bold monto-valor">
+                    {promedioCurso}
+                  </span>
+                  <span className="small texto-secundario">
+                    Promedio de {asignaturaActiva}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="tarjeta-blanca border rounded-3 p-3 p-md-4">
+            <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+              <div>
+                <h2 className="fs-4 fw-bold mb-1">{asignaturaActiva}</h2>
+                <p className="small texto-secundario mb-0">
+                  Registro de calificaciones
+                </p>
+              </div>
+
+              {editando && (
+                <span className="badge rounded-pill text-bg-light border">
+                  Edición habilitada
+                </span>
+              )}
+            </div>
+
+            <div className="table-responsive contenedor-tabla">
+              <table
+                className="table table-bordered table-hover text-center align-middle tabla-horarios bg-white mb-0"
+                style={{ minWidth: '1050px' }}
+              >
+                <thead>
+                  <tr>
+                    <th
+                      aria-hidden="true"
+                      style={{ width: '70px', backgroundColor: '#1C2866' }}
+                    ></th>
+                    <th
+                      aria-hidden="true"
+                      style={{ minWidth: '230px', backgroundColor: '#1C2866' }}
+                    ></th>
+
+                    <th
+                      colSpan={2}
+                      scope="colgroup"
+                      className="text-white"
+                      style={{ backgroundColor: '#1C2866' }}
+                    >
+                      Sumativa (35%)
+                    </th>
+
+                    <th
+                      colSpan={2}
+                      scope="colgroup"
+                      className="text-white"
+                      style={{ backgroundColor: '#283A94' }}
+                    >
+                      Formativa (35%)
+                    </th>
+
+                    <th
+                      colSpan={3}
+                      scope="colgroup"
+                      className="text-white"
+                      style={{ backgroundColor: '#334ABD' }}
+                    >
+                      Desempeño (30%)
+                    </th>
+
+                    <th
+                      aria-hidden="true"
+                      style={{
+                        minWidth: '110px',
+                        backgroundColor: '#e8edff',
+                      }}
+                    ></th>
+                  </tr>
+
+                  <tr className="encabezado-tabla">
+                    <th scope="col">N.º</th>
+                    <th scope="col" className="text-start">
+                      Estudiante
+                    </th>
+                    <th scope="col">ES1</th>
+                    <th scope="col">ES2</th>
+                    <th scope="col">EF1</th>
+                    <th scope="col">EF2</th>
+                    <th scope="col">ED1</th>
+                    <th scope="col">ED2</th>
+                    <th scope="col">ED3</th>
+                    <th
+                      scope="col"
+                      style={{
+                        backgroundColor: '#e8edff',
+                        color: '#1C2866',
+                      }}
+                    >
+                      Promedio
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {filas.map((fila) => (
+                    <tr key={fila.llave}>
+                      <td className="fw-semibold">{fila.numero}</td>
+
+                      <td className="text-start fw-semibold texto-destacado">
+                        {fila.alumno.nombres} {fila.alumno.apellidos}
+                      </td>
+
+                      {camposNotas.map((campo, indice) => (
+                        <td key={campo}>
+                          {editando ? (
+                            <input
+                              type="number"
+                              min="1"
+                              max="7"
+                              step="0.1"
+                              aria-label={`Evaluación ${indice + 1} de ${fila.alumno.nombres} ${fila.alumno.apellidos}`}
+                              className="form-control form-control-sm text-center campo-formulario mx-auto"
+                              style={{ width: '78px' }}
+                              value={fila.valores[campo]}
+                              onChange={(e) =>
+                                actualizarNota(
+                                  fila.llave,
+                                  campo,
+                                  e.target.value
+                                )
+                              }
+                            />
+                          ) : (
+                            <span
+                              className={`d-inline-block rounded-2 px-3 py-1 fw-semibold ${claseNota(
+                                fila.valores[campo]
+                              )}`}
+                              style={{ minWidth: '48px' }}
+                            >
+                              {fila.valores[campo] === ''
+                                ? '—'
+                                : fila.valores[campo]}
+                            </span>
+                          )}
+                        </td>
+                      ))}
+
+                      <td
+                        className="fw-bold"
+                        style={{
+                          backgroundColor: '#e8edff',
+                          color: '#1C2866',
+                        }}
+                      >
+                        {fila.promedio ?? '—'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="d-flex flex-wrap justify-content-end gap-2 mt-4">
+              <button
+                type="button"
+                className="btn btn-outline-secondary px-4"
+                disabled={!editando}
+                onClick={() => setEdiciones({})}
+              >
+                Restablecer
+              </button>
+
+              <button
+                type="button"
+                className="btn boton-calcular px-4"
+                onClick={() => setEditando((actual) => !actual)}
+              >
+                {editando ? 'Terminar edición' : 'Habilitar edición'}
+              </button>
+            </div>
+          </section>
+        </>
+      )}
     </PanelLayout>
   );
 }
- 
+
 export default RegistroNotas;

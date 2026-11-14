@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Boton from '../components/Boton';
 import MensajeError from '../components/MensajeError';
+import { api, rutaPorRol } from '../services/api';
  
 function Login() {
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [error, setError] = useState('');
+  const [cargando, setCargando] = useState(false);
   const navigate = useNavigate();
  
   function validarCorreo(correo) {
@@ -17,22 +19,11 @@ function Login() {
     return !(contrasena.trim() === '' || contrasena.trim().length < 8);
   }
  
-  function buscarRol(correo) {
-    let dominio = correo.split('@')[1];
-    let rol = dominio.split('.')[0];
-    let colegio = dominio.split('.')[1];
-    if (colegio === 'deepcollege') {
-      return rol;
-    } else {
-      return null;
-    }
-  }
- 
-  function manejarInicioSesion(evento) {
+  async function manejarInicioSesion(evento) {
     evento.preventDefault();
     setError('');
  
-    if (!validarCorreo(correo) || buscarRol(correo) == null) {
+    if (!validarCorreo(correo)) {
       setError('Correo ingresado no valido, compruebe los datos');
       return;
     }
@@ -42,22 +33,23 @@ function Login() {
       return;
     }
  
-    let rol = buscarRol(correo);
- 
-    if (rol === 'directiva') {
-      alert('Inicio de sesión exitoso!');
-      navigate('/directiva');
-    } else if (rol === 'docente') {
-      alert('Inicio de sesión exitoso!');
-      navigate('/docente');
-    } else if (rol === 'estudiante') {
-      alert('Inicio de sesión exitoso!');
-      navigate('/estudiante');
-    } else if (rol === 'apoderado'){
-      alert('Inicio de sesión exitoso!')
-      navigate('/apoderado')
-    }else{
-      setError('Correo no valido');
+    setCargando(true);
+    try {
+      const sesion = await api('/api/auth/login', {
+        method: 'POST',
+        headers: {},
+        body: JSON.stringify({ correo: correo.trim(), contrasena }),
+      });
+      const destino = rutaPorRol[sesion.rol];
+      if (!destino) throw new Error('El servidor devolvió un rol no reconocido');
+      localStorage.setItem('deepcollege.token', sesion.token);
+      localStorage.setItem('deepcollege.rol', sesion.rol);
+      localStorage.setItem('deepcollege.usuario', JSON.stringify(sesion.usuario));
+      navigate(destino, { replace: true });
+    } catch (e) {
+      setError(e.message || 'No se pudo iniciar sesión. Compruebe sus credenciales.');
+    } finally {
+      setCargando(false);
     }
   }
  
@@ -109,7 +101,7 @@ function Login() {
                 </div>
                 <MensajeError error={error} />
                 <div className="d-grid mt-2">
-                  <Boton id="btn-iniciar" tipo="submit" clase="btn boton-calcular py-2 fs-5" texto="Iniciar Sesión" />
+                  <Boton id="btn-iniciar" tipo="submit" clase="btn boton-calcular py-2 fs-5" texto={cargando ? 'Ingresando…' : 'Iniciar Sesión'} deshabilitado={cargando} />
                 </div>
               </form>
             </div>

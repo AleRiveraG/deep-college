@@ -1,134 +1,174 @@
-import PanelLayout from "../../components/PanelLayout";
-import { useState } from "react";
-import Boton from "../../components/Boton";
- 
-const grupos = {
-  grupo1: [
-    { numero: 1, nombres: 'Toy Khan', apellidos: 'Zhaito Perez' },
-    { numero: 2, nombres: 'AK Mezako', apellidos: 'Susake Martinez' },
-    { numero: 3, nombres: 'Tai Mah', apellidos: 'Won Silva' },
-  ],
-  grupo2: [
-    { numero: 1, nombres: 'Juan Alberto', apellidos: 'Silva Perez' },
-    { numero: 2, nombres: 'John Albert', apellidos: 'Doe Martinez' },
-    { numero: 3, nombres: 'Jane Margaret', apellidos: 'Doe Silva' },
-  ],
-  grupo3: [
-    { numero: 1, nombres: 'Armando Esteban', apellidos: 'Quito Perez' },
-    { numero: 2, nombres: 'Elena Nito', apellidos: 'Del Bosque Martinez' },
-    { numero: 3, nombres: 'Marcos Solomeo', apellidos: 'Paredes Silva' },
-  ],
-};
- 
-//la tabla va cambiando segun el curso que se seleccione
-function obtenerGrupo(curso) {
-  if (curso === '1-medio' || curso === '4-medio') return 'grupo1';
-  if (curso === '2-medio') return 'grupo2';
-  return 'grupo3';
-}
- 
+import { useState } from 'react';
+import PanelLayout from '../../components/PanelLayout';
+import useAlumnosDocente from '../../hooks/useAlumnosDocente';
+
 function RegistroAsistencia() {
-  const [cursoSeleccionado, setCursoSeleccionado] = useState('');
-  const [botones, setBotones] = useState(false);
- 
-  const grupoActivo = cursoSeleccionado ? obtenerGrupo(cursoSeleccionado) : null;
-  const alumnos = grupoActivo ? grupos[grupoActivo] : [];
- 
-  function manejarCambioCurso(evento) {
-    setCursoSeleccionado(evento.target.value);
-    setBotones(false);
+  const {
+    nivel,
+    cursos,
+    curso,
+    alumnos,
+    error,
+    cargando,
+    seleccionarCurso,
+  } = useAlumnosDocente();
+
+  const [habilitado, setHabilitado] = useState(false);
+  const [registros, setRegistros] = useState({});
+  const [mensaje, setMensaje] = useState('');
+
+  function cambiarCurso(valor) {
+    seleccionarCurso(valor);
+    setHabilitado(false);
+    setRegistros({});
+    setMensaje('');
   }
- 
-  function manejarRegistrar(evento) {
-    evento.preventDefault();
-    setBotones(true);
+
+  function cambiarAsistencia(alumnoId, estado) {
+    setRegistros((actuales) => ({
+      ...actuales,
+      [alumnoId]: estado,
+    }));
   }
- 
-  function manejarFinalizar(evento) {
-    evento.preventDefault();
-    alert('Clase finalizada con exito!');
-    setBotones(false);
+
+  function finalizarClase() {
+    setHabilitado(false);
+    setMensaje('');
   }
- 
+
   return (
-    <PanelLayout>
+    <PanelLayout rol="Docente" claseEtiqueta="rol-docente">
       <h1 className="mb-4">Registro de asistencia</h1>
-      <h2 className="fs-6 mb-4">Registra la asistencia de los alumnos de cada clase.</h2>
+      <h2 className="fs-6 mb-4">
+        Registra la asistencia de los alumnos de tus cursos.
+      </h2>
 
       <div className="caja-valor p-4 mb-4">
-        <label htmlFor="curso" className="fw-bold mb-2">Seleccione curso:</label>
-        <select id="curso" className="form-select w-25 campo-formulario" value={cursoSeleccionado} onChange={manejarCambioCurso}>
-          <option value="" disabled>Seleccione</option>
-          <option value="1-medio">1° Medio</option>
-          <option value="2-medio">2° Medio</option>
-          <option value="3-medio">3° Medio</option>
-          <option value="4-medio">4° Medio</option>
+        <label htmlFor="curso-asistencia" className="fw-bold mb-2">
+          Seleccione curso:
+        </label>
+        <select
+          id="curso-asistencia"
+          className="form-select campo-formulario"
+          value={curso}
+          onChange={(e) => cambiarCurso(e.target.value)}
+          disabled={cargando}
+        >
+          <option value="">Seleccione</option>
+          {cursos.map((opcion) => (
+            <option key={opcion.valor} value={opcion.valor}>
+              {opcion.nombre}
+            </option>
+          ))}
         </select>
       </div>
 
-      {grupoActivo && (
-        <div id={`tabla-${grupoActivo.slice(-1)}`} className="table-responsive">
-          <table className="table mb-0 align-middle">
-            <thead className="encabezado-tabla">
-              <tr>
-                <th scope="col" style={{ width: '10%' }}>Número</th>
-                <th scope="col" style={{ width: '30%' }}>Nombres</th>
-                <th scope="col" style={{ width: '30%' }}>Apellidos</th>
-                <th scope="col" style={{ width: '30%' }}>Registro</th>
-              </tr>
-            </thead>
-            <tbody>
-              {alumnos.map((alumno) => (
-                <tr key={alumno.numero}>
-                  <td>{alumno.numero}</td>
-                  <td>{alumno.nombres}</td>
-                  <td>{alumno.apellidos}</td>
-                  <td>
-                    <form className="d-flex gap-2 mb-0">
-                      <input
-                        type="radio"
-                        className="btn-check botones presente"
-                        name={`asistencia_${alumno.numero}`}
-                        id={`presente_${grupoActivo}_${alumno.numero}`}
-                        autoComplete="off"
-                        disabled={!botones}
-                      />
-                      <label className="btn btn-outline-success btn-sm px-3" htmlFor={`presente_${grupoActivo}_${alumno.numero}`}>Presente</label>
+      {cargando && <p>Cargando…</p>}
+      {error && <div className="alert alert-danger">{error}</div>}
+      {mensaje && <div className="alert alert-info">{mensaje}</div>}
 
-                      <input
-                        type="radio"
-                        className="btn-check botones ausente"
-                        name={`asistencia_${alumno.numero}`}
-                        id={`ausente_${grupoActivo}_${alumno.numero}`}
-                        autoComplete="off"
-                        disabled={!botones}
-                      />
-                      <label className="btn btn-outline-danger btn-sm px-3" htmlFor={`ausente_${grupoActivo}_${alumno.numero}`}>Ausente</label>
-                    </form>
-                  </td>
+      {!cargando && !error && cursos.length === 0 && (
+        <div className="alert alert-warning">
+          Tu cuenta no tiene un nivel de enseñanza asignado. Pide a Directiva
+          que actualice tu cuenta.
+        </div>
+      )}
+
+      {!cargando && curso && alumnos.length === 0 && !error && (
+        <div className="alert alert-info">
+          No hay estudiantes registrados en este curso.
+        </div>
+      )}
+
+      {!cargando && alumnos.length > 0 && (
+        <>
+          <div className="table-responsive">
+            <table className="table mb-0 align-middle">
+              <thead className="encabezado-tabla">
+                <tr>
+                  <th style={{ width: '10%' }}>Número</th>
+                  <th style={{ width: '30%' }}>Nombres</th>
+                  <th style={{ width: '30%' }}>Apellidos</th>
+                  <th style={{ width: '30%' }}>Registro</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {alumnos.map((alumno, indice) => (
+                  <tr key={alumno.id}>
+                    <td>{indice + 1}</td>
+                    <td>{alumno.nombres}</td>
+                    <td>{alumno.apellidos}</td>
+                    <td>
+                      <div className="d-flex gap-2">
+                        <input
+                          type="radio"
+                          className="btn-check"
+                          name={`asistencia-${alumno.id}`}
+                          id={`presente-${alumno.id}`}
+                          checked={registros[alumno.id] === 'PRESENTE'}
+                          onChange={() => cambiarAsistencia(alumno.id, 'PRESENTE')}
+                          disabled={!habilitado}
+                        />
+                        <label
+                          className="btn btn-outline-success btn-sm px-3"
+                          htmlFor={`presente-${alumno.id}`}
+                        >
+                          Presente
+                        </label>
 
-      {grupoActivo && (
-        <div id="cont-botones">
-          <div className="d-flex justify-content-end gap-3 mt-4">
-            <Boton tipo="submit" clase="boton-calcular px-4 registrar" onClick={manejarRegistrar} texto="Registrar asistencia" />
-            <Boton
-              tipo="reset"
-              clase="btn btn-outline-secondary px-4 finalizar"
-              onClick={manejarFinalizar}
-              texto="Finalizar clase"
-            />
+                        <input
+                          type="radio"
+                          className="btn-check"
+                          name={`asistencia-${alumno.id}`}
+                          id={`ausente-${alumno.id}`}
+                          checked={registros[alumno.id] === 'AUSENTE'}
+                          onChange={() => cambiarAsistencia(alumno.id, 'AUSENTE')}
+                          disabled={!habilitado}
+                        />
+                        <label
+                          className="btn btn-outline-danger btn-sm px-3"
+                          htmlFor={`ausente-${alumno.id}`}
+                        >
+                          Ausente
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
+
+          <div className="d-flex justify-content-end gap-3 mt-4">
+            <button
+              type="button"
+              className="btn boton-calcular px-4"
+              onClick={() => {
+                setHabilitado(true);
+                setMensaje('');
+              }}
+            >
+              Registrar asistencia
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline-secondary px-4"
+              onClick={finalizarClase}
+              disabled={!habilitado}
+            >
+              Finalizar clase
+            </button>
+          </div>
+        </>
       )}
 
+      {nivel && (
+        <small className="text-muted d-block mt-3">
+          Nivel asignado: {nivel}
+        </small>
+      )}
     </PanelLayout>
   );
 }
- 
+
 export default RegistroAsistencia;

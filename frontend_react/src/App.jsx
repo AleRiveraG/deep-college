@@ -13,6 +13,8 @@ import HorariosDirectiva from './pages/directiva/Horarios';
 import VerPerfilDirectiva from './pages/directiva/VerPerfil';
 import RegistroAsistenciaDirectiva from './pages/directiva/RegistroAsistencia';
 import RegistroNotasDirectiva from './pages/directiva/RegistroNotas';
+import SolicitudesAdmision from './pages/directiva/SolicitudesAdmision';
+import GestionCuentasDocentes from './pages/directiva/GestionCuentasDocentes';
 
 // Vistas Docente
 import PaginaPrincipalDocente from './pages/docente/PaginaPrincipal';
@@ -33,6 +35,7 @@ import NotasEstudiante from './pages/estudiante/Notas';
 import AsistenciaApoderado from './pages/apoderado/Asistencia';
 import NotasApoderado from './pages/apoderado/Notas';
 import HorarioApoderado from './pages/apoderado/Horario';
+import RutaProtegida from './components/RutaProtegida';
 
 function App() {
   return (
@@ -42,31 +45,42 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/postulacion" element={<Postulacion />} />
 
-        <Route path="/directiva" element={<PaginaPrincipalDirectiva />} />
-        <Route path="/directiva/calculadora-sueldos" element={<CalculadoraSueldos />} />
-        <Route path="/directiva/gestion-academica" element={<GestionAcademica />} />
-        <Route path="/directiva/horarios" element={<HorariosDirectiva />} />
-        <Route path="/directiva/ver-perfil" element={<VerPerfilDirectiva />} />
-        <Route path="/directiva/registro-asistencia" element={<RegistroAsistenciaDirectiva />} />
-        <Route path="/directiva/registro-notas" element={<RegistroNotasDirectiva />} />
+        <Route element={<RutaProtegida roles={['DIRECTIVA']} />}>
+          <Route path="/directiva" element={<PaginaPrincipalDirectiva />} />
+          <Route path="/directiva/calculadora-sueldos" element={<CalculadoraSueldos />} />
+          <Route path="/directiva/gestion-academica" element={<GestionAcademica />} />
+          <Route path="/directiva/horarios" element={<HorariosDirectiva />} />
+          <Route path="/directiva/ver-perfil" element={<VerPerfilDirectiva />} />
+          <Route path="/directiva/registro-asistencia" element={<RegistroAsistenciaDirectiva />} />
+          <Route path="/directiva/registro-notas" element={<RegistroNotasDirectiva />} />
+          <Route path="/directiva/solicitudes" element={<SolicitudesAdmision />} />
+          <Route path="/directiva/crear-cuenta-docente" element={<GestionCuentasDocentes />}
+/>
+        </Route>
 
-        <Route path="/docente" element={<PaginaPrincipalDocente />} />
-        <Route path="/docente/perfil" element={<MiPerfilDocente />} />
-        <Route path="/docente/perfiles" element={<VerPerfilesDocente />} />
-        <Route path="/docente/asistencia" element={<RegistroAsistenciaDocente />} />
-        <Route path="/docente/notas" element={<RegistroNotasDocente />} />
-        <Route path="/docente/documentos" element={<DocumentosPersonalesDocente />} />
+        <Route element={<RutaProtegida roles={['DOCENTE']} />}>
+          <Route path="/docente" element={<PaginaPrincipalDocente />} />
+          <Route path="/docente/perfil" element={<MiPerfilDocente />} />
+          <Route path="/docente/perfiles" element={<VerPerfilesDocente />} />
+          <Route path="/docente/asistencia" element={<RegistroAsistenciaDocente />} />
+          <Route path="/docente/notas" element={<RegistroNotasDocente />} />
+          <Route path="/docente/documentos" element={<DocumentosPersonalesDocente />} />
+        </Route>
 
-        <Route path="/estudiante" element={<PaginaPrincipalEstudiante />} />
-        <Route path="/estudiante/asistencia" element={<AsistenciaEstudiante />} />
-        <Route path="/estudiante/horario" element={<HorarioEstudiante />} />
-        <Route path="/estudiante/perfil" element={<MiPerfilEstudiante />} />
-        <Route path="/estudiante/notas" element={<NotasEstudiante />} />
+        <Route element={<RutaProtegida roles={['ESTUDIANTE']} />}>
+          <Route path="/estudiante" element={<PaginaPrincipalEstudiante />} />
+          <Route path="/estudiante/asistencia" element={<AsistenciaEstudiante />} />
+          <Route path="/estudiante/horario" element={<HorarioEstudiante />} />
+          <Route path="/estudiante/perfil" element={<MiPerfilEstudiante />} />
+          <Route path="/estudiante/notas" element={<NotasEstudiante />} />
+        </Route>
         
-        <Route path="/apoderado" element={<AsistenciaApoderado />} />
-        <Route path="/apoderado/asistencia" element={<AsistenciaApoderado />} />
-        <Route path="/apoderado/notas" element={<NotasApoderado />} />
-        <Route path="/apoderado/horario" element={<HorarioApoderado />} />
+        <Route element={<RutaProtegida roles={['APODERADO']} />}>
+          <Route path="/apoderado" element={<AsistenciaApoderado />} />
+          <Route path="/apoderado/asistencia" element={<AsistenciaApoderado />} />
+          <Route path="/apoderado/notas" element={<NotasApoderado />} />
+          <Route path="/apoderado/horario" element={<HorarioApoderado />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

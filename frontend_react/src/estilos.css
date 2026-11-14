@@ -1,47 +1,39 @@
+
+/* COLORES Y BASE*/
+
+/*aqui estan todos los colores del colegio en un solo lugar, si hay que cambiar uno se cambia aqui*/
+:root {
+    --dc-900: #121A42;        /*azul mas oscuro: encabezado, footer y titulos*/
+    --dc-800: #1C2866;        /*menu lateral*/
+    --dc-700: #283A94;        /*encabezados de tabla y opcion activa del menu*/
+    --dc-600: #334ABD;        /*botones y enlaces*/
+    --dc-500: #3E5AE6;        /*hover y etiquetas de rol*/
+    --dc-accent: #7f93ff;     /*detalles: subrayados y barra del menu*/
+    --dc-300: #b0b5d1;        /*textos secundarios sobre fondo oscuro*/
+    --dc-100: #e8edff;        /*fondos azul muy claro*/
+    --dc-50: #f6f8fd;         /*fondo de las paginas internas*/
+    --dc-linea: #e1e6f5;      /*bordes suaves*/
+    --dc-texto-suave: #6b7494;
+    --dc-peligro: #dc3545;
+
+    /*con esto bootstrap usa los colores del colegio en vez del azul por defecto*/
+    --bs-primary: #334ABD;
+    --bs-primary-rgb: 51, 74, 189;
+    --bs-link-color: #334ABD;
+    --bs-link-color-rgb: 51, 74, 189;
+    --bs-link-hover-color: #283A94;
+    --bs-link-hover-color-rgb: 40, 58, 148;
+}
+
 body {
-    font-family: Arial, sans-serif; /*letra para toda la pagina*/
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /*letra para toda la pagina*/
     margin: 0; /* con esto le quito los margenes blancos que trae por defecto*/
     min-height: 100vh; /*esto hace que el body siempre toque el borde inferior*/
     display: flex; /* los flex son para ordenar los elementos de arriba hacia abajo en orden */
     flex-direction: column;
-}
- 
-/* Encabezado */
-header {
-    background-color: #121A42;
-    color: #ffffff;
-}
- 
-/* estilo para las etiquetas <a>*/
-header a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    margin-right: .75rem;
-}
- 
-/* Etiqueta directiva que esta al lado del nombre del colegio*/
-.etiqueta-directiva {
-    background-color: #3E5AE6;
-    color: #ffffff;
-}
- 
-/* boton cerrar sesion*/
-header #btn-cerrar {
-    background-color: white;
-    color: #1C2866;
-    border: none;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 5px;
-    padding: 0.5rem 1.5rem;
-    transition: background-color 0.3s ease;
+    -webkit-font-smoothing: antialiased; /*letras mas nitidas*/
 }
 
-header #btn-cerrar:hover {
-    background-color: #b0b5d1;
-}
- 
 /*con el flex en 1 0 auto es para que el contenido principal se estire para rellenar el espacio libre entre el header y el footer*/
 main {
     flex: 1 0 auto;
@@ -50,202 +42,23 @@ main {
 }
 
 /*esto hace que las cajas del bootstrap se estiren a la misma altura*/
-main .container-fluid{
+main .container-fluid {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
+
 main .row {
     flex: 1;
 }
- 
-/* menu lateral */
-.sidebar {
-    background-color: #1C2866;
-    padding: 0;
-}
- 
-/*opciones del menu lateral*/
-.sidebar .list-group-item {
-    background-color: transparent;
-    color: #ffffff;
-    border: none; /*quita los bordes que vienen por defecto*/
-    border-radius: 0; /*bordes cuadrados*/
-    border-bottom: 1px solid #283A94;/*le deja una linea separadora abajo*/
-}
-/*esto es para cuando paso el cursor por el menu va alternando el color*/
-.sidebar .list-group-item:hover {
-    background-color: #283A94;
-}
- 
-/* titulos*/
-h1, h2 {
-    color: #121A42;
-}
- 
-/* la barra antes ocupaba el ancho completo de la pagina con esto la limito*/
-#busqueda {
-    max-width: 340px;
-}
- 
-/*cambia el color de la barra de busqueda cuando escribes*/
-#busqueda:focus {
-    border-color: #334ABD;
-}
 
-/*padding para las cajas de texto para que no este pegado a los bordes*/
-.table th,
-.table td {
-    padding: .9rem .75rem;
-    vertical-align: middle; /*y con esto centro el texto veticalmente*/
-}
- 
-/*esto es para que las filas no sean de un solo color lo que hace es intercalando primera fila gris, segunda blanco*/
-tr:nth-child(odd) {
-  background-color: #f2f2f2;
-}
- 
-/* etiquetas del rol de los usuarios para cada etiqueta hay un color diferente*/
-.rol-docente {
-    background-color: #3E5AE6;
-    color: #ffffff;
-}
- 
-.rol-estudiante {
-    background-color: #3E5AE6;
-    color: #ffffff;
-}
- 
-.rol-auxiliar {
-    background-color: #3E5AE6;
-    color: #ffffff;
-}
- 
-/* Botones de editar y eliminar en la tabla */
-.boton-accion {
-    color: #334ABD;
-    margin-right: .5rem;
-    font-size: 1.1rem; /*con esto hago los iconos mas grandes*/
-}
- 
-/*con esto le quito el margen derecho al ultimo boton para que no quede desalineado */
-.boton-accion:last-child {
-    margin-right: 0;
-}
- 
-/*es lo mismo del boton de busqueda pero para los de accion*/
-.boton-accion:hover {
-    color: #3E5AE6;
-}
- 
-
-/*con esto digo que el footer tenga fondo oscuro y el texto blanco*/
-footer {
-    background-color: #121A42;
-    color: #ffffff;
-}
- 
-/*todo loq que este en el footer como enlaces o textos los pongo en color blanco*/
-footer a, footer span {
-    color: #ffffff;
-}
- 
-
-
-/*les pongo color en currentcolor porque asi tienen el mismo color que el contenedor,
-si le cambian el color al contener por ejemplo footer span van a cambiar de color todos los elementos dentro,
-los deje tambien separados por clases por si solo se necesita cambiar uno*/
-.icono-inicio,
-.icono-perfil,
-.icono-gestion-academica,
-.icono-notas,
-.icono-asistencia,
-.icono-sueldos,
-.icono-horarios {
-    color: currentColor;
-}
- 
-/* botones para editar y eliminar*/
-.icono-editar,
-.icono-eliminar {
-    color: currentColor;
-}
- 
-/* iconos de informacion*/
-.icono-ubicacion,
-.icono-telefono,
-.icono-correo {
-    color: currentColor;
-}
-
-
-/*html-calculadora*/
-.caja-valor{
-    background-color: #f2f2f2;
-    border-radius: 5px; /*con esto redondea las esquinas de la caja*/
-}
-
-.monto-valor{
-    color: #121A42;
-    font-size: 1.25rem; /*le pongo en 1.25 rem para que sea un poco más grande*/
-}
-
-/*el focus es para que los estilos se apliquen solo cuando se haga click */
-.campo-formulario:focus{
-    border-color: #334ABD; /*cambia el color de gris a azul*/
-    box-shadow: 0 0 5px #334ABD; /*para las sombras de la caja para que no se vea tan plana*/
-    outline: 0; /*para quitar bordes por defecto*/
-}
-
-.boton-calcular {
-    background-color: #334ABD;
-    color: #ffffff;
-    font-weight: bold;
-    border: none; /*le quito el borde por defecto*/
-    padding: 0.5rem 1rem; /*espacio para que este ordenado*/
-    border-radius: 5px;
-}
-
-/*algo estetico para cuando pase el cursor por encima del boton sin hacer click cambie ligeramente el color*/
-.boton-calcular:hover {
-    background-color: #3E5AE6;
-    color: #ffffff;
-}
-
-/* color para haberes y descuentos*/
-.monto-resultado {
-    color: #334ABD;
-}
-
-/* fila de sueldo más grande*/
-.fila-total {
-    font-size: 1.15rem;
-    color: #121A42;
-}
-
-/*Descuentos en rojo solo aplica los que esten en columna-descuentos*/
-.columna-descuentos .monto-resultado{
-    color: #dc3545; 
-}
-
-/*html directiva-horarios*/
-.tabla-horarios td{
-    height: 80px; /*para que las tablas del horario sean más altas*/
-}
-
-.encabezado-tabla{
-    background-color: #f8f9fa;
-}
-
-/*Logos enlaces*/
-
-.logos-enlaces {
-    width: 16px;
-    height: auto;
+/*fondo de las paginas internas: un azul casi blanco para que las tarjetas blancas se destaquen*/
+.sidebar ~ section,
+.fondo-panel {
+    background-color: var(--dc-50);
 }
 
 /* Quitar lineas de hipervinculo a etiquetas <a>*/
-
 a {
     text-decoration: none;
 }
@@ -254,253 +67,258 @@ a {
     width: 120px;
 }
 
-/*color en directiva-registro-notas
-para los que tienen notas bajo 4.0*/
+html {
+    scroll-behavior: smooth; /* los enlaces #inicio, #mision se deslizan suave */
+}
 
-
-
-/*LA ETIQUETA !IMPORTANT ES PARA DAR PRIORIDAD A UNA REGLA DE ESTILPO ES DECIR PASE LO QUE PASE
-SIEMPRE VA A MANTENER ESA REGLA ENCIMA DE OTRAS*/
-.monto-negativo{
-    color: #dc3545 !important; 
+section[id] {
+    scroll-margin-top: 130px; /* para que el encabezado fijo no tape los títulos */
 }
 
 
+/*ENCABEZADO (paginas internas)*/
 
-/*ENCABEZADO */
-.encabezado-principal {
-    background-color:#121A42;
+header {
+    background-color: var(--dc-900);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
 }
 
-.enlace-logo {
-    color: #121A42 !important;
-}
-
-.lista-enlaces a {
-    color:#ffffff;
-    transition: color 0.3s ease;
-}
-
-.lista-enlaces a:hover {
-    color:#b0b5d1;
-}
-
-.boton-ingresar {
-    background-color: white !important;
-    color:#1C2866 !important;
+/* estilo para las etiquetas <a>*/
+header a {
+    color: #ffffff;
+    text-decoration: none;
     font-weight: bold;
-    border-radius: 5px;
-    padding: 0.5rem 1.5rem;
-    transition: background-color 0.3s ease;
+    margin-right: .75rem;
 }
 
-.boton-ingresar:hover {
-    background-color:#b0b5d1 !important;
+/* etiquetas del rol de los usuarios Docente, Estudiante, Directiva */
+.etiqueta-directiva,
+.rol-docente,
+.rol-estudiante,
+.rol-auxiliar {
+    background-color: var(--dc-500);
+    color: #ffffff;
 }
 
-/*INICIO*/
-.seccion-inicio {
+header .badge {
+    /*si una pagina no le pasa clase de rol a la etiqueta (como Solicitudes de admision y Crear cuenta docente)
+    igual se ve con el azul de las demas, y la primera letra en mayuscula*/
+    background-color: var(--dc-500);
+    color: #ffffff;
+    text-transform: capitalize;
+    font-size: .85rem !important; /*pisa el fs-6 del componente*/
+    font-weight: 600;
+    letter-spacing: .02em;
+    border-radius: 999px;
+    padding: .45em 1em;
+}
+
+/* boton cerrar sesion: igual al boton Ingresar de la pagina publica*/
+header #btn-cerrar {
     background-color: #ffffff;
-}
-
-.etiqueta-destacada {
-    background-color: #334ABD !important;
-    border-radius: 20px;
-    font-weight: normal;
-    color: white;
-}
-
-.parrafo-principal {
-    color: #555555;
-    line-height: 1.6;
-}
-
-.boton-postular {
-    background-color: #334ABD !important;
-    color: #ffffff !important;
+    color: var(--dc-800);
     border: none;
-    font-weight: bold;
-    border-radius: 5px;
+    font-weight: 600;
+    font-size: .9rem;
+    border-radius: 8px;
+    padding: .5rem 1.25rem;
+    transition: background-color .3s ease;
 }
 
-.boton-postular:hover {
-    background-color: #3E5AE6 !important;
+header #btn-cerrar:hover {
+    background-color: var(--dc-300);
 }
 
-.boton-conocer {
-    background-color: transparent !important; 
-    color: #334ABD !important;
-    border: 2px solid #334ABD !important;
-    font-weight: bold;
-    border-radius: 5px;
+
+/*MENU LATERAL*/
+
+.sidebar {
+    background-color: var(--dc-800);
+    padding: 0;
 }
 
-.boton-conocer:hover {
-    background-color: #334ABD !important;
-    color: #ffffff !important;
+.sidebar .list-group {
+    padding: .75rem .625rem;
+    gap: .125rem;
+    border-radius: 0;
 }
 
-/*PARA IMAGENES*/
-.imagen-colegio {
-    max-height: 400px;
-    object-fit: cover;
+/*opciones del menu lateral*/
+.sidebar .list-group-item {
+    background-color: transparent;
+    color: rgba(255, 255, 255, .82);
+    border: none; /*quita los bordes que vienen por defecto*/
+    border-radius: 8px;
+    font-size: .92rem;
+    font-weight: 500;
+    line-height: 1.3;
+    transition: background-color .2s ease, color .2s ease;
 }
 
-/*para la biografia */
-.seccion-biografia {
-    background-color: #f2f2f2;
-}
-
-.subtitulo-historia {
-    color: #121A42;
-}
-
-.lema-historia {
-    color: #334ABD;
-}
-
-.parrafo-historia {
-    color: #555555;
-    line-height: 1.6;
-}
-
-.enlace-leer-mas {
-    color: #334ABD;
-    transition: color 0.3s ease;
-}
-
-.enlace-leer-mas:hover {
-    color: #121A42;
-}
-
-.imagen-historia {
-    max-height: 350px;
-    object-fit: cover;
-}
-
-/* PARA EL FOOTER*/
-.contenedor-pie {
-    background-color: #121A42;
+/*esto es para cuando paso el cursor por el menu*/
+.sidebar .list-group-item:hover {
+    background-color: rgba(255, 255, 255, .08);
     color: #ffffff;
 }
 
-.titulo-pie {
+/*el fondo viene del componente #283A94, aqui le agrego una barrita al costado*/
+.sidebar .list-group-item.active {
     color: #ffffff;
 }
 
-.lema-pie {
-    color: #ffffff;
-}
-
-.subtitulo-contacto {
-    color: #ffffff;
-}
-
-.item-contacto {
-    color: #b0b5d1;
-}
-
-.icono-contacto {
-    color: #ffffff;
-}
-
-/*PARA EL LOGIN*/
-/* Fondos */
-.fondo-login {
-    position: fixed;
-    top: 0;
+.sidebar .list-group-item.active::before {
+    content: "";
+    position: absolute;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
+    top: 22%;
+    bottom: 22%;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background-color: var(--dc-accent);
 }
 
-/* Video de fondo */
-video {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    filter: blur(10px);
-    transform: scale(1.1);
+/* Menú lateral la altura completa solo se usa cuando está al costado >= md */
+@media (min-width: 768px) {
+    .sidebar {
+        min-height: 100vh;
+    }
 }
 
-.fondo-formulario {
-    background-color: #ffffff; /*fondo blanco para la mitad del formulario*/
+
+/*TITULOS Y TEXTOS*/
+
+h1, h2, h3, h4 {
+    color: var(--dc-900);
 }
 
-/* Textos*/
+/*solo dentro de las paginas internas no toca el titulo grande de la pagina publica*/
+.sidebar ~ section h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -.015em;
+}
+
+.sidebar ~ section h2,
+.sidebar ~ section h3 {
+    font-weight: 600;
+}
+
+/*la descripcion que va justo debajo del titulo, mas suave*/
+.sidebar ~ section h1 + h2 {
+    font-weight: 400;
+    color: var(--dc-texto-suave);
+}
+
 .texto-secundario {
     color: #6c757d; /*Color gris para el texto de Recuérdame*/
 }
 
-/*Ajuste de la imagen*/
-.imagen-login {
-    object-fit: cover;
+.texto-destacado {
+    color: var(--dc-900);
 }
 
-/*Enlace de recuperar contraseña*/
-.enlace-olvido {
-    color: #334ABD;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.etiqueta-valor,
+.etiqueta-resultado {
+    color: var(--dc-texto-suave);
 }
 
-.enlace-olvido:hover {
-    color: #121A42;
+.subtitulo {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--dc-900);
 }
 
-/*Chequeo institucional*/
-.check-institucional:checked {
-    background-color: #334ABD;
-    border-color: #334ABD;
+.texto-peligro {
+    color: var(--dc-peligro);
 }
 
-/* contenedor-busqueda*/
-
-.contenedor-busqueda {
-    position: relative;
+/*LA ETIQUETA !IMPORTANT ES PARA DAR PRIORIDAD A UNA REGLA DE ESTILPO ES DECIR PASE LO QUE PASE
+SIEMPRE VA A MANTENER ESA REGLA ENCIMA DE OTRAS*/
+.monto-negativo {
+    color: var(--dc-peligro) !important;
 }
 
-.busqueda-input {
-    background-color:#e0e0e0;
-    height: 50px;
-    border-radius: 30px;
-    padding-left: 40px;
-    border: none;
+
+/*TARJETAS Y CAJAS*/
+
+/*las tarjetas usan las clases border y rounded de bootstrap (que llevan !important),
+por eso aqui tambien va !important: solo cambia el color del borde y lo redondeado, nada mas*/
+.tarjeta-blanca.border,
+.caja-valor.border {
+    border-color: var(--dc-linea) !important;
 }
 
-.icono-busqueda {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color:#1C2866;
+.tarjeta-blanca.rounded,
+.caja-valor.rounded {
+    border-radius: 12px !important;
 }
 
-/*Extras docente pagina principal*/
-.fondo-panel{
+/*cajas de valores y de formularios*/
+.caja-valor {
     background-color: #ffffff;
+    border-radius: 12px; /*con esto redondea las esquinas de la caja*/
 }
 
-.tarjeta-blanca{
+.tarjeta-blanca {
     background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(18, 26, 66, .05);
 }
 
-.texto-destacado{
-    color: #121A42;
+.monto-valor {
+    color: var(--dc-900);
+    font-size: 1.25rem; /*le pongo en 1.25 rem para que sea un poco más grande*/
 }
 
+/* color para haberes y descuentos*/
+.monto-resultado {
+    color: var(--dc-600);
+}
+
+/*Descuentos en rojo solo aplica los que esten en columna-descuentos*/
+.columna-descuentos .monto-resultado {
+    color: var(--dc-peligro);
+}
+
+/* fila de sueldo más grande*/
+.fila-total {
+    font-size: 1.15rem;
+    color: var(--dc-900);
+}
+
+/*la calculadora de sueldos queda dentro de una sola tarjeta el formulario de gestion academica no, por eso el :not*/
+.contenedor-formulario:not(.formularios) {
+    background-color: #ffffff;
+    border: 1px solid var(--dc-linea);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+/*caja del filtro de curso en horarios*/
+.contenedor-filtro {
+    background-color: #ffffff;
+    border: 1px solid var(--dc-linea);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+}
+
+/*proximos eventos del docente barrita azul a la izquierda de cada evento*/
+.eventos-contenedor .caja-valor {
+    border-left: 4px solid var(--dc-600) !important;
+}
+
+/*para el evento importante o inasistencias*/
+.borde-peligro {
+    border: 2px solid var(--dc-peligro) !important;
+}
 
 .icono-eventos {
-    color: #334ABD;
+    color: var(--dc-600);
 }
-
-/*extras vista pagina principal estudiante*/
 
 /* Colores para los íconos de las tarjetas de métricas del estudiante */
 .icono-metrica-neutra {
-    color: #3E5AE6;
+    color: var(--dc-500);
 }
 
 .icono-metrica-ok {
@@ -515,19 +333,646 @@ video {
     color: #0dcaf0;
 }
 
-/*estas dos para evento proximo importante*/
-.borde-peligro {
-    border: 2px solid #dc3545 !important; 
+/*les pongo color en currentcolor porque asi tienen el mismo color que el contenedor,
+si le cambian el color al contener por ejemplo footer span van a cambiar de color todos los elementos dentro,
+los deje tambien separados por clases por si solo se necesita cambiar uno*/
+.icono-inicio,
+.icono-perfil,
+.icono-gestion-academica,
+.icono-notas,
+.icono-asistencia,
+.icono-sueldos,
+.icono-horarios,
+.icono-editar,
+.icono-eliminar,
+.icono-ubicacion,
+.icono-telefono,
+.icono-correo {
+    color: currentColor;
 }
 
-.texto-peligro {
-    color: #dc3545;
+/* Botones de editar y eliminar en la tabla */
+.boton-accion {
+    color: var(--dc-600);
+    margin-right: .5rem;
+    font-size: 1.1rem; /*con esto hago los iconos mas grandes*/
+    transition: color .2s ease;
 }
 
-/* Menú lateral la altura completa solo se usa cuando está al costado >= md */
+/*con esto le quito el margen derecho al ultimo boton para que no quede desalineado */
+.boton-accion:last-child {
+    margin-right: 0;
+}
+
+.boton-accion:hover {
+    color: var(--dc-500);
+}
+
+/* Notas con color segun su valor docente > registro de notas*/
+.nota-media { background-color: #f1f4ff; color: var(--dc-700); }
+.nota-alta  { background-color: #dfe7ff; color: var(--dc-800); }
+.nota-baja  { background-color: #fdecec; color: var(--dc-peligro); }
+.nota-vacia { color: #aab1cf; }
+
+/* Promedio del alumno */
+.promedio-chip { background-color: var(--dc-700); color: #ffffff; }
+.promedio-chip.bajo { background-color: var(--dc-peligro); }
+
+/* Círculo con las iniciales del estudiante */
+.avatar-inicial {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--dc-100);
+    color: var(--dc-600);
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+/* Línea que separa alumnos y promedio arriba en celular, al costado en pantallas grandes */
+.resumen-divisor {
+    border-top: 1px solid var(--dc-linea);
+}
+
 @media (min-width: 768px) {
-    .sidebar {
-        min-height: 100vh;
+    .resumen-divisor {
+        border-top: 0;
+        border-left: 1px solid var(--dc-linea);
+    }
+}
+
+
+/*FORMULARIOS Y BOTONES*/
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border-color: #cfd6f0;
+}
+
+.form-control::placeholder {
+    color: #9aa3c7;
+}
+
+/*borde de checkbox y radios visible sobre fondo blanco/ gris*/
+.form-check-input {
+    border-color: #aab4d6;
+}
+
+.form-label {
+    color: var(--dc-800);
+}
+
+/*el focus es para que los estilos se apliquen solo cuando se haga click */
+.campo-formulario:focus,
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: var(--dc-600); /*cambia el color de gris a azul*/
+    box-shadow: 0 0 0 .2rem rgba(51, 74, 189, .18); /*aro suave alrededor del campo*/
+    outline: 0; /*para quitar bordes por defecto*/
+}
+
+/*checkbox y radios con el azul del colegio*/
+.form-check-input:checked,
+.check-institucional:checked {
+    background-color: var(--dc-600);
+    border-color: var(--dc-600);
+}
+
+/*cambia el color de la barra de busqueda cuando escribes*/
+#busqueda {
+    max-width: 340px; /* la barra antes ocupaba el ancho completo de la pagina con esto la limito*/
+}
+
+#busqueda:focus {
+    border-color: var(--dc-600);
+}
+
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/*boton principal del sistema*/
+.boton-calcular {
+    background-color: var(--dc-600);
+    color: #ffffff;
+    font-weight: 600;
+    border: none; /*le quito el borde por defecto*/
+    padding: .55rem 1.25rem; /*espacio para que este ordenado*/
+    border-radius: 8px;
+    transition: background-color .25s ease;
+}
+
+/*cuando pase el cursor por encima del boton sin hacer click cambie ligeramente el color*/
+.boton-calcular:hover {
+    background-color: var(--dc-500);
+    color: #ffffff;
+}
+
+/*los botones de bootstrap que no tienen clase propia tambien en azul del colegio*/
+.btn-primary {
+    --bs-btn-bg: #334ABD;
+    --bs-btn-border-color: #334ABD;
+    --bs-btn-hover-bg: #283A94;
+    --bs-btn-hover-border-color: #283A94;
+    --bs-btn-active-bg: #1C2866;
+    --bs-btn-active-border-color: #1C2866;
+    --bs-btn-disabled-bg: #334ABD;
+    --bs-btn-disabled-border-color: #334ABD;
+    --bs-btn-focus-shadow-rgb: 51, 74, 189;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #334ABD;
+    --bs-btn-border-color: #334ABD;
+    --bs-btn-hover-bg: #334ABD;
+    --bs-btn-hover-border-color: #334ABD;
+    --bs-btn-active-bg: #283A94;
+    --bs-btn-active-border-color: #283A94;
+    --bs-btn-focus-shadow-rgb: 51, 74, 189;
+}
+
+.alert {
+    border-radius: 10px;
+}
+
+/* contenedor-busqueda*/
+.contenedor-busqueda {
+    position: relative;
+}
+
+.busqueda-input {
+    background-color: #eef1fb;
+    height: 46px;
+    border-radius: 30px;
+    padding-left: 40px;
+    border: none;
+}
+
+.icono-busqueda {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--dc-800);
+}
+
+
+/*TABLAS*/
+
+/*colores suaves para las lineas, el hover y las filas intercaladas de bootstrap*/
+.table {
+    --bs-table-border-color: #e6eaf6;
+    --bs-table-striped-bg: #f6f8fd;
+    --bs-table-hover-bg: #eef2ff;
+}
+
+/*padding para las cajas de texto para que no este pegado a los bordes*/
+.table th,
+.table td {
+    padding: .85rem .75rem;
+    vertical-align: middle; /*y con esto centro el texto veticalmente*/
+}
+
+/*marco redondeado alrededor de las tablas de notas y horario*/
+.contenedor-tabla {
+    background-color: #ffffff;
+    border: 1px solid var(--dc-linea);
+    border-radius: 12px;
+}
+
+.contenedor-tabla .table {
+    margin-bottom: 0;
+}
+
+/*el marco ya lo da el contenedor, asi que a la tabla le quito las lineas de las orillas para que no se duplique*/
+.contenedor-tabla .table > :not(caption) > * > :first-child {
+    border-left-width: 0;
+}
+
+.contenedor-tabla .table > :not(caption) > * > :last-child {
+    border-right-width: 0;
+}
+
+.contenedor-tabla .table > thead > tr:first-child > * {
+    border-top-width: 0;
+}
+
+.contenedor-tabla .table > tbody > tr:last-child > * {
+    border-bottom-width: 0;
+}
+
+/*html directiva-horarios*/
+.tabla-horarios td {
+    height: 64px; /*para que las tablas del horario sean más altas*/
+}
+
+/*en los horarios los que tienen celda-hora todos los dias miden lo mismo; la tabla de notas no se toca*/
+.tabla-horarios:has(.celda-hora) {
+    table-layout: fixed;
+}
+
+.tabla-horarios:has(.celda-hora) thead th:first-child {
+    width: 13%;
+}
+
+/*encabezado claro horarios de directiva*/
+.encabezado-tabla th {
+    background-color: var(--dc-100);
+    color: var(--dc-800);
+    font-weight: 600;
+    font-size: .875rem;
+}
+
+/* Encabezados de las tablas de notas y horario azul del colegio */
+.deepcollege-encabezado th {
+    background-color: var(--dc-700);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: .875rem;
+    letter-spacing: .01em;
+    border-color: rgba(255, 255, 255, .16);
+}
+
+.deepcollege-encabezado th:first-child {
+    background-color: var(--dc-800);
+}
+
+/*la columna Promedio resaltada*/
+.deepcollege-encabezado th.table-secondary {
+    background-color: var(--dc-600);
+    color: #ffffff;
+}
+
+/*las celdas vacias de arriba (sobre Asignatura y Promedio) quedan transparentes en vez de bloques de color*/
+.deepcollege-encabezado th:empty {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/*columna de promedio en azul claro en vez de gris*/
+.table .table-secondary {
+    --bs-table-bg: #e8edff;
+    --bs-table-color: #1C2866;
+}
+
+/* hora y asignaturas del horario */
+.tabla-horarios td.celda-hora {
+    background-color: var(--dc-100);
+    color: var(--dc-800);
+    font-size: .85rem;
+    white-space: nowrap;
+    box-shadow: none; /*para que no se aclare con las filas intercaladas*/
+}
+
+.tabla-horarios td.celda-asignatura {
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--dc-800);
+}
+
+.tabla-horarios tbody th,
+.tabla-horarios tbody td:first-child {
+    color: var(--dc-900);
+}
+
+
+/*PAGINAS INTERNAS*/
+
+/*html-calculadora*/
+.etiqueta-total,
+.monto-total {
+    color: var(--dc-900) !important; /*pisa el text-dark del componente*/
+}
+
+
+/*PAGINA PUBLICA ENCABEZADO, INICIO, LOGIN Y FOOTER*/
+
+/*ENCABEZADO */
+.encabezado-principal {
+    background-color: var(--dc-900);
+}
+
+.enlace-logo {
+    color: var(--dc-900) !important;
+}
+
+.lista-enlaces a {
+    color: #ffffff;
+    transition: color .3s ease;
+    position: relative;
+    display: inline-block;
+    padding: .25rem 0;
+}
+
+.lista-enlaces a:hover {
+    color: var(--dc-300);
+}
+
+/* Enlaces con subrayado animado desde el centro */
+.lista-enlaces a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--dc-accent);
+    border-radius: 2px;
+    transition: width .3s ease, left .3s ease;
+}
+
+.lista-enlaces a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.encabezado-fijo {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    box-shadow: 0 4px 20px rgba(18, 26, 66, .25);
+    animation: bajar-encabezado .6s ease both;
+}
+
+.encabezado-fijo img {
+    height: 50px;
+    width: auto;
+}
+
+.boton-ingresar {
+    background-color: #ffffff !important;
+    color: var(--dc-800) !important;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: .5rem 1.4rem;
+    transition: background-color .3s ease, transform .25s ease;
+}
+
+.boton-ingresar:hover {
+    background-color: var(--dc-300) !important;
+    transform: translateY(-1px);
+}
+
+.boton-ingresar i {
+    font-size: 1.15rem;
+    transition: transform .25s ease;
+}
+
+.boton-ingresar:hover i {
+    transform: translateX(3px);
+}
+
+/*INICIO*/
+.seccion-inicio {
+    background-color: #ffffff;
+}
+
+.contenido-principal h1 {
+    letter-spacing: -.02em;
+}
+
+.etiqueta-destacada {
+    background-color: var(--dc-600) !important;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: .01em;
+    color: white;
+}
+
+.parrafo-principal {
+    color: #555555;
+    line-height: 1.7;
+}
+
+.boton-postular,
+.boton-conocer {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform .25s ease, box-shadow .25s ease, background-color .3s ease, color .3s ease;
+}
+
+.boton-postular {
+    background-color: var(--dc-600) !important;
+    color: #ffffff !important;
+    border: none;
+}
+
+.boton-postular:hover {
+    background-color: var(--dc-500) !important;
+}
+
+.boton-conocer {
+    background-color: transparent !important;
+    color: var(--dc-600) !important;
+    border: 2px solid var(--dc-600) !important;
+}
+
+.boton-conocer:hover {
+    background-color: var(--dc-600) !important;
+    color: #ffffff !important;
+}
+
+.boton-postular:hover,
+.boton-conocer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(51, 74, 189, .25);
+}
+
+/*PARA IMAGENES*/
+.imagen-colegio {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.imagen-historia {
+    border-radius: 16px !important; /*pisa el rounded del componente*/
+    max-height: 350px;
+    object-fit: cover;
+    box-shadow: 0 12px 32px rgba(18, 26, 66, .14);
+}
+
+/*para la biografia las secciones se van alternando entre azul muy claro y blanco*/
+.seccion-biografia {
+    background-color: var(--dc-50);
+}
+
+.contenido-principal section.seccion-biografia:nth-of-type(odd) {
+    background-color: #ffffff;
+}
+
+.subtitulo-historia {
+    color: var(--dc-900);
+}
+
+.lema-historia {
+    color: var(--dc-600);
+}
+
+.parrafo-historia {
+    color: #555555;
+    line-height: 1.7;
+}
+
+.enlace-leer-mas {
+    color: var(--dc-600);
+    transition: color .3s ease;
+}
+
+.enlace-leer-mas:hover {
+    color: var(--dc-900);
+}
+
+/*PARA EL LOGIN*/
+/* Fondos */
+.fondo-login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Video de fondo borroso y un poco mas oscuro para que el formulario resalte */
+video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: blur(10px) brightness(.7);
+    transform: scale(1.1);
+}
+
+.fondo-formulario {
+    background-color: #ffffff; /*fondo blanco para la mitad del formulario*/
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(18, 26, 66, .35);
+}
+
+/*sin borde y mas redondeado pisa el border y rounded que trae el componente*/
+.fondo-formulario.border {
+    border-color: transparent !important;
+}
+
+.fondo-formulario.rounded {
+    border-radius: 16px !important;
+}
+
+/*Ajuste de la imagen*/
+.imagen-login {
+    object-fit: cover;
+}
+
+/*Enlace de recuperar contraseña*/
+.enlace-olvido {
+    color: var(--dc-600);
+    font-size: .9rem;
+    text-decoration: none;
+    transition: color .3s ease;
+}
+
+.enlace-olvido:hover {
+    color: var(--dc-900);
+}
+
+/*con esto digo que el footer tenga fondo oscuro y el texto blanco*/
+footer {
+    background-color: var(--dc-900);
+    color: #ffffff;
+}
+
+/*todo loq que este en el footer como enlaces o textos los pongo en color blanco*/
+footer a,
+footer span {
+    color: #ffffff;
+}
+
+/* PARA EL FOOTER*/
+.contenedor-pie {
+    background-color: var(--dc-900);
+    color: #ffffff;
+    padding-top: 2.5rem !important; /*pisa el py-5 para que el footer ocupe menos alto*/
+    padding-bottom: 2.5rem !important;
+}
+
+.contenedor-pie hr {
+    border-color: rgba(255, 255, 255, .25);
+    opacity: 1;
+}
+
+.titulo-pie,
+.lema-pie,
+.subtitulo-contacto {
+    color: #ffffff;
+}
+
+.lema-colegio {
+    color: #dfe3f5;
+    font-size: .95rem;
+}
+
+.item-contacto {
+    color: var(--dc-300);
+    font-size: .95rem;
+}
+
+.icono-contacto {
+    color: #ffffff;
+}
+
+/*Logos enlaces*/
+.logos-enlaces {
+    width: 18px;
+    height: auto;
+    opacity: .75;
+    transition: opacity .2s ease;
+}
+
+.logos-enlaces:hover {
+    opacity: 1;
+}
+
+
+/*ANIMACIONES Y CELULARES*/
+
+/*Animaciones base*/
+@keyframes subir {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes bajar-encabezado {
+    from { opacity: 0; transform: translateY(-100%); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes zoom-entrada {
+    from { opacity: 0; transform: scale(.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* Entrada escalonada para el texto en inicio*/
+.anim-subir { animation: subir .7s ease both; }
+.retraso-1  { animation-delay: .15s; }
+.retraso-2  { animation-delay: .3s; }
+.retraso-3  { animation-delay: .45s; }
+.retraso-4  { animation-delay: .6s; }
+
+/*Imagen principal: entra una sola vez*/
+.imagen-colegio {
+    animation: zoom-entrada .9s ease .3s both;
+}
+
+/*Secciones que aparecen al hacer scroll
+solo en navegadores que soportan animaciones por scroll en el resto se veran normales */
+@supports (animation-timeline: view()) {
+    .contenido-principal section[id]:not(#inicio) .row {
+        animation: subir linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 35%;
     }
 }
 
@@ -539,6 +984,7 @@ video {
         flex-direction: row;
         flex-wrap: nowrap;
         overflow-x: auto;
+        padding: .5rem;
         border-radius: 0;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
@@ -547,8 +993,11 @@ video {
     .sidebar .list-group-item {
         flex: 0 0 auto;
         white-space: nowrap;
-        border-bottom: 0;
-        border-right: 1px solid #283A94;
+    }
+
+    /*en celular la barrita del costado no se usa, la opcion activa ya se ve por su fondo*/
+    .sidebar .list-group-item.active::before {
+        display: none;
     }
 
     /* Navbar pública logo + botón "Ingresar" arriba, enlaces abajo */
@@ -564,6 +1013,8 @@ video {
         order: 3;
         width: 100%;
         row-gap: .5rem !important;
+        border-top: 1px solid rgba(255, 255, 255, .15); /*separa los enlaces del logo*/
+        padding-top: .75rem !important;
     }
 
     .lista-enlaces a {
@@ -574,7 +1025,7 @@ video {
         padding: .4rem 1.1rem;
     }
 
-    /* Imágenes de la landing sin recortes exagerados */
+    /* Imágenes de la landing*/
     .imagen-colegio {
         max-height: 280px;
         object-fit: contain;
@@ -626,7 +1077,7 @@ video {
 /*Celulares< 576px*/
 @media (max-width: 575.98px) {
 
-    /* Header: que logo, etiqueta de rol y "Cerrar sesión" quepan en una línea */
+    /* Header que logo, etiqueta de rol y "Cerrar sesión" quepan en una línea */
     header img {
         height: 40px;
         width: auto;
@@ -653,164 +1104,7 @@ video {
     }
 }
 
-
-html {
-    scroll-behavior: smooth; /* los enlaces #inicio, #mision se deslizan suave */
-}
-
-section[id] {
-    scroll-margin-top: 130px; /* para que el encabezado fijo no tape los títulos */
-}
-
-/* ---------- Animaciones base ---------- */
-@keyframes subir {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: none; }
-}
-
-@keyframes bajar-encabezado {
-    from { opacity: 0; transform: translateY(-100%); }
-    to   { opacity: 1; transform: none; }
-}
-
-@keyframes zoom-entrada {
-    from { opacity: 0; transform: scale(.88); }
-    to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes flotar {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-10px); }
-}
-
-@keyframes pulso {
-    0%   { box-shadow: 0 0 0 0 rgba(51, 74, 189, .55); }
-    70%  { box-shadow: 0 0 0 14px rgba(51, 74, 189, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(51, 74, 189, 0); }
-}
-
-/* Entrada escalonada para el texto en inicio*/
-.anim-subir { animation: subir .7s ease both; }
-.retraso-1  { animation-delay: .15s; }
-.retraso-2  { animation-delay: .3s; }
-.retraso-3  { animation-delay: .45s; }
-.retraso-4  { animation-delay: .6s; }
-
-.encabezado-fijo {
-    position: sticky;
-    top: 0;
-    z-index: 1030;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, .3);
-    animation: bajar-encabezado .6s ease both;
-}
-
-.encabezado-fijo img {
-    height: 50px;
-    width: auto;
-    transition: transform .3s ease;
-}
-
-.encabezado-fijo img:hover {
-    transform: scale(1.08) rotate(-3deg);
-}
-
-/* Enlaces con subrayado animado desde el centro */
-.lista-enlaces a {
-    position: relative;
-    display: inline-block;
-    padding: .25rem 0;
-}
-
-.lista-enlaces a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background-color: #7f93ff;
-    border-radius: 2px;
-    transition: width .3s ease, left .3s ease;
-}
-
-.lista-enlaces a:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-/* Botón Ingresar */
-.boton-ingresar {
-    transition: transform .25s ease, box-shadow .25s ease, background-color .3s ease;
-}
-
-.boton-ingresar:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, .35);
-}
-
-.boton-ingresar i {
-    font-size: 1.15rem;
-    transition: transform .25s ease;
-}
-
-.boton-ingresar:hover i {
-    transform: translateX(4px);
-}
-
-/*Botones del inicio*/
-.boton-postular,
-.boton-conocer {
-    transition: transform .25s ease, box-shadow .25s ease, background-color .3s ease, color .3s ease;
-}
-
-.boton-postular:hover,
-.boton-conocer:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(51, 74, 189, .35);
-}
-
-.boton-postular i,
-.boton-conocer i {
-    transition: transform .25s ease;
-}
-
-.boton-postular:hover i,
-.boton-conocer:hover i {
-    transform: scale(1.25) rotate(-8deg);
-}
-
-/* "Postula aquí" tipo latido  */
-.boton-postular {
-    animation: pulso 2.5s ease-out 1.5s infinite;
-}
-
-.boton-postular:hover {
-    animation: none;
-}
-
-/*Imagen principal */
-.imagen-colegio {
-    animation: zoom-entrada .9s ease .3s both, flotar 6s ease-in-out 1.4s infinite;
-}
-
-/*Secciones que aparecen al hacer scroll
-(solo en navegadores que soportan animaciones por scroll; en el resto se ven normales) */
-@supports (animation-timeline: view()) {
-    .contenido-principal section[id]:not(#inicio) .row {
-        animation: subir linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 35%;
-    }
-}
-
-/*Celulares: separar los enlaces del logo */
-@media (max-width: 767.98px) {
-    .lista-enlaces {
-        border-top: 1px solid rgba(255, 255, 255, .15);
-        padding-top: .75rem !important;
-    }
-}
-
+/*si el usuario tiene activada la opcion de "reducir movimiento" en su sistema se apagan las animaciones*/
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;

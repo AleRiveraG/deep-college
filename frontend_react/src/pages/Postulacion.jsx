@@ -2,18 +2,22 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Boton from '../components/Boton';
 import FooterPublico from '../components/FooterP';
+import { api } from '../services/api';
  
 function Postulacion() {
-  const [nombrePostulante, setNombrePostulante] = useState('');
+  const [nombresPostulante, setNombresPostulante] = useState('');
+  const [apellidosPostulante, setApellidosPostulante] = useState('');
   const [rutPostulante, setRutPostulante] = useState('');
   const [fechaNacimiento, setFechaNacimiento] = useState('');
   const [curso, setCurso] = useState('');
-  const [nombreApoderado, setNombreApoderado] = useState('');
+  const [nombresApoderado, setNombresApoderado] = useState('');
+  const [apellidosApoderado, setApellidosApoderado] = useState('');
   const [rutApoderado, setRutApoderado] = useState('');
   const [correoApoderado, setCorreoApoderado] = useState('');
   const [telefonoApoderado, setTelefonoApoderado] = useState('');
   const [terminos, setTerminos] = useState(false);
   const [observaciones, setObservaciones] = useState('');
+  const [enviando, setEnviando] = useState(false);
  
   const navigate = useNavigate();
  
@@ -41,11 +45,11 @@ function Postulacion() {
     return !(telefono.trim() === '' || telefono.trim().length < 8);
   }
  
-  function manejarPostulacion(evento) {
+  async function manejarPostulacion(evento) {
     evento.preventDefault();
  
-    if (!validarNombre(nombrePostulante)) {
-      alert('Nombre del postulante no valido, compruebe los datos ingresados');
+    if (!validarNombre(nombresPostulante) || !validarNombre(apellidosPostulante)) {
+      alert('Ingrese nombres y apellidos válidos del postulante');
       return;
     }
     if (!validarRut(rutPostulante)) {
@@ -60,8 +64,8 @@ function Postulacion() {
       alert('Debe seleccionar el curso al que postula');
       return;
     }
-    if (!validarNombre(nombreApoderado)) {
-      alert('Nombre del apoderado no valido, compruebe los datos ingresados');
+    if (!validarNombre(nombresApoderado) || !validarNombre(apellidosApoderado)) {
+      alert('Ingrese nombres y apellidos válidos del apoderado');
       return;
     }
     if (!validarRut(rutApoderado)) {
@@ -81,8 +85,32 @@ function Postulacion() {
       return;
     }
  
-    alert('Postulación enviada con éxito! Nos pondremos en contacto contigo pronto');
-    navigate('/');
+    setEnviando(true);
+    try {
+      await api('/api/postulaciones', {
+        method: 'POST',
+        body: JSON.stringify({
+          nombresPostulante: nombresPostulante.trim(),
+          apellidosPostulante: apellidosPostulante.trim(),
+          rutPostulante: rutPostulante.trim(),
+          fechaNacimiento,
+          curso,
+          nombresApoderado: nombresApoderado.trim(),
+          apellidosApoderado: apellidosApoderado.trim(),
+          rutApoderado: rutApoderado.trim(),
+          correoApoderado: correoApoderado.trim(),
+          telefonoApoderado: telefonoApoderado.trim(),
+          observaciones: observaciones.trim(),
+          aceptaUsoDatos: terminos,
+        }),
+      });
+      alert('Postulación enviada. La Directiva revisará los antecedentes.');
+      navigate('/');
+    } catch (error) {
+      alert(error.message || 'No se pudo enviar la postulación. Intenta nuevamente.');
+    } finally {
+      setEnviando(false);
+    }
   }
  
   return (
@@ -122,17 +150,23 @@ function Postulacion() {
                 <h2 className="fs-5 fw-bold mb-4">Datos del postulante</h2>
                 <div className="row mb-3">
                   <div className="col-md-6">
-                    <label htmlFor="nombre-postulante" className="form-label fw-bold">Nombre completo *</label>
+                    <label htmlFor="nombre-postulante" className="form-label fw-bold">Nombres *</label>
                     <input
                       id="nombre-postulante"
                       type="text"
                       className="form-control campo-formulario"
-                      placeholder="Nombre y apellidos del postulante"
-                      value={nombrePostulante}
-                      onChange={(e) => setNombrePostulante(e.target.value)}
+                      placeholder="Nombres del postulante"
+                      value={nombresPostulante}
+                      onChange={(e) => setNombresPostulante(e.target.value)}
                     />
                   </div>
                   <div className="col-md-6 mt-3 mt-md-0">
+                    <label htmlFor="apellidos-postulante" className="form-label fw-bold">Apellidos *</label>
+                    <input id="apellidos-postulante" type="text" className="form-control campo-formulario"
+                      placeholder="Apellidos del postulante" value={apellidosPostulante}
+                      onChange={(e) => setApellidosPostulante(e.target.value)} />
+                  </div>
+                  <div className="col-md-6 mt-3">
                     <label htmlFor="rut-postulante" className="form-label fw-bold">Rut del postulante *</label>
                     <input
                       id="rut-postulante"
@@ -185,17 +219,23 @@ function Postulacion() {
                 <h2 className="fs-5 fw-bold mb-4">Datos del apoderado</h2>
                 <div className="row mb-3">
                   <div className="col-md-6">
-                    <label htmlFor="nombre-apoderado" className="form-label fw-bold">Nombre completo *</label>
+                    <label htmlFor="nombre-apoderado" className="form-label fw-bold">Nombres *</label>
                     <input
                       id="nombre-apoderado"
                       type="text"
                       className="form-control campo-formulario"
-                      placeholder="Nombre y apellidos del apoderado"
-                      value={nombreApoderado}
-                      onChange={(e) => setNombreApoderado(e.target.value)}
+                      placeholder="Nombres del apoderado"
+                      value={nombresApoderado}
+                      onChange={(e) => setNombresApoderado(e.target.value)}
                     />
                   </div>
                   <div className="col-md-6 mt-3 mt-md-0">
+                    <label htmlFor="apellidos-apoderado" className="form-label fw-bold">Apellidos *</label>
+                    <input id="apellidos-apoderado" type="text" className="form-control campo-formulario"
+                      placeholder="Apellidos del apoderado" value={apellidosApoderado}
+                      onChange={(e) => setApellidosApoderado(e.target.value)} />
+                  </div>
+                  <div className="col-md-6 mt-3">
                     <label htmlFor="rut-apoderado" className="form-label fw-bold">Rut del apoderado *</label>
                     <input
                       id="rut-apoderado"
@@ -256,7 +296,7 @@ function Postulacion() {
                 </div>
  
                 <div className="text-center">
-                  <Boton id="btn-postular" tipo="submit" clase="btn boton-calcular px-5 py-2 fs-5" texto="Enviar postulación" />
+                  <Boton id="btn-postular" tipo="submit" clase="btn boton-calcular px-5 py-2 fs-5" texto={enviando ? 'Enviando…' : 'Enviar postulación'} deshabilitado={enviando} />
                 </div>
  
               </form>
