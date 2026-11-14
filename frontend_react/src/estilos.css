@@ -574,8 +574,11 @@ los deje tambien separados por clases por si solo se necesita cambiar uno*/
     table-layout: fixed;
 }
 
-.tabla-horarios:has(.celda-hora) thead th:first-child {
-    width: 13%;
+/* Da espacio a las horas para que no invadan la columna del lunes */
+.tabla-horarios:has(.celda-hora) thead th:first-child,
+.tabla-horarios:has(.celda-hora) tbody td.celda-hora {
+    width: 150px;
+    min-width: 150px;
 }
 
 /*encabezado claro horarios de directiva*/
