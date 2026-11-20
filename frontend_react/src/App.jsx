@@ -8,7 +8,6 @@ import Postulacion from './pages/Postulacion';
 // Vistas Directiva
 import PaginaPrincipalDirectiva from './pages/directiva/PaginaPrincipal';
 import CalculadoraSueldos from './pages/directiva/CalculadoraSueldos';
-import GestionAcademica from './pages/directiva/GestionAcademica';
 import HorariosDirectiva from './pages/directiva/Horarios';
 import VerPerfilDirectiva from './pages/directiva/VerPerfil';
 import RegistroAsistenciaDirectiva from './pages/directiva/RegistroAsistencia';
@@ -48,7 +47,6 @@ function App() {
         <Route element={<RutaProtegida roles={['DIRECTIVA']} />}>
           <Route path="/directiva" element={<PaginaPrincipalDirectiva />} />
           <Route path="/directiva/calculadora-sueldos" element={<CalculadoraSueldos />} />
-          <Route path="/directiva/gestion-academica" element={<GestionAcademica />} />
           <Route path="/directiva/horarios" element={<HorariosDirectiva />} />
           <Route path="/directiva/ver-perfil" element={<VerPerfilDirectiva />} />
           <Route path="/directiva/registro-asistencia" element={<RegistroAsistenciaDirectiva />} />

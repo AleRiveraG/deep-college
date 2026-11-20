@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import PanelLayout from '../../components/PanelLayout';
 import useAlumnosDocente from '../../hooks/useAlumnosDocente';
+import { apiAcademico } from '../../services/api';
+
+function hoy() {
+  return new Date().toLocaleDateString('en-CA'); // AAAA-MM-DD en hora local
+}
 
 function RegistroAsistencia() {
   const {
@@ -22,6 +27,19 @@ function RegistroAsistencia() {
     setHabilitado(false);
     setRegistros({});
     setMensaje('');
+
+    if (valor) {
+      // Si ya se tomó asistencia hoy, se muestra para poder corregirla
+      apiAcademico(
+        `/api/academico/cursos/${encodeURIComponent(valor)}/asistencia?fecha=${hoy()}`
+      )
+        .then((lista) =>
+          setRegistros(
+            Object.fromEntries(lista.map((r) => [r.estudianteId, r.estado]))
+          )
+        )
+        .catch(() => {});
+    }
   }
 
   function cambiarAsistencia(alumnoId, estado) {
@@ -31,9 +49,32 @@ function RegistroAsistencia() {
     }));
   }
 
-  function finalizarClase() {
-    setHabilitado(false);
-    setMensaje('');
+  async function finalizarClase() {
+    const items = alumnos
+      .filter((alumno) => registros[alumno.id])
+      .map((alumno) => ({
+        estudianteId: alumno.id,
+        estado: registros[alumno.id],
+      }));
+
+    if (items.length === 0) {
+      setMensaje('Marca la asistencia de al menos un alumno.');
+      return;
+    }
+
+    try {
+      await apiAcademico(
+        `/api/academico/cursos/${encodeURIComponent(curso)}/asistencia`,
+        {
+          method: 'PUT',
+          body: JSON.stringify({ fecha: hoy(), registros: items }),
+        }
+      );
+      setHabilitado(false);
+      setMensaje('Asistencia guardada.');
+    } catch (e) {
+      setMensaje(e.message || 'No se pudo guardar la asistencia.');
+    }
   }
 
   return (

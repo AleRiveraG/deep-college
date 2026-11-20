@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import PanelLayout from '../../components/PanelLayout';
 import useAlumnosDocente from '../../hooks/useAlumnosDocente';
-import datosDemoAcademicos from '../../data/datosDemoAcademicos';
+import useNotasCurso from '../../hooks/useNotasCurso';
+import {
+  ETIQUETAS_EVALUACION,
+  formatearPromedio,
+  porcentaje,
+  promedioPonderado,
+} from '../../utils/calculoNotas';
 
 const camposNotas = ['es1', 'es2', 'ef1', 'ef2', 'ed1', 'ed2', 'ed3'];
 
@@ -18,18 +24,13 @@ function obtenerValores(nota) {
 }
 
 function calcularPromedio(valores) {
-  const completos = camposNotas.every(
-    (campo) => valores[campo] !== '' && valores[campo] !== undefined
-  );
+  const promedio = promedioPonderado({
+    ES: [valores.es1, valores.es2],
+    EF: [valores.ef1, valores.ef2],
+    ED: [valores.ed1, valores.ed2, valores.ed3],
+  });
 
-  if (!completos) return null;
-
-  const total = camposNotas.reduce(
-    (suma, campo) => suma + Number(valores[campo]),
-    0
-  );
-
-  return (total / camposNotas.length).toFixed(1);
+  return promedio === null ? null : formatearPromedio(promedio);
 }
 
 function claseNota(valor) {
@@ -60,30 +61,24 @@ function RegistroNotas() {
   const [asignatura, setAsignatura] = useState('');
   const [ediciones, setEdiciones] = useState({});
   const [editando, setEditando] = useState(false);
+  const [mensaje, setMensaje] = useState('');
 
   useEffect(() => {
     setAsignatura('');
     setEditando(false);
   }, [curso]);
 
-  const asignaturas = [
-    ...new Set(
-      alumnos.flatMap((alumno) => {
-        const datosAlumno = datosDemoAcademicos[String(alumno.id)];
-        return datosAlumno?.notas?.map((nota) => nota.asignatura) || [];
-      })
-    ),
-  ];
-
-  const asignaturaActiva = asignaturas.includes(asignatura)
-    ? asignatura
-    : asignaturas[0] || '';
+  const {
+    asignaturas,
+    asignaturaActiva,
+    notasPorAlumno,
+    errorNotas,
+    guardando,
+    guardar,
+  } = useNotasCurso(curso, asignatura);
 
   const filas = alumnos.map((alumno, indice) => {
-    const datosAlumno = datosDemoAcademicos[String(alumno.id)];
-    const notaBase = datosAlumno?.notas?.find(
-      (nota) => nota.asignatura === asignaturaActiva
-    );
+    const notaBase = notasPorAlumno[alumno.id];
 
     const llave = `${alumno.id}-${asignaturaActiva}`;
     const valores = ediciones[llave] || obtenerValores(notaBase);
@@ -123,6 +118,26 @@ function RegistroNotas() {
         },
       };
     });
+  }
+
+  async function guardarCambios() {
+    const editadas = filas
+      .filter((fila) => ediciones[fila.llave])
+      .map((fila) => ({ alumnoId: fila.alumno.id, valores: fila.valores }));
+
+    if (editadas.length === 0) {
+      setMensaje('No hay cambios para guardar.');
+      return;
+    }
+
+    try {
+      await guardar(editadas);
+      setEdiciones({});
+      setEditando(false);
+      setMensaje('Notas guardadas.');
+    } catch (e) {
+      setMensaje(e.message || 'No se pudieron guardar las notas.');
+    }
   }
 
   return (
@@ -190,6 +205,8 @@ function RegistroNotas() {
       </section>
 
       {error && <div className="alert alert-danger">{error}</div>}
+      {errorNotas && <div className="alert alert-danger">{errorNotas}</div>}
+      {mensaje && <div className="alert alert-info">{mensaje}</div>}
       {cargando && <p>Cargando alumnos…</p>}
 
       {!cargando && !error && cursos.length === 0 && (
@@ -207,8 +224,8 @@ function RegistroNotas() {
 
       {!cargando && alumnos.length > 0 && asignaturas.length === 0 && (
         <div className="alert alert-info">
-          No hay notas de demostración configuradas para los alumnos de este
-          curso. Agrega sus datos en `src/data/datosDemoAcademicos.js`.
+          Este curso aún no tiene asignaturas. Directiva debe registrar el
+          horario del curso para poder ingresar notas.
         </div>
       )}
 
@@ -308,7 +325,7 @@ function RegistroNotas() {
                       className="text-white"
                       style={{ backgroundColor: '#1C2866' }}
                     >
-                      Sumativa (35%)
+                      {ETIQUETAS_EVALUACION.ES} ({porcentaje('ES')}%)
                     </th>
 
                     <th
@@ -317,7 +334,7 @@ function RegistroNotas() {
                       className="text-white"
                       style={{ backgroundColor: '#283A94' }}
                     >
-                      Formativa (35%)
+                      {ETIQUETAS_EVALUACION.EF} ({porcentaje('EF')}%)
                     </th>
 
                     <th
@@ -326,7 +343,7 @@ function RegistroNotas() {
                       className="text-white"
                       style={{ backgroundColor: '#334ABD' }}
                     >
-                      Desempeño (30%)
+                      {ETIQUETAS_EVALUACION.ED} ({porcentaje('ED')}%)
                     </th>
 
                     <th
@@ -421,6 +438,11 @@ function RegistroNotas() {
               </table>
             </div>
 
+            <p className="small texto-secundario mt-3 mb-0">
+              Promedio ponderado: Sumativa {porcentaje('ES')}%, Formativa{' '}
+              {porcentaje('EF')}% y Desempeño {porcentaje('ED')}%.
+            </p>
+
             <div className="d-flex flex-wrap justify-content-end gap-2 mt-4">
               <button
                 type="button"
@@ -429,6 +451,15 @@ function RegistroNotas() {
                 onClick={() => setEdiciones({})}
               >
                 Restablecer
+              </button>
+
+              <button
+                type="button"
+                className="btn btn-success px-4"
+                disabled={!editando || guardando}
+                onClick={guardarCambios}
+              >
+                {guardando ? 'Guardando…' : 'Guardar cambios'}
               </button>
 
               <button

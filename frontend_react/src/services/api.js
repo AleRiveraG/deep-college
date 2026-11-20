@@ -1,9 +1,11 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const ACADEMICO_URL =
+  import.meta.env.VITE_ACADEMICO_URL || 'http://localhost:8081';
 
-export async function api(path, options = {}) {
+async function pedir(base, path, options = {}) {
   const token = localStorage.getItem('deepcollege.token');
 
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(`${base}${path}`, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
@@ -26,6 +28,16 @@ export async function api(path, options = {}) {
   }
 
   return data;
+}
+
+//llamas del backend de usuarios quedan tal cual
+export function api(path, options) {
+  return pedir(API_URL, path, options);
+}
+
+// backend academico
+export function apiAcademico(path, options) {
+  return pedir(ACADEMICO_URL, path, options);
 }
 
 export const rutaPorRol = {

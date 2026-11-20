@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import PanelLayout from './PanelLayout';
 import { api } from '../services/api';
-import datosDemoAcademicos from '../data/datosDemoAcademicos';
+import useDatosAcademicos from '../hooks/useDatosAcademicos';
+import {
+  formatearPromedio,
+  porcentaje,
+  promedioPonderado,
+  promedioSimple,
+} from '../utils/calculoNotas';
 
 const enlacesApoderado = [
   {
@@ -23,12 +29,6 @@ const enlacesApoderado = [
     texto: 'Horario',
   },
 ];
-
-function promedio(valores = []) {
-  if (valores.length === 0) return 0;
-
-  return valores.reduce((total, valor) => total + valor, 0) / valores.length;
-}
 
 function fechaLegible(fecha) {
   return new Date(`${fecha}T00:00:00`).toLocaleDateString('es-CL', {
@@ -74,7 +74,11 @@ function DatosAcademicosDemo({ rol, vista }) {
   }, [esApoderado]);
 
   const alumno = alumnos.find((item) => String(item.id) === alumnoId) || null;
-  const datos = alumno ? datosDemoAcademicos[String(alumno.id)] : null;
+  const {
+    datos,
+    cargando: cargandoDatos,
+    error: errorDatos,
+  } = useDatosAcademicos(alumno?.id, alumno?.curso);
 
   const porcentajeAsistencia = datos?.asistencia?.totalClases
     ? Math.round(
@@ -90,11 +94,9 @@ function DatosAcademicosDemo({ rol, vista }) {
     : 0;
 
   const promedioAsignaturas =
-    datos?.notas.map((nota) =>
-      promedio([...nota.ES, ...nota.EF, ...nota.ED])
-    ) || [];
+    datos?.notas.map((nota) => promedioPonderado(nota)) || [];
 
-  const promedioGeneral = promedio(promedioAsignaturas);
+  const promedioGeneral = promedioSimple(promedioAsignaturas);
 
   const titulos = {
     notas: esApoderado ? 'Notas del alumno' : 'Mis Notas',
@@ -131,8 +133,10 @@ function DatosAcademicosDemo({ rol, vista }) {
       <h1 className="titulo-principal mb-4">{titulos[vista]}</h1>
       <h2 className="fs-6 mb-4">{descripciones[vista]}</h2>
 
-      {error && <div className="alert alert-danger">{error}</div>}
-      {cargando && <p>Cargando…</p>}
+      {(error || errorDatos) && (
+        <div className="alert alert-danger">{error || errorDatos}</div>
+      )}
+      {(cargando || cargandoDatos) && <p>Cargando…</p>}
 
       {!cargando && esApoderado && alumnos.length > 0 && (
         <div className="tarjeta-blanca p-3 border rounded mb-4 d-flex align-items-center gap-3">
@@ -163,9 +167,9 @@ function DatosAcademicosDemo({ rol, vista }) {
         </div>
       )}
 
-      {!cargando && alumno && !datos && (
+      {!cargando && !cargandoDatos && !errorDatos && alumno && !datos && (
         <div className="alert alert-secondary">
-          No hay datos de prueba para este alumno.
+          Aún no hay datos académicos para este alumno.
         </div>
       )}
 
@@ -189,7 +193,7 @@ function DatosAcademicosDemo({ rol, vista }) {
                 <i className="bx bx-medal fs-1 text-warning me-4"></i>
                 <div className="text-start">
                   <span className="d-block fs-3 fw-bold monto-valor">
-                    {promedioGeneral.toFixed(1)}
+                    {formatearPromedio(promedioGeneral)}
                   </span>
                   <span className="etiqueta-valor small">Promedio General</span>
                 </div>
@@ -201,25 +205,48 @@ function DatosAcademicosDemo({ rol, vista }) {
             <table className="table table-bordered tabla-horarios text-center align-middle bg-white mb-0">
               <thead className="encabezado-tabla">
                 <tr>
-                  <th scope="col" className="text-start">
+                  <th scope="col" rowSpan={2} className="text-start">
                     Asignatura
                   </th>
-                  <th scope="col">Evaluación 1</th>
-                  <th scope="col">Evaluación 2</th>
-                  <th scope="col">Evaluación 3</th>
-                  <th scope="col">Evaluación 4</th>
-                  <th scope="col">Evaluación 5</th>
-                  <th scope="col">Evaluación 6</th>
-                  <th scope="col">Evaluación 7</th>
-                  <th scope="col" className="table-secondary fw-bold">
+                  <th scope="colgroup" colSpan={2}>
+                    Sumativa ({porcentaje('ES')}%)
+                  </th>
+                  <th scope="colgroup" colSpan={2}>
+                    Formativa ({porcentaje('EF')}%)
+                  </th>
+                  <th scope="colgroup" colSpan={3}>
+                    Desempeño ({porcentaje('ED')}%)
+                  </th>
+                  <th
+                    scope="col"
+                    rowSpan={2}
+                    className="table-secondary fw-bold"
+                  >
                     Promedio
                   </th>
+                </tr>
+                <tr>
+                  <th scope="col">ES1</th>
+                  <th scope="col">ES2</th>
+                  <th scope="col">EF1</th>
+                  <th scope="col">EF2</th>
+                  <th scope="col">ED1</th>
+                  <th scope="col">ED2</th>
+                  <th scope="col">ED3</th>
                 </tr>
               </thead>
 
               <tbody>
                 {datos.notas.map((nota) => {
-                  const valores = [...nota.ES, ...nota.EF, ...nota.ED];
+                  const valores = [
+                    nota.ES?.[0],
+                    nota.ES?.[1],
+                    nota.EF?.[0],
+                    nota.EF?.[1],
+                    nota.ED?.[0],
+                    nota.ED?.[1],
+                    nota.ED?.[2],
+                  ];
 
                   return (
                     <tr className="fila-horario" key={nota.asignatura}>
@@ -240,7 +267,7 @@ function DatosAcademicosDemo({ rol, vista }) {
                       ))}
 
                       <td className="fw-bold table-secondary">
-                        {promedio(valores).toFixed(1)}
+                        {formatearPromedio(promedioPonderado(nota))}
                       </td>
                     </tr>
                   );
@@ -248,6 +275,12 @@ function DatosAcademicosDemo({ rol, vista }) {
               </tbody>
             </table>
           </div>
+
+          <p className="small texto-secundario mt-3 mb-0">
+            El promedio de cada asignatura se calcula con estas ponderaciones:
+            Sumativa {porcentaje('ES')}%, Formativa {porcentaje('EF')}% y
+            Desempeño {porcentaje('ED')}%.
+          </p>
         </>
       )}
 

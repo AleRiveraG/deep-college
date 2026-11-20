@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 export const enlacesDirectiva = [
   { ruta: '/directiva', icono: 'bx-home-alt', iconoClase: 'icono-inicio', texto: 'Inicio' },
   { ruta: '/directiva/ver-perfil', icono: 'bx-user', iconoClase: 'icono-perfil', texto: 'Ver perfil' },
-  { ruta: '/directiva/gestion-academica', icono: 'bx-community', iconoClase: 'icono-gestion-academica', texto: 'Gestión académica' },
   { ruta: '/directiva/solicitudes', icono: 'bx-user-plus', iconoClase: 'icono-perfil', texto: 'Solicitudes de admisión' },
   { ruta: '/directiva/crear-cuenta-docente', icono: 'bx-user-plus', iconoClase: 'icono-perfil', texto: 'Crear cuenta docente',},
   { ruta: '/directiva/registro-notas', icono: 'bx-education', iconoClase: 'icono-notas', texto: 'Registro de notas' },
