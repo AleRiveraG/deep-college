@@ -1,25 +1,78 @@
 import PanelLayout from "../../components/PanelLayout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Boton from "../../components/Boton";
+import { apiFinanzas } from "../../services/api";
+
+function pesos(monto) {
+    return `$${Number(monto).toLocaleString("es-CL")}`;
+}
 
 function CalculadoraSueldos() {
     const [horasSemanales, setHorasSemanales] = useState(0);
     const [aniosAntiguedad, setAniosAntiguedad] = useState(0);
-    const [nivel, setNivel] = useState(null);
+    const [nivel, setNivel] = useState("basica");
     const [pagoHoras, setPagoHoras] = useState(0);
     const [bonoAnios, setBonoAnios] =  useState(0);
     const [afp, setAfp] = useState(0);
     const [salud, setSalud] = useState(0);
     const [sueldoBruto, setSueldoBruto] = useState(0);
     const [sueldoLiquido, setSueldoLiquido] = useState(0);
+    const [valorHoraMedia, setValorHoraMedia] = useState(21034);
+    const [valorHoraBasica, setValorHoraBasica] = useState(19992);
+    const [cargando, setCargando] = useState(false);
+    const [error, setError] = useState("");
+
+    // Valores por hora desde el backend de finanzas (si falla, quedan los de respaldo)
+    useEffect(() => {
+        apiFinanzas("/api/v1/finanzas/parametros")
+            .then((p) => {
+                setValorHoraMedia(p.valorHoraMedia);
+                setValorHoraBasica(p.valorHoraBasica);
+            })
+            .catch(() => {});
+    }, []);
 
     function validarCampos() {
-            return(
-                horasSemanales > 0 &&
-                aniosAntiguedad >= 0 &&
-                nivel != ""
-            );
+        const horas = Number(horasSemanales);
+        const anios = Number(aniosAntiguedad);
+        return (
+            Number.isInteger(horas) && horas >= 1 && horas <= 42 &&
+            Number.isInteger(anios) && anios >= 0 && anios <= 50 &&
+            (nivel === "basica" || nivel === "media")
+        );
+    }
+
+    async function calcular(evento) {
+        evento.preventDefault();
+        setError("");
+
+        if (!validarCampos()) {
+            setError("Datos inválidos: horas entre 1 y 42, años entre 0 y 50 (números enteros).");
+            return;
         }
+
+        setCargando(true);
+        try {
+            const r = await apiFinanzas("/api/v1/finanzas/sueldos/calcular", {
+                method: "POST",
+                body: JSON.stringify({
+                    horasSemanales: Number(horasSemanales),
+                    aniosAntiguedad: Number(aniosAntiguedad),
+                    nivel,
+                }),
+            });
+            setPagoHoras(r.pagoHoras);
+            setBonoAnios(r.bonoAnios);
+            setAfp(r.afp);
+            setSalud(r.salud);
+            setSueldoBruto(r.sueldoBruto);
+            setSueldoLiquido(r.sueldoLiquido);
+        } catch (e) {
+            setError(e.message || "No se pudo calcular el sueldo.");
+        } finally {
+            setCargando(false);
+        }
+    }
 
     return(
         <PanelLayout claseSeccion="py-4 px-4 seccion-calculadora">
@@ -38,13 +91,13 @@ function CalculadoraSueldos() {
                     <div className="col-md-4">
                         <div className="p-3 border caja-valor h-100">
                             <span className="d-block mb-1 etiqueta-valor small">Valor Hora Educación Media</span>
-                            <strong className="monto-valor hora-media fs-4">$21.034</strong>
+                            <strong className="monto-valor hora-media fs-4">{pesos(valorHoraMedia)}</strong>
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="p-3 border caja-valor h-100">
                             <span className="d-block mb-1 etiqueta-valor small">Valor Hora Educación Básica</span>
-                            <strong className="monto-valor fs-4">$19.992</strong>
+                            <strong className="monto-valor fs-4">{pesos(valorHoraBasica)}</strong>
                         </div>
                     </div>
                 </div>
@@ -69,58 +122,15 @@ function CalculadoraSueldos() {
                             </select>
                         </div>
                     </div>
+
+                    {error && <div className="alert alert-danger py-2 small" role="alert">{error}</div>}
                     
                     <Boton
                       tipo="submit"
                       clase="btn btn-sm boton-calcular px-4"
-                      onClick={ (evento) => {
-                        evento.preventDefault();
-                        if(validarCampos()) {
-                            const porcentaje = 0.015;
-
-                            if(nivel === 'media') {
-                                const pago = horasSemanales * 21034;
-                                
-                                const bono = Math.round((aniosAntiguedad * porcentaje)*pago);
-                                
-                                const bruto = pago + bono;
-                                
-                                const desc_afp = Math.round(0.1 * bruto);
-                                const desc_salud = Math.round(0.07 * bruto);
-                                
-                                const liquido = bruto - desc_salud - desc_afp;
-
-                                setPagoHoras(pago);
-                                setBonoAnios(bono);
-                                setAfp(desc_afp);
-                                setSalud(desc_salud);
-                                setSueldoBruto(bruto);
-                                setSueldoLiquido(liquido);
-                                
-                            } else {
-                                const pago = horasSemanales * 19992;
-
-                                const bono = Math.round((aniosAntiguedad * porcentaje)*pago);
-                                
-                                const bruto = pago + bono;
-                                
-                                const desc_afp = Math.round(0.1 * bruto);
-                                const desc_salud = Math.round(0.07 * bruto);
-                                
-                                const liquido = bruto - desc_salud - desc_afp;
-                                
-                                setPagoHoras(pago);
-                                setBonoAnios(bono);
-                                setAfp(desc_afp);
-                                setSalud(desc_salud);
-                                setSueldoBruto(bruto);
-                                setSueldoLiquido(liquido);
-                            }
-                        } else {
-                            alert("Datos invalidos, ingrese nuevamente.")
-                        }
-                    }}
-                      texto="Calcular"
+                      onClick={calcular}
+                      deshabilitado={cargando}
+                      texto={cargando ? "Calculando..." : "Calcular"}
                     />
                     
                     <hr className="my-5" style={{ borderColor: "#283A94;" }} />
@@ -131,17 +141,17 @@ function CalculadoraSueldos() {
                             <div className="mt-3 detalle-resultados">
                                 <div className="d-flex justify-content-between mb-3">
                                     <span className="etiqueta-resultado">Pago por horas</span>
-                                    <span id="pago-horas" className="fw-bold monto-resultado">${pagoHoras}</span>
+                                    <span id="pago-horas" className="fw-bold monto-resultado">{pesos(pagoHoras)}</span>
                                 </div>
                                 <hr className="text-muted" />
                                 <div className="d-flex justify-content-between mb-3">
                                     <span className="etiqueta-resultado">Bono años de antiguedad</span>
-                                    <span id="bono-antiguedad" className="fw-bold monto-resultado">${bonoAnios}</span>
+                                    <span id="bono-antiguedad" className="fw-bold monto-resultado">{pesos(bonoAnios)}</span>
                                 </div>
                                 <hr className="text-muted" />
                                 <div className="d-flex justify-content-between fs-5">
                                     <strong className="etiqueta-total text-dark">Sueldo Bruto</strong>
-                                    <strong id="sueldo-bruto" className="monto-total text-dark">${sueldoBruto}</strong>
+                                    <strong id="sueldo-bruto" className="monto-total text-dark">{pesos(sueldoBruto)}</strong>
                                 </div>
                             </div>
                         </div>
@@ -150,17 +160,17 @@ function CalculadoraSueldos() {
                             <div className="mt-3 detalle-resultados">
                                 <div className="d-flex justify-content-between mb-3">
                                     <span className="etiqueta-resultado">AFP</span>
-                                    <span id="afp" className="fw-bold monto-resultado">${afp}</span>
+                                    <span id="afp" className="fw-bold monto-resultado">{pesos(afp)}</span>
                                 </div>
                                 <hr className="text-muted" />
                                 <div className="d-flex justify-content-between mb-3">
                                     <span className="etiqueta-resultado">Salud</span>
-                                    <span id="salud" className="fw-bold monto-resultado">${salud}</span>
+                                    <span id="salud" className="fw-bold monto-resultado">{pesos(salud)}</span>
                                 </div>
                                 <hr className="text-muted" />
                                 <div className="d-flex justify-content-between fs-5">
                                     <strong className="etiqueta-total text-dark">Sueldo Liquido</strong>
-                                    <strong id="sueldo-liquido" className="monto-total text-dark">${sueldoLiquido}</strong>
+                                    <strong id="sueldo-liquido" className="monto-total text-dark">{pesos(sueldoLiquido)}</strong>
                                 </div>
                             </div>
                         </div>

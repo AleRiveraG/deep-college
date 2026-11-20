@@ -2,6 +2,9 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 const ACADEMICO_URL =
   import.meta.env.VITE_ACADEMICO_URL || 'http://localhost:8081';
 
+  const FINANZAS_URL =
+  import.meta.env.VITE_FINANZAS_URL || 'http://localhost:8082';
+
 async function pedir(base, path, options = {}) {
   const token = localStorage.getItem('deepcollege.token');
 
@@ -38,6 +41,11 @@ export function api(path, options) {
 // backend academico
 export function apiAcademico(path, options) {
   return pedir(ACADEMICO_URL, path, options);
+}
+
+// backend finanzas (calculadora de sueldos)
+export function apiFinanzas(path, options) {
+  return pedir(FINANZAS_URL, path, options);
 }
 
 export const rutaPorRol = {
