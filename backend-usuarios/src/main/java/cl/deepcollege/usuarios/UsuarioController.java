@@ -5,12 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.text.Normalizer;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -97,6 +99,46 @@ public class UsuarioController {
             .stream()
             .map(UsuarioResponse::from)
             .toList();
+    }
+
+    @PostMapping("/usuarios/estudiantes/{id}/baja")
+    @PreAuthorize("hasRole('DIRECTIVA')")
+    @Transactional
+    public Map<String, Object> darDeBajaEstudiante(@PathVariable Long id) {
+        Usuario estudiante = usuarios.findById(id)
+            .filter(u -> u.getRol() == Rol.ESTUDIANTE)
+            .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Estudiante no encontrado"
+            ));
+
+        if (!estudiante.isActivo()) {
+            throw new IllegalArgumentException("El estudiante ya está dado de baja");
+        }
+
+        estudiante.darDeBaja();
+
+        boolean apoderadoDadoDeBaja = false;
+        boolean apoderadoMantenido = false;
+        Usuario apoderado = estudiante.getApoderado();
+
+        if (apoderado != null
+            && apoderado.getRol() == Rol.APODERADO
+            && apoderado.isActivo()) {
+            // el apoderado solo se da de baja si no le quedan otros alumnos activos
+            if (usuarios.existsByApoderadoIdAndRolAndActivoTrue(apoderado.getId(), Rol.ESTUDIANTE)) {
+                apoderadoMantenido = true;
+            } else {
+                apoderado.darDeBaja();
+                apoderadoDadoDeBaja = true;
+            }
+        }
+
+        return Map.of(
+            "estudianteId", estudiante.getId(),
+            "apoderadoDadoDeBaja", apoderadoDadoDeBaja,
+            "apoderadoMantenido", apoderadoMantenido
+        );
     }
 
     @GetMapping("/usuarios/me")

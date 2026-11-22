@@ -44,6 +44,8 @@ public class Usuario {
     public String getNivel() { return nivel; }
     public Usuario getApoderado() { return apoderado; }
     public boolean isActivo() { return activo; }
+    public void darDeBaja() { this.activo = false; }
+    public void reactivar(String nuevoPasswordHash) { this.activo = true; this.passwordHash = nuevoPasswordHash; }
     public void actualizar(PerfilRequest p) {
         nombres = p.nombres().trim(); apellidos = p.apellidos().trim(); rut = p.rut().trim();
         telefono = p.telefono(); fechaNacimiento = p.fechaNacimiento();

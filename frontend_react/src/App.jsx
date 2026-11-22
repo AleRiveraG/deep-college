@@ -34,6 +34,7 @@ import NotasEstudiante from './pages/estudiante/Notas';
 import AsistenciaApoderado from './pages/apoderado/Asistencia';
 import NotasApoderado from './pages/apoderado/Notas';
 import HorarioApoderado from './pages/apoderado/Horario';
+import PostularHijoApoderado from './pages/apoderado/PostularHijo';
 import RutaProtegida from './components/RutaProtegida';
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
           <Route path="/apoderado/asistencia" element={<AsistenciaApoderado />} />
           <Route path="/apoderado/notas" element={<NotasApoderado />} />
           <Route path="/apoderado/horario" element={<HorarioApoderado />} />
+          <Route path="/apoderado/postular-hijo" element={<PostularHijoApoderado />} />
         </Route>
       </Routes>
     </BrowserRouter>

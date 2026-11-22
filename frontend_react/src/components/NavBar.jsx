@@ -33,6 +33,7 @@ export const enlacesApoderado = [
   { ruta: '/apoderado/asistencia', icono: 'bx-clipboard-check', iconoClase: 'icono-asistencia', texto: 'Asistencia' },
   { ruta: '/apoderado/notas', icono: 'bx-education', iconoClase: 'icono-notas', texto: 'Notas' },
   { ruta: '/apoderado/horario', icono: 'bx-calendar-alt', iconoClase: 'icono-horarios', texto: 'Horario' },
+  { ruta: '/apoderado/postular-hijo', icono: 'bx-user-plus', iconoClase: 'icono-perfil', texto: 'Postular otro hijo/a' },
 ];  
 
 function NavBar({ rol, items }) {

@@ -13,6 +13,8 @@ function VerPerfiles() {
   const [alumnos, setAlumnos] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState('');
+  const [mensaje, setMensaje] = useState('');
+  const [bajaEnCurso, setBajaEnCurso] = useState(null);
 
   // al cambiar de curso se piden al backend los estudiantes de ese curso
   async function seleccionarCurso(valor) {
@@ -20,6 +22,7 @@ function VerPerfiles() {
     setTexto('');
     setAlumnos([]);
     setError('');
+    setMensaje('');
 
     if (!valor) return;
 
@@ -33,6 +36,36 @@ function VerPerfiles() {
       setError(e.message || 'No se pudieron cargar los estudiantes del curso.');
     } finally {
       setCargando(false);
+    }
+  }
+
+  // da de baja al alumno (solo directiva). El backend decide si el apoderado también se da de baja
+  async function darDeBaja(alumno) {
+    const nombre = `${alumno.nombres} ${alumno.apellidos}`;
+    const confirmado = window.confirm(
+      `¿Dar de baja a ${nombre}?\n\nSu cuenta quedará desactivada. Si su apoderado no tiene otros alumnos activos, su cuenta también se desactivará.`
+    );
+    if (!confirmado) return;
+
+    setBajaEnCurso(alumno.id);
+    setMensaje('');
+    setError('');
+
+    try {
+      const respuesta = await api(`/api/usuarios/estudiantes/${alumno.id}/baja`, { method: 'POST' });
+      setAlumnos((actuales) => actuales.filter((a) => a.id !== alumno.id));
+
+      if (respuesta?.apoderadoDadoDeBaja) {
+        setMensaje(`${nombre} fue dado de baja junto con su apoderado.`);
+      } else if (respuesta?.apoderadoMantenido) {
+        setMensaje(`${nombre} fue dado de baja. Su apoderado sigue activo porque tiene otros alumnos en el colegio.`);
+      } else {
+        setMensaje(`${nombre} fue dado de baja.`);
+      }
+    } catch (e) {
+      setError(e.message || 'No se pudo dar de baja al alumno.');
+    } finally {
+      setBajaEnCurso(null);
     }
   }
 
@@ -90,6 +123,7 @@ function VerPerfiles() {
 
       {cargando && <p>Cargando…</p>}
       {error && <div className="alert alert-danger">{error}</div>}
+      {mensaje && <div className="alert alert-success" role="status">{mensaje}</div>}
 
       {!cargando && !error && cursoSeleccionado && alumnos.length === 0 && (
         <div className="alert alert-info">
@@ -108,6 +142,7 @@ function VerPerfiles() {
                 <th>Rut</th>
                 <th>Telefono</th>
                 <th>Correo</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -119,6 +154,16 @@ function VerPerfiles() {
                   <td>{alumno.rut}</td>
                   <td>{alumno.telefono || '—'}</td>
                   <td>{alumno.correo}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-danger"
+                      disabled={bajaEnCurso === alumno.id}
+                      onClick={() => darDeBaja(alumno)}
+                    >
+                      {bajaEnCurso === alumno.id ? 'Procesando…' : 'Dar de baja'}
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

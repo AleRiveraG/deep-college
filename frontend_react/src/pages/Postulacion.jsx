@@ -245,6 +245,7 @@ function Postulacion() {
                       value={rutApoderado}
                       onChange={(e) => setRutApoderado(e.target.value)}
                     />
+                    <small className="text-muted">¿Ya tienes otro hijo o hija matriculado? Usa el mismo RUT y correo de siempre y quedará vinculado a tu cuenta.</small>
                   </div>
                 </div>
                 <div className="row mb-4">
